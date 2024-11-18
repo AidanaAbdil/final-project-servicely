@@ -23,9 +23,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'surname',
         'email',
         'password',
+        'phone',
+        'role_id',
     ];
 
     /**
@@ -51,20 +54,23 @@ class User extends Authenticatable
         ];
     }
 
-    public function services(){
+    public function services()
+    {
         return $this->hasMany(Service::class);
     }
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo(Role::class);
-
     }
 
-    public function reviwes(){
+    public function reviwes()
+    {
         return $this->hasMany(Review::class);
     }
 
-    public function transactions(){
+    public function transactions()
+    {
         return $this->hasMany(Transaction::class);
     }
 }
