@@ -19,6 +19,7 @@ class ServiceController extends Controller
             'location' => 'required|string',
             'description' => 'required|string',
             'duration' => 'required|string',
+            'providerName' => 'required|string',
             'price' => 'required|numeric',
         ]);
 
