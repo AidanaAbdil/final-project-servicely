@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Models\Review;
+use App\Models\Service;
+use App\Models\Role;
+use App\Models\Transaction;
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -44,5 +49,22 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function services(){
+        return $this->hasMany(Service::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+
+    }
+
+    public function reviwes(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
     }
 }
