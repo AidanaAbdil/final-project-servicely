@@ -1,162 +1,146 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const AddService = () => {
-    const [title, setTitle] = useState("");
-    const [category, setCategory] = useState("");
-    const [location, setLocation] = useState("");
-    const [description, setDescription] = useState("");
-    const [duration, setDuration] = useState("");
-    const [price, setPrice] = useState("");
-    const [providerName, setProviderName] = useState("");
-    const [contact, setContact] = useState("");
+function AddService () {
+    const [formData, setFormData] = useState({
+        title: "",
+        category: "",
+        location: "",
+        description: "",
+        duration: "",
+        price: "",
+        contact: "",
+    });
 
+    // Fetch categories
+    const [categories, setCategories] = useState([]);
+
+    const fetchCategories = async () => {
+        try {
+            const response = await axios.get("/api/categories");
+            setCategories(response.data);
+            console.log(response.data);
+            
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
+
+    // Handle form field changes
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const formData = {
-            title,
-            category,
-            location,
-            description,
-            duration,
-            price,
-            providerName,
-            contact,
-        };
-
         try {
             const response = await axios.post("/api/services", formData);
-
-            console.log("Service Created:", response.data);
+            console.log("Service created:", response.data);
+            setFormData({
+                title: "",
+                category: "",
+                location: "",
+                description: "",
+                duration: "",
+                price: "",
+                contact: "",
+            }); // i am resetting the form after it is submitted
         } catch (error) {
-            console.error(
-                "Error creating service:",
-                error.response ? error.response.data : error.message
-            );
+            console.error("Error creating service:", error);
         }
     };
 
     return (
-        <div className="add-service-container">
-            <h2 className="form-title">Create a Service Listing</h2>
-            <form
-                onSubmit={handleSubmit}
-                id="serviceForm"
-                className="service-form"
-            >
-                <label htmlFor="title" className="form-label">
-                    Service Title
-                </label>
+        <div className="add-service-form">
+            <h2>Create a Service Listing</h2>
+
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="title">Service Title</label>
                 <input
                     type="text"
                     id="title"
                     name="title"
-                    className="form-input"
+                    value={formData.title}
+                    onChange={handleChange}
                     placeholder="Enter service title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
                     required
                 />
 
-                <label htmlFor="category" className="form-label">
-                    Service Category
-                </label>
+                <label htmlFor="category">Service Category</label>
                 <select
                     id="category"
                     name="category"
-                    className="form-input"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                    value={formData.category}
+                    onChange={handleChange}
                     required
                 >
                     <option value="">Select Category</option>
-                    <option value="Home Services">Home Services</option>
-                    <option value="Health & Wellness">Health & Wellness</option>
-                    <option value="Consulting">Consulting</option>
-                    <option value="IT Services">IT Services</option>
+                    {Array.isArray(categories) &&
+                        categories.map((category) => (
+                            <option key={category.id} value={category.name}>
+                                {category.name}
+                            </option>
+                        ))}
                 </select>
 
-                <label htmlFor="location" className="form-label">
-                    Location
-                </label>
+                <label htmlFor="location">Location</label>
                 <input
                     type="text"
                     id="location"
                     name="location"
-                    className="form-input"
+                    value={formData.location}
+                    onChange={handleChange}
                     placeholder="City, State"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
                     required
                 />
 
-                <label htmlFor="description" className="form-label">
-                    Service Description
-                </label>
+                <label htmlFor="description">Service Description</label>
                 <textarea
                     id="description"
                     name="description"
-                    className="form-input"
+                    value={formData.description}
+                    onChange={handleChange}
                     placeholder="Provide a brief description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
                     required
-                />
+                ></textarea>
 
-                <label htmlFor="duration" className="form-label">
-                    Service Duration
-                </label>
+                <label htmlFor="duration">Service Duration</label>
                 <input
                     type="text"
                     id="duration"
                     name="duration"
-                    className="form-input"
+                    value={formData.duration}
+                    onChange={handleChange}
                     placeholder="e.g., 1 hour, 2-3 hours"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
                     required
                 />
 
-                <label htmlFor="price" className="form-label">
-                    Price
-                </label>
+                <label htmlFor="price">Price</label>
                 <input
                     type="number"
                     id="price"
                     name="price"
-                    className="form-input"
+                    value={formData.price}
+                    onChange={handleChange}
                     placeholder="Enter price in USD"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
                     required
                 />
 
-                <label htmlFor="providerName" className="form-label">
-                    Name of Service Provider
-                </label>
-                <input
-                    type="text"
-                    id="providerName"
-                    name="providerName"
-                    className="form-input"
-                    placeholder="Provider's Name"
-                    value={providerName}
-                    onChange={(e) => setProviderName(e.target.value)}
-                    required
-                />
-
-                <label htmlFor="contact" className="form-label">
-                    Contact Information
-                </label>
+                <label htmlFor="contact">Contact Information</label>
                 <input
                     type="email"
                     id="contact"
                     name="contact"
-                    className="form-input"
+                    value={formData.contact}
+                    onChange={handleChange}
                     placeholder="Email"
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}
                     required
                 />
 
