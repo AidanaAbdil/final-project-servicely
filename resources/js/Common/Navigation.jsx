@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 import Searchbar from "../Components/Searchbar";
+import Logout from "../Components/Logout";
 
 function Navigation() {
     return (
@@ -18,6 +19,7 @@ function Navigation() {
             <Link to={`/login`}>
                 <button role="link">Login</button>
             </Link>
+            <Logout />
         </nav>
     );
 }
