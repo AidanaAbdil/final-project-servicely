@@ -1,3 +1,4 @@
+
 import { defineConfig, loadEnv } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
@@ -10,6 +11,7 @@ export default ({ mode }) => {
             laravel({
                 input: [
                     'resources/css/style.css',
+                  'resources/css/app.scss',
                     'resources/js/app.js',
                     'resources/js/main.jsx'
                 ],
