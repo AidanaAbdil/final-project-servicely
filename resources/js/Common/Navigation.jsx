@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React from "react";
 
-import Logout from "../Components/Logout";
+import Logout from "../components/Logout";
 
 function Navigation() {
     return (
@@ -18,10 +18,14 @@ function Navigation() {
                     <span>Catalog</span>
                 </Link>
                 <Link to={`/register`}>
-                    <button className="register_button" role="link">Register</button>
+                    <button className="register_button" role="link">
+                        Register
+                    </button>
                 </Link>
                 <Link to={`/login`}>
-                    <button className="login_button" role="link">Login</button>
+                    <button className="login_button" role="link">
+                        Login
+                    </button>
                 </Link>
                 <Logout />
             </div>
