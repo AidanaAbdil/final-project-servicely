@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import {useState, useEffect} from 'react';
+import About from "./About";
 
 function Homepage() {
     const location = useLocation();
@@ -46,20 +47,26 @@ function Homepage() {
 
             <div className="featured-services-container">
                 <h2>Featured Services</h2>
-                  <div className="featured-service-card">
-                      {
-                        services.length && services.map((service)=>{
-                         return (
-                             <div key={service.id}>
-                                 <h4>{service.title}</h4>
-                                 <p>{service.description}</p>
-                                 <p>{service.price}</p>
-                             </div>
-                         );
-                        })
-                      }
-                  </div>
+                <div className="featured-services-grid">
+                    {services.length > 0 ? (
+                        services.map((service) => (
+                            <div
+                                className="featured-service-card"
+                                key={service.id}
+                            >
+                                <h4>{service.title}</h4>
+                                <p>{service.description}</p>
+                                <p>Price: {service.price} {service.currency}</p>
+                               
+                            </div>
+                        ))
+                    ) : (
+                        <p>No services available at the moment.</p>
+                    )}
+                </div>
             </div>
+
+            <About />
         </>
     );
 }

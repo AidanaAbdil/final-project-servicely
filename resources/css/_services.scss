@@ -47,6 +47,14 @@
     }
 }
 
+
+.featured-services-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .featured-service-card {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -56,5 +64,23 @@
     margin: 20px 20px;
     transition: box-shadow 0.3s;
     width: 30rem;
+    text-align: center;
 
+}
+
+.featured-services-container h2 {
+    font-size: 24px;
+    margin: 20px 20px;
+}
+
+.featured-service-card h4 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.featured-service-card p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #555;
 }

@@ -83,11 +83,13 @@ function AddService () {
                 >
                     <option value="">Select Category</option>
                     {Array.isArray(categories) &&
-                        categories.map((category) => (
-                            <option key={category.id} value={category.id}>
-                                {category.name}
-                            </option>
-                        ))}
+                        categories.map((category) => {
+                            return (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            );
+                        })}
                 </select>
 
                 <label htmlFor="location">Location</label>
@@ -137,7 +139,7 @@ function AddService () {
                     required
                 />
 
-                <label htmlFor="contact">Currency</label>
+                <label htmlFor="currency">Currency</label>
                 <input
                     type="text"
                     id="curency"
