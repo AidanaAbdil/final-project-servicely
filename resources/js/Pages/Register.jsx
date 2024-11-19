@@ -96,23 +96,29 @@ function Register(props) {
                     onChange={handleChange}
                 />
                 <br />
-                <input
-                    type="radio"
-                    id="customer"
-                    name="role_id"
-                    value="1"
-                    onChange={handleChange}
-                />
-                <label htmlFor="customer">Register as customer</label>
-                <input
-                    type="radio"
-                    id="provider"
-                    name="role_id"
-                    value="2"
-                    onChange={handleChange}
-                />
-                <label htmlFor="provider">Register as service provider</label>
-                <button className="register_button">Register</button>
+                <div className="radio-btn">
+                    <label htmlFor="customer">Register as customer</label>
+                    <input
+                        type="radio"
+                        id="customer"
+                        name="role_id"
+                        value="1"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="radio-btn">
+                    <label htmlFor="provider">
+                        Register as service provider
+                    </label>
+                    <input
+                        type="radio"
+                        id="provider"
+                        name="role_id"
+                        value="2"
+                        onChange={handleChange}
+                    />
+                </div>
+                <button className="btn-submit">Register</button>
             </form>
         </div>
     );
