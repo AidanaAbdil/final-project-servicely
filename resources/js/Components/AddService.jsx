@@ -41,7 +41,7 @@ function AddService () {
         e.preventDefault();
 
         try {
-            const response = await axios.post("/api/services", formData);
+            const response = await axios.post("/api/service/store", formData);
             console.log("Service created:", response.data);
             setFormData({
                 title: "",
@@ -58,7 +58,7 @@ function AddService () {
     };
 
     return (
-        <div className="add-service-form">
+        <div className="form">
             <h2>Create a Service Listing</h2>
 
             <form onSubmit={handleSubmit}>

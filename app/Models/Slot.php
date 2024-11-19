@@ -7,7 +7,7 @@ use App\Models\Status;
 use App\Models\Transaction;
 use App\Models\Service;
 
-class Timeslot extends Model
+class Slot extends Model
 {
     public function status(){
     return $this->belongsTo(Status::class);

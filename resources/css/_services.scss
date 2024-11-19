@@ -1,0 +1,60 @@
+/* Add Service Section */
+.add-service-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background-image: url('/public/images/background/jocelyn-morales-JiqTLjzEH18-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+
+}
+
+
+.add-service h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.add-service-button {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.add-service-button:hover {
+    transform: scale(1.1);
+    background-color: #333;
+}
+
+/* For Responsive Design */
+@media (max-width: 768px) {
+    .add-service-section {
+        padding: 10px;
+    }
+
+    .add-service {
+        max-width: 90%;
+        padding: 25px;
+    }
+}
+
+.featured-service-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 20px;
+    transition: box-shadow 0.3s;
+    width: 30rem;
+
+}

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\Timeslot;
+use App\Models\Slot;
 
 class Transaction extends Model
 {
@@ -12,8 +12,8 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function timeslot(){
-        return $this->belongsTo(Timeslot::class);
+    public function slots(){
+        return $this->belongsTo(Slot::class);
     }
 
 }

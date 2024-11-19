@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Review;
-use App\Models\Timeslot;
+use App\Models\Slot;
 
 class Service extends Model
 {
@@ -22,7 +22,7 @@ class Service extends Model
         return $this->belongsToMany(Review::class);
     }
 
-    public function timeslots(){
-        return $this->hasMany(TimeSlot::class);
+    public function slots(){
+        return $this->hasMany(Slot::class);
     }
 }
