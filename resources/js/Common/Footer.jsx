@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 export default function Footer(){
     return (
-        <footer class="footer">
+        <footer className="footer">
 
-            <div class="footer-info">
+            <div className="footer-info">
                 <img
                     src="/images/logo/logo.png"
                     alt="Logo"
-                    class="footer-logo"
+                    className="footer-logo"
                 />
 
                 <p>Strakonická 3367, 150 00 Praha 5-Smíchov</p>
@@ -17,7 +17,7 @@ export default function Footer(){
             </div>
 
             <div className="footer-right-section">
-                <div class="footer-menu">
+                <div className="footer-menu">
                     <h4>Main Menu</h4>
                     <ul>
                         <Link to="/">
@@ -34,7 +34,7 @@ export default function Footer(){
                         </Link>
                     </ul>
                 </div>
-                <div class="footer-social">
+                <div className="footer-social">
                     <h4>Find Us On</h4>
                     <ul>
                         <Link>
