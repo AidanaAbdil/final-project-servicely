@@ -18,10 +18,10 @@ function Navigation() {
                     <span>Catalog</span>
                 </Link>
                 <Link to={`/register`}>
-                    <button role="link">Register</button>
+                    <button className="register_button" role="link">Register</button>
                 </Link>
                 <Link to={`/login`}>
-                    <button role="link">Login</button>
+                    <button className="login_button" role="link">Login</button>
                 </Link>
                 <Logout />
             </div>

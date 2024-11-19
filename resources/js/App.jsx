@@ -2,12 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import React from "react";
 import Register from "./Pages/Register";
-import Login from "./Pages/Login";
 import Navigation from "./Common/Navigation";
 import AddService from "./Components/AddService";
 import Homepage from "./Pages/Homepage";
 import About from "./Pages/About";
 import Catalog from "./Pages/Catalog";
+import Login from "./Pages/Login";
 
 function App() {
     return (
