@@ -6,6 +6,8 @@ import Login from "./Pages/Login";
 import Navigation from "./Common/Navigation";
 import AddService from "./Components/AddService";
 import Homepage from "./Pages/Homepage";
+import About from "./Pages/About";
+import Catalog from "./Pages/Catalog";
 
 function App() {
     return (
@@ -13,6 +15,8 @@ function App() {
             <Navigation />
             <Routes>
                 <Route path="/" element={<Homepage />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/catalog" element={<Catalog />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/add-service" element={<AddService />} />

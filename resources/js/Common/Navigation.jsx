@@ -1,25 +1,30 @@
 import { Link } from "react-router-dom";
 import React from "react";
 
-import Searchbar from "../Components/Searchbar";
 import Logout from "../Components/Logout";
 
 function Navigation() {
     return (
         <nav>
-            <p>LOGO</p>
-            <Searchbar />
-            <a href="">Home</a>
-            <a href="">About Us</a>
-            <a href="">Catalog</a>
-
-            <Link to={`/register`}>
-                <button role="link">Register</button>
-            </Link>
-            <Link to={`/login`}>
-                <button role="link">Login</button>
-            </Link>
-            <Logout />
+            <img src="/images/logo/logo.png" alt="logo" />
+            <div className="navigation_control">
+                <Link to={`/`}>
+                    <span>Home</span>
+                </Link>
+                <Link to={`/about`}>
+                    <span>About us</span>
+                </Link>
+                <Link to={`/catalog`}>
+                    <span>Catalog</span>
+                </Link>
+                <Link to={`/register`}>
+                    <button role="link">Register</button>
+                </Link>
+                <Link to={`/login`}>
+                    <button role="link">Login</button>
+                </Link>
+                <Logout />
+            </div>
         </nav>
     );
 }

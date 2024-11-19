@@ -9,15 +9,18 @@ use App\Models\Service;
 
 class Slot extends Model
 {
-    public function status(){
-    return $this->belongsTo(Status::class);
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 
-    public function transactions(){
+    public function transactions()
+    {
         return $this->hasMany(Transaction::class);
-    }   
+    }
 
-    public function service(){
+    public function service()
+    {
         return $this->belongsTo(Service::class);
     }
 }

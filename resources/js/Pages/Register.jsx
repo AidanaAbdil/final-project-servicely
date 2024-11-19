@@ -45,7 +45,8 @@ function Register(props) {
     };
 
     return (
-        <div className="form">
+        <div className="form registration">
+            <h2>Registration</h2>
             <form action="/register" method="post" onSubmit={handleSubmit}>
                 Firstname:{" "}
                 <input
@@ -87,7 +88,7 @@ function Register(props) {
                     onChange={handleChange}
                 />
                 <br />
-                Confirm password{" "}
+                Confirm password:{" "}
                 <input
                     type="password"
                     name="password_confirmation"
@@ -111,8 +112,7 @@ function Register(props) {
                     onChange={handleChange}
                 />
                 <label htmlFor="provider">Register as service provider</label>
-                <br />
-                <button className="button-40">Register</button>
+                <button className="register_button">Register</button>
             </form>
         </div>
     );

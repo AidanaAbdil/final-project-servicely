@@ -8,12 +8,13 @@ use App\Models\Slot;
 
 class Transaction extends Model
 {
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function slots(){
+    public function slots()
+    {
         return $this->belongsTo(Slot::class);
     }
-
 }
