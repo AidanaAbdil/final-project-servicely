@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from "react";
 import About from "./About";
 
 function Homepage() {
@@ -14,29 +14,26 @@ function Homepage() {
 
     const [services, setServices] = useState([]);
 
-    const fetchFeaturedServices = async () =>{
-
+    const fetchFeaturedServices = async () => {
         try {
             const response = await axios.get(`/api/services`);
             setServices(response.data);
             console.log(response.data);
-            
         } catch (error) {
-            console.error('Error fetching featured services!', error);
-            
+            console.error("Error fetching featured services!", error);
         }
-    }
+    };
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchFeaturedServices();
-    },[]);
-
+    }, []);
 
     return (
         <>
             <div className="add-service-section">
                 <div className="add-service">
                     <h3>We Are At YourServicely</h3>
+
                     <Link to="/add-service">
                         <button className="add-service-button">
                             Add Your Services Here
@@ -56,8 +53,9 @@ function Homepage() {
                             >
                                 <h4>{service.title}</h4>
                                 <p>{service.description}</p>
-                                <p>Price: {service.price} {service.currency}</p>
-                               
+                                <p>
+                                    Price: {service.price} {service.currency}
+                                </p>
                             </div>
                         ))
                     ) : (

@@ -25,17 +25,16 @@ img {
 .register_button,
 .login_button,
 .logout_button {
-    background-color: rgba(254, 254, 255, 0.889);
+    background-color: black;
     border: 1px solid rgba(81, 79, 79, 0.726);
-    color: #000;
+    color: white;
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    // margin-top: 20px;
     transition: background-color 0.3s;
 
     &:hover {
-        background-color: #ffffff;
+        background-color: grey;
     }
 }
