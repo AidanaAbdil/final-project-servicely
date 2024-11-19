@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import React from "react";
 
-import Searchbar from "../Components/Searchbar";
 import Logout from "../Components/Logout";
 
 function Navigation() {
     return (
         <nav>
             <img src="/public/images/logo/logo.png" alt="logo" />
-            <Searchbar />
+
             <Link to={`/`}>
                 <span>Home</span>
             </Link>
