@@ -1,0 +1,32 @@
+.about-us-section{
+    background-image: url('/public/images/background/aboutus.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height:60vh;
+    margin-top: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.about-us-section p {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    padding-top: 5rem;
+}
+
+.about-us-btn{
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
