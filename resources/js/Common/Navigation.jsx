@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
-import Logout from "../Components/Logout";
+import Logout from "../components/Logout";
+import Register from "../pages/Register";
+import UserContext from "../context/UserContext";
 
 function Navigation() {
+    const { user } = useContext(UserContext);
+
+    useEffect(() => {
+        console.log(user);
+        
+    }, [user])
+
     return (
         <nav>
             <img src="/images/logo/logo.png" alt="logo" />
@@ -17,13 +26,33 @@ function Navigation() {
                 <Link to={`/catalog`}>
                     <span>Catalog</span>
                 </Link>
-                <Link to={`/register`}>
-                    <button className="register_button" role="link">Register</button>
-                </Link>
-                <Link to={`/login`}>
-                    <button className="login_button" role="link">Login</button>
-                </Link>
-                <Logout />
+                {/* <Link to={`/register`}>
+                    <button className="register_button" role="link">
+                        Register
+                    </button>
+                </Link> */}
+                {/* <Link to={`/login`}>
+                    <button className="login_button" role="link">
+                        Login
+                    </button>
+                </Link> */}
+                {!user ? (
+                    <>
+                        <Link to="/register">
+                            <button className="register_button">
+                                Register
+                            </button>
+                        </Link>
+                        <Link to="/login">
+                            {" "}
+                            <button className="login_button" role="link">
+                                Login
+                            </button>
+                        </Link>
+                    </>
+                ) : (
+                    <Logout />
+                )}
             </div>
         </nav>
     );
