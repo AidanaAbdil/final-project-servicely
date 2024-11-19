@@ -1,1 +1,20 @@
-@import "register";
+
+@import "form";
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #fff;
+    color: #000;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}

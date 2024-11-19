@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Timeslot;
+use App\Models\Slot;
 
 class Status extends Model
 {
-    public function slots(){
-        return $this->hasMany(Timeslot::class);
+    public function slots()
+    {
+        return $this->hasMany(Slot::class);
     }
 }

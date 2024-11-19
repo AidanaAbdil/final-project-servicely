@@ -1,25 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './addservice.scss';
-@import './navigation.scss';
-@import './register.scss';
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #fff;
-    /* White background */
-    color: #000;
-    /* Black text */
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-}

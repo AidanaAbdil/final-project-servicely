@@ -58,7 +58,7 @@ function AddService () {
     };
 
     return (
-        <div className="add-service-form">
+        <div className="form">
             <h2>Create a Service Listing</h2>
 
             <form onSubmit={handleSubmit}>

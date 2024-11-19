@@ -7,12 +7,13 @@ import Logout from "../Components/Logout";
 function Navigation() {
     return (
         <nav>
-            <p>LOGO</p>
+            <img src="/public/images/logo/logo.png" alt="logo" />
             <Searchbar />
-            <a href="">Home</a>
+            <Link to={`/`}>
+                <span>Home</span>
+            </Link>
             <a href="">About Us</a>
             <a href="">Catalog</a>
-
             <Link to={`/register`}>
                 <button role="link">Register</button>
             </Link>
