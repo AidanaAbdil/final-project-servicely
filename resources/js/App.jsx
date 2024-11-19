@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import axios from "axios";
+
 import React from "react";
 
 import Register from "./pages/Register";
@@ -10,7 +12,7 @@ import Homepage from "./pages/Homepage";
 import About from "./pages/About";
 import Catalog from "./pages/Catalog";
 import Login from "./pages/Login";
-import UserContext from "./Context/UserContext";
+import UserContext from "./context/UserContext";
 
 function App() {
     const [user, setUser] = useState(null);

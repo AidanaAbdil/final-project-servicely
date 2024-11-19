@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
-
 import axios from "axios";
 
 export default function Logout() {
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
+
     const handleLogout = async () => {
         try {
             const response = axios.post("/logout");
@@ -13,7 +13,7 @@ export default function Logout() {
             console.log(error);
         }
     };
-    if (!user) return null;
+    
     return (
         <button className="logout_button" onClick={handleLogout}>
             Logout
