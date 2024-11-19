@@ -45,7 +45,7 @@ function Register(props) {
     };
 
     return (
-        <div className="form registration">
+        <div className="form">
             <h2>Registration</h2>
             <form action="/register" method="post" onSubmit={handleSubmit}>
                 Firstname:{" "}

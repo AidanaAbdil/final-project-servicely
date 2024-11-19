@@ -8,5 +8,9 @@ export default function Logout() {
             console.log(error);
         }
     };
-    return <button onClick={handleLogout}>Logout</button>;
+    return (
+        <button className="logout_button" onClick={handleLogout}>
+            Logout
+        </button>
+    );
 }
