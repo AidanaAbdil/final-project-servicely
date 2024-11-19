@@ -11,7 +11,7 @@ export default ({ mode }) => {
             laravel({
                 input: [
                     'resources/css/style.css',
-                  'resources/css/app.scss',
+                    'resources/css/app.scss',
                     'resources/js/app.js',
                     'resources/js/main.jsx'
                 ],
