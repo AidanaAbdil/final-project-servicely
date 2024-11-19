@@ -12,6 +12,7 @@ import Homepage from "./pages/Homepage";
 import About from "./pages/About";
 import Catalog from "./pages/Catalog";
 import Login from "./pages/Login";
+import Footer from "./common/Footer";
 import UserContext from "./context/UserContext";
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/add-service" element={<AddService />} />
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </UserContext.Provider>
     );
