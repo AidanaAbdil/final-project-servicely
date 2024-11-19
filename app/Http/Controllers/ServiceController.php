@@ -46,7 +46,7 @@ class ServiceController extends Controller
         $service->location =  $request->location;
         $service->description = $request->description;
         $service->price = $request->price;
-        $service->user_id = Auth::id() ?? 1; //change this back later to only authenticated users can post listing
+        $service->user_id = Auth::id(); //change this back later to only authenticated users can post listing
         $service->image_url = '';
         $service->duration = $request->duration;
         $service->currency = $request->currency;
