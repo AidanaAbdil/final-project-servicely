@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import React from "react";
+
 import Register from "./pages/Register";
 import Navigation from "./common/Navigation";
 import AddService from "./components/AddService";
