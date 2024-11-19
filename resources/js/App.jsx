@@ -8,6 +8,7 @@ import Homepage from "./Pages/Homepage";
 import About from "./Pages/About";
 import Catalog from "./Pages/Catalog";
 import Login from "./Pages/Login";
+import Footer from "./Common/Footer";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/add-service" element={<AddService />} />
             </Routes>
+            <Footer />
         </BrowserRouter>
     );
 }
