@@ -4,12 +4,12 @@ import axios from "axios";
 function AddService () {
     const [formData, setFormData] = useState({
         title: "",
-        category: "",
+        category_id: "",
         location: "",
         description: "",
         duration: "",
         price: "",
-        contact: "",
+        currency: "",
     });
 
     // Fetch categories
@@ -45,12 +45,12 @@ function AddService () {
             console.log("Service created:", response.data);
             setFormData({
                 title: "",
-                category: "",
+                category_id: "",
                 location: "",
                 description: "",
                 duration: "",
                 price: "",
-                contact: "",
+                currency: "",
             }); // i am resetting the form after it is submitted
         } catch (error) {
             console.error("Error creating service:", error);
@@ -73,18 +73,18 @@ function AddService () {
                     required
                 />
 
-                <label htmlFor="category">Service Category</label>
+                <label htmlFor="category_id">Service Category</label>
                 <select
-                    id="category"
-                    name="category"
-                    value={formData.category}
+                    id="category_id"
+                    name="category_id"
+                    value={formData.category_id}
                     onChange={handleChange}
                     required
                 >
                     <option value="">Select Category</option>
                     {Array.isArray(categories) &&
                         categories.map((category) => (
-                            <option key={category.id} value={category.name}>
+                            <option key={category.id} value={category.id}>
                                 {category.name}
                             </option>
                         ))}
@@ -111,20 +111,24 @@ function AddService () {
                     required
                 ></textarea>
 
-                <label htmlFor="duration">Service Duration</label>
+                <label htmlFor="duration">Service Duration (in hours)</label>
                 <input
-                    type="text"
+                    type="number"
                     id="duration"
+                    step="0.1"
+                    min="0"
                     name="duration"
                     value={formData.duration}
                     onChange={handleChange}
-                    placeholder="e.g., 1 hour, 2-3 hours"
+                    placeholder="e.g. 2"
                     required
                 />
 
                 <label htmlFor="price">Price</label>
                 <input
                     type="number"
+                    step="0.1"
+                    min="0"
                     id="price"
                     name="price"
                     value={formData.price}
@@ -133,14 +137,14 @@ function AddService () {
                     required
                 />
 
-                <label htmlFor="contact">Contact Information</label>
+                <label htmlFor="contact">Currency</label>
                 <input
-                    type="email"
-                    id="contact"
-                    name="contact"
-                    value={formData.contact}
+                    type="text"
+                    id="curency"
+                    name="currency"
+                    value={formData.currency}
                     onChange={handleChange}
-                    placeholder="Email"
+                    placeholder="currency"
                     required
                 />
 

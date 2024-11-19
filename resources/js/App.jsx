@@ -4,14 +4,18 @@ import React from "react";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import Navigation from "./Common/Navigation";
+import AddService from "./Components/AddService";
+import Homepage from "./Pages/Homepage";
 
 function App() {
     return (
         <BrowserRouter>
             <Navigation />
+            <Homepage />
             <Routes>
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/add-service" element={<AddService />} />
             </Routes>
         </BrowserRouter>
     );
