@@ -11,7 +11,7 @@ class ServiceController extends Controller
 
     public function index()
     {
-        $result = Service::all();
+        $result = Service::take(6)->get();;
 
         return $result;
     }
@@ -54,6 +54,7 @@ class ServiceController extends Controller
         $service->save();
 
         return response()->json(['message' => 'Service successfully added!', 'data' => $service], 201);
+        // return redirect()->route('/')->with('success','');
         //we might need a user profile controller?
     }
 
