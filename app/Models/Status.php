@@ -7,8 +7,7 @@ use App\Models\Slot;
 
 class Status extends Model
 {
-    public function slots()
-    {
+    public function slots(){
         return $this->hasMany(Slot::class);
     }
 }

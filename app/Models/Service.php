@@ -25,8 +25,7 @@ class Service extends Model
         return $this->belongsToMany(Review::class);
     }
 
-    public function slots()
-    {
+    public function slots(){
         return $this->hasMany(Slot::class);
     }
 }

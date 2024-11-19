@@ -1,5 +1,10 @@
-@import "form";
-@import "navigation";
+@import "register";
+@import 'form';
+@import 'navigation';
+@import 'services';
+
+
+
 
 *,
 *::before,
@@ -10,9 +15,11 @@
 }
 
 body {
-    font-family: "Arial", sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #fff;
+    /* White background */
     color: #000;
+    /* Black text */
     line-height: 1.6;
     margin: 0;
     padding: 0;

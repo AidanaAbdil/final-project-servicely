@@ -16,7 +16,7 @@ function Homepage() {
     const fetchFeaturedServices = async () =>{
 
         try {
-            const response = await axios.get(`/api/services/${id}`);
+            const response = await axios.get(`/api/services`);
             setServices(response.data);
             console.log(response.data);
             
@@ -44,17 +44,21 @@ function Homepage() {
                 </div>
             </div>
 
-            <div>
+            <div className="featured-services-container">
                 <h2>Featured Services</h2>
-                  {
-                    services.map((service)=>{
-                     <div key={service.id}>
-                        <h4>{service.title}</h4> 
-                        <p>{service.description}</p>
-                        <p>{service.price}</p>
-                    </div>
-                    })
-                  }
+                  <div className="featured-service-card">
+                      {
+                        services.length && services.map((service)=>{
+                         return (
+                             <div key={service.id}>
+                                 <h4>{service.title}</h4>
+                                 <p>{service.description}</p>
+                                 <p>{service.price}</p>
+                             </div>
+                         );
+                        })
+                      }
+                  </div>
             </div>
         </>
     );

@@ -8,10 +8,25 @@ use App\Models\Service;
 
 class ServiceController extends Controller
 {
+
+    public function index()
+    {
+        $result = Service::all();
+
+        return $result;
+    }
+
+    public function show($service_id)
+    {
+        $result = Service::where('id', $service_id)->get();
+
+        return $result;
+    }
+
     public function store(Request $request)
     {
 
-   
+
         // Here we validate the incoming request
         $request->validate([
             'title' => 'required|string|max:255',
@@ -20,7 +35,7 @@ class ServiceController extends Controller
             'description' => 'required|string',
             'duration' => 'required|numeric',
             'price' => 'required|numeric', //also in the form
-            'currency' =>'required|string'
+            'currency' => 'required|string'
         ]);
 
         //now we create the servcie listing
@@ -42,16 +57,5 @@ class ServiceController extends Controller
         //we might need a user profile controller?
     }
 
-
-    public function show($id)
-    {
-        $service = Service::find($id);  // This fetches the service by its ID
-
-        if ($service) {
-            return response()->json($service);
-        } else {
-            return response()->json(['message' => 'Service not found'], 404);
-        }
-    }
 
 }
