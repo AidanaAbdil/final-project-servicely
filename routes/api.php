@@ -10,5 +10,7 @@ Route::middleware('auth')->get('/user', function (Request $request) {
 });
 
 //services route for CRUD:
-Route::post('/services', [ServiceController::class, 'index']);
+Route::post('/services', [ServiceController::class, 'store']);
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/services/{id}', [ServiceController::class, 'show']);
+
