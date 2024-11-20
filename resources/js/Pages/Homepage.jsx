@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-import UserContext from "../Context/UserContext";
+import UserContext from "../context/UserContext";
 
 function Homepage() {
     const { user } = useContext(UserContext);
@@ -12,7 +12,7 @@ function Homepage() {
 
     const fetchFeaturedServices = async () => {
         try {
-            const response = await axios.get(`/api/services`);
+            const response = await axios.get(`/api/services/featured`);
             setServices(response.data);
             console.log(response.data);
         } catch (error) {
