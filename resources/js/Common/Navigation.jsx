@@ -15,11 +15,13 @@ function Navigation() {
 
     return (
         <nav className="navbar">
-            <img
-                src="/images/logo/logo-top.png"
-                alt="logo"
-                className="navbar-logo"
-            />
+            <Link to="/">
+                <img
+                    src="/images/logo/logo-top.png"
+                    alt="logo"
+                    className="navbar-logo"
+                />
+            </Link>
             <div className="navigation-control">
                 <Link to="/" className="nav-link">
                     Home

@@ -16,7 +16,7 @@ import Footer from "./common/Footer";
 import UserContext from "./context/UserContext";
 
 function App() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(false);
 
     const getUser = async () => {
         try {
