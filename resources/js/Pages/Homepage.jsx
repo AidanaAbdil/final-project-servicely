@@ -1,11 +1,12 @@
 import axios from "axios";
 import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
-import About from "./About";
+
 
 function Homepage() {
     const location = useLocation();
+    const navigate = useNavigate();
 
     // If the current route is `/add-service`, do not render the button
     if (location.pathname === "/add-service") {
@@ -28,6 +29,16 @@ function Homepage() {
         fetchFeaturedServices();
     }, []);
 
+
+    const handleAddServiceClick = () => {
+        if (!user) {
+
+            navigate("/login");
+        } else {
+            navigate("/add-service");
+        }
+    };
+
     return (
         <>
             <div className="add-service-section">
@@ -35,7 +46,10 @@ function Homepage() {
                     <h3>We Are At YourServicely</h3>
 
                     <Link to="/add-service">
-                        <button className="add-service-button">
+                        <button
+                            className="add-service-button"
+                            onClick={handleAddServiceClick}
+                        >
                             Add Your Services Here
                         </button>
                     </Link>
@@ -64,7 +78,17 @@ function Homepage() {
                 </div>
             </div>
 
-            <About />
+            <>
+                <div className="about-us-section">
+                    <p>
+                        This platform allows users to post various services they
+                        offer, while others can search for.
+                    </p>
+                    <Link to="/about">
+                        <button className="about-us-btn">About Us</button>
+                    </Link>
+                </div>
+            </>
         </>
     );
 }
