@@ -10,8 +10,7 @@ function Navigation() {
 
     useEffect(() => {
         console.log(user);
-        
-    }, [user])
+    }, [user]);
 
     return (
         <nav className="navbar">
@@ -32,18 +31,6 @@ function Navigation() {
                 <Link to="/catalog" className="nav-link">
                     Catalog
                 </Link>
-
-                {/* <Link to={`/register`}>
-                    <button className="register_button" role="link">
-                        Register
-                    </button>
-                </Link> */}
-
-                {/* <Link to={`/login`}>
-                    <button className="login_button" role="link">
-                        Login
-                    </button>
-                </Link> */}
 
                 {!user ? (
                     <>
