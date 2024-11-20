@@ -8,8 +8,12 @@ use App\Models\Service;
 
 class ServiceController extends Controller
 {
-
     public function index()
+    {
+        $services = Service::all();
+        return $services;
+    }
+    public function getFeaturedServices()
     {
         $result = Service::take(6)->get();;
 
@@ -57,6 +61,4 @@ class ServiceController extends Controller
         // return redirect()->route('/')->with('success','');
         //we might need a user profile controller?
     }
-
-
 }
