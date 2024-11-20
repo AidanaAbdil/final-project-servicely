@@ -6,7 +6,7 @@ export default function Footer() {
 
             <div className="footer-info">
                 <img
-                    src="/images/logo/logo.png"
+                    src="/images/logo/logo-top.png"
                     alt="Logo"
                     className="footer-logo"
                 />

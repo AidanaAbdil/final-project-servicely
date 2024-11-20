@@ -1,17 +1,12 @@
 import axios from "axios";
 import React from "react";
-import { useLocation, Link, useNavigate} from "react-router-dom";
-import { useState, useEffect } from "react";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import UserContext from "../Context/UserContext";
 
 function Homepage() {
-    const location = useLocation();
+    const { user } = useContext(UserContext);
     const navigate = useNavigate();
-
-    // If the current route is `/add-service`, do not render the button
-    if (location.pathname === "/add-service") {
-        return null;
-    }
 
     const [services, setServices] = useState([]);
 
@@ -29,10 +24,8 @@ function Homepage() {
         fetchFeaturedServices();
     }, []);
 
-
     const handleAddServiceClick = () => {
         if (!user) {
-
             navigate("/login");
         } else {
             navigate("/add-service");
@@ -45,14 +38,12 @@ function Homepage() {
                 <div className="add-service">
                     <h3>We Are At YourServicely</h3>
 
-                    <Link to="/add-service">
-                        <button
-                            className="add-service-button"
-                            onClick={handleAddServiceClick}
-                        >
-                            Add Your Services Here
-                        </button>
-                    </Link>
+                    <button
+                        className="add-service-button"
+                        onClick={handleAddServiceClick}
+                    >
+                        Add Your Services Here
+                    </button>
                 </div>
             </div>
 

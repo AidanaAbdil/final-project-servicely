@@ -20,7 +20,8 @@ function About() {
                         quaerat soluta quisquam, reiciendis aspernatur explicabo
                         illum neque impedit.
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic temporibus minus, saepe quis dignissimos, repudiandae repellendus adipisci natus atque numquam, ducimus possimus cum quae? Ut, repellendus eum. Reiciendis, facere culpa!
-                    </p>
+                    </p> <br />
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam alias obcaecati cum, nobis at debitis nam id, sit repellat inventore ex temporibus maxime eveniet accusantium commodi veritatis impedit perferendis?</p>
                 </div>
             </section>
 
