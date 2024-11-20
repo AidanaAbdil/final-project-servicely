@@ -5,11 +5,11 @@ import axios from "axios";
 
 import React from "react";
 
-import Register from "./pages/Register";
+import Register from "./Pages/Register";
 import Navigation from "./common/Navigation";
 import AddService from "./components/AddService";
-import Homepage from "./pages/Homepage";
-import About from "./pages/About";
+import Homepage from "./Pages/Homepage";
+import About from "./Pages/About";
 import Catalog from "./pages/Catalog";
 import Login from "./pages/Login";
 import Footer from "./common/Footer";
