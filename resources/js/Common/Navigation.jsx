@@ -10,8 +10,7 @@ function Navigation() {
 
     useEffect(() => {
         console.log(user);
-        
-    }, [user])
+    }, [user]);
 
     return (
         <nav>
@@ -26,16 +25,7 @@ function Navigation() {
                 <Link to={`/catalog`}>
                     <span>Catalog</span>
                 </Link>
-                {/* <Link to={`/register`}>
-                    <button className="register_button" role="link">
-                        Register
-                    </button>
-                </Link> */}
-                {/* <Link to={`/login`}>
-                    <button className="login_button" role="link">
-                        Login
-                    </button>
-                </Link> */}
+
                 {!user ? (
                     <>
                         <Link to="/register">
