@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useContext, useEffect } from "react";
 
 import Logout from "../components/Logout";
-import Register from "../Pages/Register";
+import Register from "../pages/Register";
 import UserContext from "../context/UserContext";
 
 function Navigation() {
@@ -42,7 +42,11 @@ function Navigation() {
                         </Link>
                     </>
                 ) : (
-                    <Logout />
+                    <>
+                        <Link to="/profile" className="nav-link">Profile</Link>
+                        <Logout />
+                    </>
+
                 )}
             </div>
         </nav>

@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-import UserContext from "../Context/UserContext";
+import UserContext from "../context/UserContext";
 
 function Homepage() {
     const { user } = useContext(UserContext);
