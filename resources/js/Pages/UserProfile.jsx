@@ -1,40 +1,78 @@
+import { useContext, useState, useEffect } from "react";
+import UserContext from "../context/UserContext";
+import axios from "axios";
 
+export default function UserProfile() {
+    const { user } = useContext(UserContext);
 
-export default function UserProfile(){
-    
+    const [profileData, setProfileData] = useState(null);
+
+    const getProfileData = async () => {
+        try {
+            const profileDataResponse = await axios.get(
+                `/api/profile/${user.id}`
+            );
+            setProfileData(profileDataResponse.data);
+            console.log(profileDataResponse.data);
+        } catch (error) {
+            console.error("Error fetching profile:", error);
+        }
+    };
+
+    useEffect(() => {
+        if (user) {
+            getProfileData();
+        }
+    }, [user]);
+
+    if (!user || !profileData) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <div className="user-profile">
             <div className="photo-section">
-                <div className="photo-placeholder">
-                    <img src="" alt="Uploaded" />
+                <div className="photo-upload">
+                    <div className="photo-placeholder">
+                        <img src="" alt="Uploaded" />
+                    </div>
                     <button className="btn upload-btn">Upload Photo</button>
+                    <div className="user-about">
+                        <h3>About {user.firstname}</h3>
+                        <p>Contact: {user.phone}</p>
+                        <p>Email: {user.email}</p>
+                        <p>
+                            {profileData.bio && <p>Bio: {profileData.bio}</p>}
+                        </p>
+                    </div>
                 </div>
 
                 <div className="user-info">
-                    <h1>Firstname Surname</h1>
-                    <p>Graphic Designer</p>
-                    <p>Location</p>
-                    <p>Ratings</p>
-                    <p>stars here...</p>
-
+                    <h2>
+                        {user.firstname} {user.surname}
+                    </h2>
+                    <p>{profileData.job_title || "Job Title not available"}</p>
+                    <p>Location: {profileData.location || "Not Provided"}</p>
+                    <p>Ratings: {profileData.ratings || "Not Rated"}</p>
                     <div>
-                        <h3>Josh's Listings</h3>
+                        <h3>{user.firstname}'s Listings</h3>
                         <div className="listings">
-                            <div className="listing-item">Listing 1</div>
-                            <div className="listing-item">Listing 2</div>
-                            <div className="listing-item">Listing 3</div>
+                            {user.services?.map((service) => {
+                                return (
+                                    <div
+                                        className="listing-item"
+                                        key={service.id}
+                                    >
+                                        <h4>{service.title}</h4>
+                                        <p>{service.description}</p>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div className="user-about">
-                <h3>About Josh</h3>
-                <p>Contact: josh@mail.cz</p>
-                <p>Email: josh@mail.com</p>
-                <p>Biography goes here...</p>
-            </div>
         </div>
     );
 }
+

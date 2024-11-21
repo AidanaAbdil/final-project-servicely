@@ -11,6 +11,7 @@ use App\Models\Review;
 use App\Models\Service;
 use App\Models\Role;
 use App\Models\Transaction;
+use App\Models\UserProfile;
 
 class User extends Authenticatable
 {
@@ -72,5 +73,9 @@ class User extends Authenticatable
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function userprofile(){
+        return $this->belongsTo(UserProfile::class);
     }
 }

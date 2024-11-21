@@ -1,7 +1,9 @@
 
 .user-profile {
     font-family: Arial, sans-serif;
-    margin: 20px;
+
+    margin: 70px 30px;
+
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -9,9 +11,12 @@
 
 .photo-section {
     display: flex;
-    gap: 20px;
+
+    gap: 90px;
     align-items: flex-start;
 }
+
+
 
 .photo-placeholder {
     display: flex;
@@ -23,22 +28,19 @@
     border: 1px solid #ccc;
     text-align: center;
     position: relative;
+
+    gap:10px;
 }
 
-.upload-btn{
-    margin-top: 5rem;
-}
 
-.photo-placeholder img {
-    width: 350px;;
-    height: 350px;
-    object-fit: cover;
-}
 
 .user-info {
     flex: 1;
     display: flex;
     flex-direction: column;
+
+    max-width:70%;
+
     gap: 10px;
 }
 
@@ -62,6 +64,9 @@
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
+
+    height:300px;
+
     text-align: center;
     border-radius: 4px;
     background-color: #f9f9f9;

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserProfileController;
 
 
 Route::middleware('auth')->get('/user', function (Request $request) {
@@ -16,3 +17,4 @@ Route::get('/services/featured', [ServiceController::class, 'getFeaturedServices
 Route::post('/service/store', [ServiceController::class, 'store']);
 Route::get('/service/{id}', [ServiceController::class, 'show']);
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/profile/{id}', [UserProfileController::class, 'show']);
