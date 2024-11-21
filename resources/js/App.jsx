@@ -15,6 +15,9 @@ import Login from "./pages/Login";
 import Footer from "./common/Footer";
 import UserContext from "./context/UserContext";
 
+import UserProfile from "./pages/UserProfile";
+
+
 function App() {
     const [user, setUser] = useState(false);
 
@@ -42,6 +45,7 @@ function App() {
                     <Route path="/" element={<Homepage />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/catalog" element={<Catalog />} />
+                    <Route path="/profile" element={<UserProfile />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/add-service" element={<AddService />} />
