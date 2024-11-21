@@ -14,7 +14,9 @@ import Catalog from "./pages/Catalog";
 import Login from "./pages/Login";
 import Footer from "./common/Footer";
 import UserContext from "./context/UserContext";
+
 import UserProfile from "./pages/UserProfile";
+
 
 function App() {
     const [user, setUser] = useState(false);
