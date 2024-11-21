@@ -12,7 +12,7 @@ function Homepage() {
 
     const fetchFeaturedServices = async () => {
         try {
-            const response = await axios.get(`/api/services`);
+            const response = await axios.get(`/api/services/featured`);
             setServices(response.data);
             console.log(response.data);
         } catch (error) {
