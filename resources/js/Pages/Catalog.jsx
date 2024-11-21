@@ -1,10 +1,16 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+
+import axios from "axios";
+
 import CategoryFilter from "../components/CategoryFilter";
+import Searchbar from "../components/Searchbar";
 
 function Catalog() {
+    const [query, setQuery] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("");
     const [listCategoryService, setListCategoryService] = useState(null);
+    const [searching, setSearching] = useState(false);
+    
     const catalogList = async () => {
         try {
             const response = await axios.get(
@@ -18,30 +24,47 @@ function Catalog() {
             console.error("Error fetching catalog!", error);
         }
     };
+
     useEffect(() => {
         catalogList();
     }, [selectedCategory]);
 
+    useEffect(() => {
+        if (!query) setSearching(false);
+    }, [query])
+
     return (
         <>
-            <div className="catalog-container">
-                <CategoryFilter
-                    selectedCategory={selectedCategory}
-                    setSelectedCategory={setSelectedCategory}
-                />
+            <Searchbar query={query} setQuery={setQuery} setSearching={setSearching} />
+            {!searching ? (
+                <div className="catalog-container">
+                    <CategoryFilter
+                        selectedCategory={selectedCategory}
+                        setSelectedCategory={setSelectedCategory}
+                    />
 
-                <div className="catalog_display">
-                    {listCategoryService?.length ? (
-                        listCategoryService.map((service) => (
-                            <div key={service.id}>
-                                <ul>Name: {service.title}</ul>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No services available for the selected category.</p>
-                    )}
+                    <div className="service-grid">
+                        {listCategoryService?.length ? (
+                            listCategoryService.map((service) => (
+                                <div className="service-card" key={service.id}>
+                                    <h4> {service.title}</h4>
+                                    <p>{service.description}</p>
+                                    <p>
+                                        Price: {service.price}{" "}
+                                        {service.currency}
+                                    </p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>
+                                No services available for the selected category.
+                            </p>
+                        )}
+                    </div>
                 </div>
-            </div>
+            ) : (
+                ""
+            )}
         </>
     );
 }

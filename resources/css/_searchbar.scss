@@ -1,0 +1,49 @@
+// Styling for the search section
+.search_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 700px; // Limit the width of the search bar
+    margin: 0 auto;
+    padding-top: 2%;
+}
+
+.search_input {
+    width: 90%; // Input takes most of the space
+    padding: 12px 20px; // Add padding for a larger click area
+    font-size: 16px; // Set a readable font size
+    border: 1px solid #ccc; // Light border
+    border-radius: 25px; // Rounded corners
+    outline: none; // Remove default focus outline
+    box-sizing: border-box; // Include padding and border in element's width/height
+    transition: all 0.3s ease; // Smooth transition on focus
+
+    // Input focus state styling
+    &:focus {
+        border-color: #2a5eac; // Change border color on focus
+        box-shadow: 0 0 5px rgba(42, 94, 172, 0.4); // Subtle glow effect on focus
+    }
+}
+
+.search_button {
+    padding: 12px 20px; // Add padding for a larger button
+    font-size: 16px; // Set a readable font size
+    background-color: #2a5eac; // Button background color
+    color: white; // White text color
+    border: none; // Remove default button border
+    border-radius: 25px; // Rounded corners to match input
+    cursor: pointer; // Pointer cursor to indicate interactability
+    transition: background-color 0.3s ease, transform 0.2s ease; // Smooth transition
+
+    // Button hover effect
+    &:hover {
+        background-color: #1c4789; // Darker shade on hover
+    }
+
+    // Button active effect
+    &:active {
+        transform: scale(0.98); // Slightly shrink button on click
+        background-color: #1c4789; // Keep the same dark background on active
+    }
+}
