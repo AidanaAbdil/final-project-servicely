@@ -1,6 +1,9 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+
+import axios from "axios";
+
 import CategoryFilter from "../components/CategoryFilter";
+import Searchbar from "../components/Searchbar";
 
 function Catalog() {
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -24,6 +27,7 @@ function Catalog() {
 
     return (
         <>
+            <Searchbar />
             <div className="catalog-container">
                 <CategoryFilter
                     selectedCategory={selectedCategory}

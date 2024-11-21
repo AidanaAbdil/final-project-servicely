@@ -70,4 +70,10 @@ class ServiceController extends Controller
         // return redirect()->route('/')->with('success','');
         //we might need a user profile controller?
     }
+    public function search(Request $request)
+    {
+        $query = $request->query('query');
+        $search_result = Service::where('title', 'LIKE', '%{$query}%')->get();
+        return response()->json($search_result);
+    }
 }

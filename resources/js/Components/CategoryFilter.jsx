@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 
+import axios from "axios";
+
 function CategoryFilter({ selectedCategory, setSelectedCategory }) {
     const [categories, setCategory] = useState([]);
 
     const loadCategories = async () => {
         try {
-            const response = await fetch("/api/categories");
-            const data = await response.json();
-            setCategory(data);
+            const response = await axios.get("/api/categories");
+            setCategory(response.data);
         } catch (error) {
             console.error("Error loading categories!", error);
             setCategory([]);
