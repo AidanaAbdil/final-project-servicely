@@ -5,15 +5,16 @@ import axios from "axios";
 
 import React from "react";
 
-import Register from "./Pages/Register";
+import Register from "./pages/Register";
 import Navigation from "./common/Navigation";
 import AddService from "./components/AddService";
-import Homepage from "./Pages/Homepage";
-import About from "./Pages/About";
+import Homepage from "./pages/Homepage";
+import About from "./pages/About";
 import Catalog from "./pages/Catalog";
 import Login from "./pages/Login";
 import Footer from "./common/Footer";
 import UserContext from "./context/UserContext";
+import UserProfile from "./Pages/UserProfile";
 
 function App() {
     const [user, setUser] = useState(false);
@@ -42,6 +43,7 @@ function App() {
                     <Route path="/" element={<Homepage />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/catalog" element={<Catalog />} />
+                    <Route path="/profile" element={<UserProfile />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/add-service" element={<AddService />} />
