@@ -6,9 +6,11 @@ import CategoryFilter from "../components/CategoryFilter";
 import Searchbar from "../components/Searchbar";
 
 function Catalog() {
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("");
     const [listCategoryService, setListCategoryService] = useState(null);
+    const [searching, setSearching] = useState(false);
+    
     const catalogList = async () => {
         try {
             const response = await axios.get(
@@ -22,14 +24,19 @@ function Catalog() {
             console.error("Error fetching catalog!", error);
         }
     };
+
     useEffect(() => {
         catalogList();
     }, [selectedCategory]);
 
+    useEffect(() => {
+        if (!query) setSearching(false);
+    }, [query])
+
     return (
         <>
-            <Searchbar query={query} setQuery={setQuery} />
-            {!query ? (
+            <Searchbar query={query} setQuery={setQuery} setSearching={setSearching} />
+            {!searching ? (
                 <div className="catalog-container">
                     <CategoryFilter
                         selectedCategory={selectedCategory}

@@ -1,15 +1,15 @@
 // Styling for the search section
-.search-section {
+.search_section {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
     width: 100%;
-    max-width: 800px; // Limit the width of the search bar
+    max-width: 700px; // Limit the width of the search bar
     margin: 0 auto;
+    padding-top: 2%;
 }
 
-input {
+.search_input {
     width: 90%; // Input takes most of the space
     padding: 12px 20px; // Add padding for a larger click area
     font-size: 16px; // Set a readable font size
