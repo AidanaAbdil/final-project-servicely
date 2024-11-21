@@ -2,21 +2,17 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-function Searchbar() {
-    const [query, setQuery] = useState("");
+function Searchbar({ query, setQuery }) {
     const [results, setResults] = useState("");
 
     const loadSearch = async () => {
         try {
-            const response = await axios.get(`/api/search?${query}`);
+            const response = await axios.get(`/api/search?query=${query}`);
             setResults(response.data);
         } catch (error) {
             console.error("Error loading!", error);
         }
     };
-    useEffect(() => {
-        loadSearch();
-    }, []);
 
     const handleSearch = () => {
         loadSearch();
@@ -41,7 +37,7 @@ function Searchbar() {
                         ))}
                     </ul>
                 ) : (
-                    <p>No results found.</p>
+                    ''
                 )}
             </div>
         </div>

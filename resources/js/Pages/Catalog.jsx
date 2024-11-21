@@ -6,6 +6,7 @@ import CategoryFilter from "../components/CategoryFilter";
 import Searchbar from "../components/Searchbar";
 
 function Catalog() {
+    const [query, setQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
     const [listCategoryService, setListCategoryService] = useState(null);
     const catalogList = async () => {
@@ -27,29 +28,36 @@ function Catalog() {
 
     return (
         <>
-            <Searchbar />
-            <div className="catalog-container">
-                <CategoryFilter
-                    selectedCategory={selectedCategory}
-                    setSelectedCategory={setSelectedCategory}
-                />
+            <Searchbar query={query} setQuery={setQuery} />
+            {!query ? (
+                <div className="catalog-container">
+                    <CategoryFilter
+                        selectedCategory={selectedCategory}
+                        setSelectedCategory={setSelectedCategory}
+                    />
 
-                <div className="service-grid">
-                    {listCategoryService?.length ? (
-                        listCategoryService.map((service) => (
-                            <div className="service-card" key={service.id}>
-                                <h4> {service.title}</h4>
-                                <p>{service.description}</p>
-                                <p>
-                                    Price: {service.price} {service.currency}
-                                </p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No services available for the selected category.</p>
-                    )}
+                    <div className="service-grid">
+                        {listCategoryService?.length ? (
+                            listCategoryService.map((service) => (
+                                <div className="service-card" key={service.id}>
+                                    <h4> {service.title}</h4>
+                                    <p>{service.description}</p>
+                                    <p>
+                                        Price: {service.price}{" "}
+                                        {service.currency}
+                                    </p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>
+                                No services available for the selected category.
+                            </p>
+                        )}
+                    </div>
                 </div>
-            </div>
+            ) : (
+                ""
+            )}
         </>
     );
 }
