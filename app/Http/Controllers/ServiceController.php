@@ -8,10 +8,19 @@ use App\Models\Service;
 
 class ServiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $services = Service::all();
-        return $services;
+        $category = $request->input('category_id');
+
+        $all_services_query = Service::with(['users', 'category', 'reviews', 'slots'])->limit(20);
+
+        if ($category) {
+            $all_services_query->where("category_id", $category);
+        }
+
+        $all_services = $all_services_query->get();
+
+        return $all_services;
     }
     public function getFeaturedServices()
     {
