@@ -57,7 +57,7 @@ class ServiceSeeder extends Seeder
             [
                 'user_id' => '7',
                 'title' => 'Logo design',
-                'category_id' => '2',
+                'category_id' => '4',
                 'location' => 'Prague',
                 'description' => 'Our logo design service creates unique, professional logos tailored to your brand. We blend creativity and strategy to craft a visual identity that stands out, resonates with your audience, and leaves a lasting impression.',
                 'duration' => '24',

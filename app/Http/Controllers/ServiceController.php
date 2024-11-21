@@ -22,6 +22,15 @@ class ServiceController extends Controller
 
         return $all_services;
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->query('query');
+
+        $search_result = Service::where('title', 'LIKE', "%$query%")->get();
+        return response()->json($search_result);
+    }
+
     public function getFeaturedServices()
     {
         $result = Service::take(6)->get();;

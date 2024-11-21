@@ -1,16 +1,13 @@
-/* Add Service Section */
 .add-service-section {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('/public/images/background/bench-accounting-xxeAftHHq6E-unsplash.jpg');
+    background-image: url("/public/images/background/bench-accounting-xxeAftHHq6E-unsplash.jpg");
     background-size: cover;
     background-position: center;
     padding: 20px;
-
 }
-
 
 .add-service h3 {
     font-size: 1.8rem;
@@ -18,8 +15,8 @@
     font-weight: bold;
 }
 
-.add-service-button {
-    font-family: 'Arial', sans-serif;
+.add-service-button{
+    font-family: "Arial", sans-serif;
     font-size: 18px;
     padding: 10px 20px;
     background-color: black;
@@ -35,7 +32,6 @@
     background-color: #333;
 }
 
-/* For Responsive Design */
 @media (max-width: 768px) {
     .add-service-section {
         padding: 10px;
@@ -47,15 +43,16 @@
     }
 }
 
-
-.featured-services-grid {
+.featured-services-grid,
+.service-grid {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.featured-service-card {
+.featured-service-card,
+.service-card {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -65,7 +62,6 @@
     transition: box-shadow 0.3s;
     width: 30rem;
     text-align: center;
-
 }
 
 .featured-services-container h2 {
