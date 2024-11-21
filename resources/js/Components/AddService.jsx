@@ -42,7 +42,7 @@ function AddService () {
 
         try {
             const response = await axios.post("/api/service/store", formData);
-            console.log("Service created:", response.data);
+            
             setFormData({
                 title: "",
                 category_id: "",
