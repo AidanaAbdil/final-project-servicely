@@ -22,7 +22,7 @@ class Service extends Model
 
     public function reviews()
     {
-        return $this->belongsToMany(Review::class);
+        return $this->hasMany(Review::class);
     }
 
     public function slots(){
