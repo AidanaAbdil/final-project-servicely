@@ -24,7 +24,9 @@ class ServiceController extends Controller
     }
     public function getFeaturedServices()
     {
-        $result = Service::take(6)->get();;
+        $result = Service::orderBy('id', 'DESC')
+        ->limit(6)
+        ->get();
 
         return $result;
     }

@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\UserProfile;
 
 class UserSeeder extends Seeder
 {
@@ -120,7 +121,11 @@ class UserSeeder extends Seeder
         DB::table('users')->truncate();
 
         foreach ($users as $user) {
-            User::create($user);
+            $userCreated = User::create($user);
+            
+            UserProfile::create([
+                'user_id'=> $userCreated->id
+            ]);
         }
     }
 }

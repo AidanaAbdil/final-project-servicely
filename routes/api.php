@@ -18,3 +18,4 @@ Route::post('/service/store', [ServiceController::class, 'store']);
 Route::get('/service/{id}', [ServiceController::class, 'show']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/profile/{id}', [UserProfileController::class, 'show']);
+Route::post('/profile/{id}/update', [UserProfileController::class, 'update']);
