@@ -17,27 +17,28 @@ function CategoryFilter({ selectedCategory, setSelectedCategory }) {
     useEffect(() => {
         loadCategories();
     }, []);
-    return categories.map((category) => {
-        return (
-            <div
-                className={
-                    "status-filter__status" +
-                    (selectedCategory === category.id
-                        ? " category-filter__category_selected"
-                        : "")
-                }
-                key={category.id}
-            >
-                <button
-                    onClick={() => {
-                        setSelectedCategory(category.id);
-                    }}
-                >
-                    {category.name}
-                </button>
-            </div>
-        );
-    });
+    return (
+        <div className="category-buttons-container">
+            {categories.map((category) => {
+                return (
+                    <button
+                        className={
+                            "category_button" +
+                            (selectedCategory === category.id
+                                ? " category-filter__category_selected"
+                                : "")
+                        }
+                        key={category.id}
+                        onClick={() => {
+                            setSelectedCategory(category.id);
+                        }}
+                    >
+                        {category.name}
+                    </button>
+                );
+            })}
+        </div>
+    );
 }
 
 export default CategoryFilter;

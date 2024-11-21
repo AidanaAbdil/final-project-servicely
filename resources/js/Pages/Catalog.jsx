@@ -30,11 +30,15 @@ function Catalog() {
                     setSelectedCategory={setSelectedCategory}
                 />
 
-                <div className="catalog_display">
+                <div className="service-grid">
                     {listCategoryService?.length ? (
                         listCategoryService.map((service) => (
-                            <div key={service.id}>
-                                <ul>Name: {service.title}</ul>
+                            <div className="service-card" key={service.id}>
+                                <h4> {service.title}</h4>
+                                <p>{service.description}</p>
+                                <p>
+                                    Price: {service.price} {service.currency}
+                                </p>
                             </div>
                         ))
                     ) : (
