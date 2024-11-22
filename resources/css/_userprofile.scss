@@ -2,16 +2,29 @@
 
 .photo-section {
     margin: 70px 30px;
-    padding: 10px 10px;
+    padding: 30px 20px;
     display: flex;
     gap:80px;
-    background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
+    background: linear-gradient(109.6deg, rgb(238, 164, 179) 11.2%, rgb(212, 153, 234) 47.3%, rgb(150, 121, 255) 100.2%);
     border-radius: 8px;
 
 }
 
 .photo-upload{
     max-width:50%;
+
+    .image-submit {
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 70%;
+            margin-left: 60px;
+        }
 }
 
 .photo-placeholder {
@@ -22,9 +35,19 @@
     width: 350px;
     height: 350px;
     border: 1px solid #ccc;
+    border-radius: 50%;
     text-align: center;
     position: relative;
     margin-bottom: 20px;
+
+    .profile-picture {
+        border-radius: 50%;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+
+    
 }
 
 
