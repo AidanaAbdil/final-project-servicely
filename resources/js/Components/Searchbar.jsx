@@ -34,6 +34,7 @@ function Searchbar({ query, setQuery, setSearching }) {
                 <button
                     onClick={() => {
                         setQuery("");
+                        setResults("");
                     }}
                     className="reset_button"
                 >

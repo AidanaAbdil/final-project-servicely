@@ -10,7 +10,7 @@ function Catalog() {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [listCategoryService, setListCategoryService] = useState(null);
     const [searching, setSearching] = useState(false);
-    
+
     const catalogList = async () => {
         try {
             const response = await axios.get(
@@ -31,11 +31,15 @@ function Catalog() {
 
     useEffect(() => {
         if (!query) setSearching(false);
-    }, [query])
+    }, [query]);
 
     return (
         <>
-            <Searchbar query={query} setQuery={setQuery} setSearching={setSearching} />
+            <Searchbar
+                query={query}
+                setQuery={setQuery}
+                setSearching={setSearching}
+            />
             {!searching ? (
                 <div className="catalog-container">
                     <CategoryFilter

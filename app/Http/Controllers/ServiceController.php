@@ -34,17 +34,17 @@ class ServiceController extends Controller
     public function getFeaturedServices()
     {
         $result = Service::orderBy('id', 'DESC')
-        ->limit(6)
-        ->get();
+            ->limit(6)
+            ->get();
 
         return $result;
     }
 
-    public function show($service_id)
+    public function show(Request $request)
     {
-        $result = Service::where('id', $service_id)->get();
+        $service_detail = Service::with(['users', 'category', 'reviews', 'slots'])->find($request->id);
 
-        return $result;
+        return $service_detail;
     }
 
     public function store(Request $request)
@@ -70,7 +70,7 @@ class ServiceController extends Controller
         $service->location =  $request->location;
         $service->description = $request->description;
         $service->price = $request->price;
-        $service->user_id = Auth::id(); 
+        $service->user_id = Auth::id();
         $service->image_url = '';
         $service->duration = $request->duration;
         $service->currency = $request->currency;

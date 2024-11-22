@@ -1,6 +1,21 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
+export default function ServiceDetail() {
+    const [selectedServiceDetail, setSelectedServiceDetail] = useState("");
 
-export default function ServiceDetail(){
+    const loadServiceDetail = async () => {
+        try {
+            const response = await axios.get(`api/service/${id}`);
+            console.log(response);
+            setSelectedServiceDetail(response);
+        } catch (error) {
+            console.error("Error finding service details!", error);
+        }
+    };
+    useEffect(() => {
+        loadServiceDetail();
+    }, []);
 
     return (
         <div className="service-detail-container">
@@ -26,7 +41,11 @@ export default function ServiceDetail(){
                 {/* here is the starts */}
                 {/* <p>map through reviews</p> */}
                 <p>Leave a Review here</p>
-                <textarea name="review" id="review" placeholder="Type here"></textarea>
+                <textarea
+                    name="review"
+                    id="review"
+                    placeholder="Type here"
+                ></textarea>
             </div>
         </div>
     );
