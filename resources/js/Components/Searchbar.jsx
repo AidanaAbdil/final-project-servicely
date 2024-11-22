@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Searchbar({ query, setQuery, setSearching }) {
     const [results, setResults] = useState("");
@@ -31,6 +32,9 @@ function Searchbar({ query, setQuery, setSearching }) {
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search.."
                 />
+                <button onClick={handleSearch} className="search_button">
+                    Search
+                </button>
                 <button
                     onClick={() => {
                         setQuery("");
@@ -40,15 +44,22 @@ function Searchbar({ query, setQuery, setSearching }) {
                 >
                     X
                 </button>
-                <button onClick={handleSearch} className="search_button">
-                    Search
-                </button>
             </div>
             <div>
                 {query && results.length > 0 ? (
                     <ul>
                         {results.map((result) => (
-                            <li key={result.id}>{result.title}</li>
+                            <div className="service-card">
+                                <h4 key={result.id}>
+                                    <Link to={"/service/" + result.id}>
+                                        {result.title}
+                                    </Link>
+                                </h4>
+                                <p>{result.description}</p>
+                                <p>
+                                    {result.price} {result.currency}
+                                </p>
+                            </div>
                         ))}
                     </ul>
                 ) : (
