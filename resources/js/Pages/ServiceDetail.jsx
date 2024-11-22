@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 
 import axios from "axios";
+import DateTimePicker from "../components/DateTimePicker";
 
 export default function ServiceDetail() {
     const [selectedServiceDetail, setSelectedServiceDetail] = useState(null);
@@ -31,8 +32,6 @@ export default function ServiceDetail() {
     const handleAddToCartClick = () => {
         if (!user) {
             navigate("/login");
-        } else {
-            navigate("/cart"); //yet to be confirmed
         }
     };
     return (
@@ -69,7 +68,7 @@ export default function ServiceDetail() {
 
                 <div className="calendar-time-section">
                     <p>Pick a date: </p>
-
+                    <DateTimePicker />
                     {/* date picker */}
                 </div>
 
