@@ -12,7 +12,7 @@ class ServiceController extends Controller
     {
         $category = $request->input('category_id');
 
-        $all_services_query = Service::with(['users', 'category', 'reviews', 'slots'])->limit(20);
+        $all_services_query = Service::with(['user', 'category', 'reviews', 'slots'])->limit(20);
 
         if ($category) {
             $all_services_query->where("category_id", $category);
@@ -42,7 +42,7 @@ class ServiceController extends Controller
 
     public function show(Request $request)
     {
-        $service_detail = Service::with(['users', 'category', 'reviews', 'slots'])->find($request->id);
+        $service_detail = Service::with(['user', 'category', 'reviews', 'slots'])->find($request->id);
 
         return $service_detail;
     }

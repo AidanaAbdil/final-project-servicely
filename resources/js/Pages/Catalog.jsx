@@ -59,7 +59,7 @@ function Catalog() {
                                     </h4>
                                     <p>{service.description}</p>
                                     <p>
-                                        Price: {service.price}{" "}
+                                        Price: {service.price}
                                         {service.currency}
                                     </p>
                                 </div>

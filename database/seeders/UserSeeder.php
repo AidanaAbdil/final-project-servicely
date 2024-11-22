@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             [
                 'firstname' => 'Peter',
                 'surname' => 'Smith',
-                'phone' => '13432531',
+                'phone' => '602345678',
                 'role_id' => '2',
                 'email' => 'peter@mail.com',
                 'password' => Hash::make('adina123'),
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             [
                 'firstname' => 'Candice',
                 'surname' => 'Peterson',
-                'phone' => '13432531',
+                'phone' => '603456789',
                 'role_id' => '2',
                 'email' => 'candice@mail.com',
                 'password' => Hash::make('adina123'),
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
             [
                 'firstname' => 'Erik',
                 'surname' => 'Larsson',
-                'phone' => '21321',
+                'phone' => '604567890',
                 'role_id' => '2',
                 'email' => 'erik@mail.com',
                 'password' => Hash::make('adina123'),
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
             [
                 'firstname' => 'David',
                 'surname' => 'Boil',
-                'phone' => '13432531',
+                'phone' => '605678901',
                 'role_id' => '2',
                 'email' => 'david@mail.com',
                 'password' => Hash::make('adina123'),
@@ -70,7 +70,7 @@ class UserSeeder extends Seeder
             [
                 'firstname' => 'Stefan',
                 'surname' => 'Baileys',
-                'phone' => '13432531',
+                'phone' => '606789012',
                 'role_id' => '2',
                 'email' => 'stefan@mail.com',
                 'password' => Hash::make('adina123'),
@@ -80,7 +80,7 @@ class UserSeeder extends Seeder
             [
                 'firstname' => 'Sarah',
                 'surname' => 'Downey',
-                'phone' => '13432531',
+                'phone' => '607890123',
                 'role_id' => '1',
                 'email' => 'sarah@mail.com',
                 'password' => Hash::make('adina123'),
@@ -90,7 +90,7 @@ class UserSeeder extends Seeder
             [
                 'firstname' => 'Ivan',
                 'surname' => 'Joe',
-                'phone' => '13432531',
+                'phone' => '608901234',
                 'role_id' => '1',
                 'email' => 'ivan@mail.com',
                 'password' => Hash::make('adina123'),
@@ -100,7 +100,7 @@ class UserSeeder extends Seeder
             [
                 'firstname' => 'Steven',
                 'surname' => 'Vans',
-                'phone' => '13432531',
+                'phone' => '609012345',
                 'role_id' => '1',
                 'email' => 'steven@mail.com',
                 'password' => Hash::make('adina123'),
@@ -110,7 +110,7 @@ class UserSeeder extends Seeder
             [
                 'firstname' => 'Alisson',
                 'surname' => 'Puma',
-                'phone' => '13432531',
+                'phone' => '610123456',
                 'role_id' => '1',
                 'email' => 'alisson@mail.com',
                 'password' => Hash::make('adina123'),
@@ -122,9 +122,9 @@ class UserSeeder extends Seeder
 
         foreach ($users as $user) {
             $userCreated = User::create($user);
-            
+
             UserProfile::create([
-                'user_id'=> $userCreated->id
+                'user_id' => $userCreated->id
             ]);
         }
     }
