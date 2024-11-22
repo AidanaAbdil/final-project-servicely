@@ -32,7 +32,7 @@ export default function ServiceDetail() {
         if (!user) {
             navigate("/login");
         } else {
-            navigate("/cart");
+            navigate("/cart"); //yet to be confirmed
         }
     };
     return (
@@ -42,10 +42,10 @@ export default function ServiceDetail() {
                     Go back to catalog
                 </Link>
             </button>
+
             <div className="service-detail-container">
-                <div className="service-detail-background">
-                    <h3>Details of selected service</h3>
-                </div>
+                <h3>Details of selected service</h3>
+
                 <div className="service-detail-info">
                     <h3 key={selectedServiceDetail.id}>
                         {selectedServiceDetail.title}
@@ -56,34 +56,47 @@ export default function ServiceDetail() {
                             Price:{selectedServiceDetail.price}
                             {selectedServiceDetail.currency}
                         </p>
-                        <p>Pick a date: </p>
-
-                        {/* date picker */}
                     </div>
+
                     <div className="service-detail-map">
-                        <p>Address</p>
+                        <p>Address: {selectedServiceDetail.address}</p>
                         {/* here is a map */}
                         <button className="btn" onClick={handleAddToCartClick}>
                             Add to Cart
                         </button>
                     </div>
                 </div>
+
+                <div className="calendar-time-section">
+                    <p>Pick a date: </p>
+
+                    {/* date picker */}
+                </div>
+
                 <div className="service_provider_information">
                     <p>
                         If you have any questions, feel free to reach out to the
                         below contact information:
                     </p>
+                    <p>
+                        {" "}
+                        {selectedServiceDetail.user?.firstname}{" "}
+                        {selectedServiceDetail.user?.surname}
+                    </p>{" "}
+                    <p>Phone number: {selectedServiceDetail.user?.phone}</p>
+                    <p>Email: {selectedServiceDetail.user?.email}</p>
                 </div>
-                <div>
+
+                <div className="reviews-section">
                     <p>Reviews</p>
                     {/* here is the starts */}
                     {/* <p>map through reviews</p> */}
                     <p>Leave a Review here</p>
-                    <textarea
+                    <input
                         name="review"
                         id="review"
                         placeholder="Type here"
-                    ></textarea>
+                    ></input>
                 </div>
             </div>
         </>

@@ -1,8 +1,11 @@
 .service-detail-container {
-    margin-top: 1%;
+    margin: 1%;
+    display: flex;
+    justify-content: center;
 }
+
 .return_button,
-.return_link  {
+.return_link {
     margin-top: 2%;
     background-color: #000;
     color: #fff;
@@ -18,11 +21,13 @@
         background-color: #333;
     }
 }
+
 .service-detail-container {
-    border: red solid;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Shadow around the edges */
+    border: 2px solid #ddd; /* Border around the box */
     width: 60%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    // align-items: center;
 }
