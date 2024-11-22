@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserProfile;
 use App\Models\User;
+use PhpParser\Node\Expr\FuncCall;
 
 class UserProfileController extends Controller
 {
@@ -21,8 +22,6 @@ class UserProfileController extends Controller
 
     public function update(Request $request, $user_id)
     {
-        
-
         $request->validate([
             'firstname' => 'nullable|string',
             'surname' => 'nullable|string',
@@ -46,6 +45,27 @@ class UserProfileController extends Controller
             'bio'=> $request->input('bio'),
         ]);
 
-        return redirect('/profile');
+        return response()->json($profile);
+    }
+
+    public function updateImage(Request $request, $user_id)
+    {
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+
+            $image_ext = $image->getClientOriginalExtension();
+
+            $image_name = substr($image->getClientOriginalName(), 0, 15);
+
+            $path = $image->storeAs('images/profile_photos', $image_name.'_'.$user_id.'.'.$image_ext , 'public_folder');
+
+            $profile = UserProfile::where('user_id', $user_id)->firstOrFail();
+
+            $profile->update([
+                'image_url' => $path
+            ]);
+
+            return response()->json($path);
+        }
     }
 }
