@@ -27,8 +27,10 @@ function Homepage() {
     const handleAddServiceClick = () => {
         if (!user) {
             navigate("/login");
-        } else {
+        } else if (user.role_id === 2) {
             navigate("/add-service");
+        } else {
+            alert("You do not have permission to access this page.");
         }
     };
 

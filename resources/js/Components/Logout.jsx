@@ -5,6 +5,7 @@ import axios from "axios";
 export default function Logout() {
     const { setUser } = useContext(UserContext);
 
+
     const handleLogout = async () => {
         try {
             const response = axios.post("/logout");
