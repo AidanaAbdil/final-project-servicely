@@ -81,4 +81,34 @@ class ServiceController extends Controller
         // return redirect()->route('/')->with('success','');
         //we might need a user profile controller?
     }
+
+    public function addToCart(Request $request)
+    {
+        $serviceId = $request->input('service_id');
+        $service = Service::find($serviceId);
+
+        if (!$service) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Service not available.'
+            ], 404);
+        }
+
+        //Add service to cart
+        $cart = session()->get('cart', []);
+        $cart[$serviceId] = [
+            'title' => $service->title,
+            'description' => $service->description,
+            'price' => $service->price
+
+        ];
+        session()->put('cart', $cart);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Service added to cart successfully!',
+            'cart' => $cart
+        ]);
+
+    }
 }
