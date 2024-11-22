@@ -32,7 +32,7 @@ export default function ShoppingCart() {
     };
 
     const handleCancel = () => {
-        navigate("/service/:id"); 
+        navigate(`/catalog`); 
     };
 
     return (
@@ -50,20 +50,15 @@ export default function ShoppingCart() {
                                 <div className="shopping-cart-text">
                                     <h5>{cart[id].title}</h5>
                                     <p>{cart[id].description}</p>
-                                    <p>${cart[id].price}</p>
+                                    {/* <p>${cart[id].price}</p> */}
                                 </div>
-                                <input
-                                    type="number"
-                                    defaultValue="1"
-                                    min="1"
-                                />
                             </div>
                         ))}
                     </div>
                 ) : (
                     <p>Your cart is empty.</p>
                 )}
-
+                <input type="number" defaultValue="1" min="1" />
                 <div className="btn shopping-cart-btn">
                     <button onClick={handleNext}>Next</button>
                     <button onClick={handleCancel}>Cancel</button>
