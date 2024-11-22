@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -6,7 +7,7 @@ import CategoryFilter from "../components/CategoryFilter";
 import Searchbar from "../components/Searchbar";
 
 function Catalog() {
-    const [query, setQuery] = useState(null);
+    const [query, setQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
     const [listCategoryService, setListCategoryService] = useState(null);
     const [searching, setSearching] = useState(false);
@@ -51,7 +52,11 @@ function Catalog() {
                         {listCategoryService?.length ? (
                             listCategoryService.map((service) => (
                                 <div className="service-card" key={service.id}>
-                                    <h4> {service.title}</h4>
+                                    <h4>
+                                        <Link to={"/service/" + service.id}>
+                                            {service.title}
+                                        </Link>
+                                    </h4>
                                     <p>{service.description}</p>
                                     <p>
                                         Price: {service.price}{" "}
