@@ -50,6 +50,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/add-service" element={<AddService />} />
                     <Route path="/service/:id" element={<ServiceDetail />} />
+                    <Route path="/cart" element={<ShoppingCart />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
