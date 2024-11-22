@@ -17,6 +17,7 @@ import UserContext from "./context/UserContext";
 
 import UserProfile from "./pages/UserProfile";
 import ServiceDetail from "./pages/ServiceDetail";
+import ShoppingCart from "./pages/ShoppingCart";
 
 function App() {
     const [user, setUser] = useState(false);
