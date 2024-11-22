@@ -34,17 +34,17 @@ class ServiceController extends Controller
     public function getFeaturedServices()
     {
         $result = Service::orderBy('id', 'DESC')
-        ->limit(6)
-        ->get();
+            ->limit(6)
+            ->get();
 
         return $result;
     }
 
-    public function show($service_id)
+    public function show(Request $request)
     {
-        $result = Service::where('id', $service_id)->get();
+        $service_detail = Service::with(['users', 'category', 'reviews', 'slots'])->find($request->id);
 
-        return $result;
+        return $service_detail;
     }
 
     public function store(Request $request)
@@ -70,7 +70,7 @@ class ServiceController extends Controller
         $service->location =  $request->location;
         $service->description = $request->description;
         $service->price = $request->price;
-        $service->user_id = Auth::id(); 
+        $service->user_id = Auth::id();
         $service->image_url = '';
         $service->duration = $request->duration;
         $service->currency = $request->currency;
@@ -80,5 +80,35 @@ class ServiceController extends Controller
         return response()->json(['message' => 'Service successfully added!', 'data' => $service], 201);
         // return redirect()->route('/')->with('success','');
         //we might need a user profile controller?
+    }
+
+    public function addToCart(Request $request)
+    {
+        $serviceId = $request->input('service_id');
+        $service = Service::find($serviceId);
+
+        if (!$service) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Service not available.'
+            ], 404);
+        }
+
+        //Add service to cart
+        $cart = session()->get('cart', []);
+        $cart[$serviceId] = [
+            'title' => $service->title,
+            'description' => $service->description,
+            'price' => $service->price
+
+        ];
+        session()->put('cart', $cart);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Service added to cart successfully!',
+            'cart' => $cart
+        ]);
+
     }
 }

@@ -16,7 +16,7 @@ import Footer from "./common/Footer";
 import UserContext from "./context/UserContext";
 
 import UserProfile from "./pages/UserProfile";
-
+import ServiceDetail from "./pages/ServiceDetail";
 
 function App() {
     const [user, setUser] = useState(false);
@@ -49,6 +49,8 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/add-service" element={<AddService />} />
+                    <Route path="/service/:id" element={<ServiceDetail />} />
+                    <Route path="/cart" element={<ShoppingCart />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

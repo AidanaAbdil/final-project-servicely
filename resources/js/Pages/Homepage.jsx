@@ -58,7 +58,11 @@ function Homepage() {
                                 className="featured-service-card"
                                 key={service.id}
                             >
-                                <h4>{service.title}</h4>
+                                <h4>
+                                    <Link to={"/service/" + service.id}>
+                                        {service.title}
+                                    </Link>
+                                </h4>
                                 <p>{service.description}</p>
                                 <p>
                                     Price: {service.price} {service.currency}
