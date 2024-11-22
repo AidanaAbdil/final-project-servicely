@@ -8,12 +8,15 @@ export default function UserProfile() {
     const [profileData, setProfileData] = useState(null);
     const [isEditing, setIsEditing] = useState(false); 
     const [formData, setFormData] = useState({
-        firstname: profileData?.user?.firstname,
-        surname: profileData?.user?.surname,
-        job_title: profileData?.job_title,
-        bio: profileData?.bio,
-        location: profileData?.location
+        firstname: '',
+        surname: '',
+        job_title: '',
+        bio: '',
+        location: ''
     });
+
+    const [image, setImage] = useState('');
+
 
     const getProfileData = async () => {
         try {
@@ -21,6 +24,8 @@ export default function UserProfile() {
                 `/api/profile/${user.id}`
             );
             setProfileData(profileDataResponse.data);
+            setImage(profileDataResponse.data.image_url)
+            
         } catch (error) {
             console.error("Error fetching profile:", error);
         }
@@ -34,51 +39,75 @@ export default function UserProfile() {
     }, [user]);
 
 
+    const handleImageChange = async (e) =>{
+        const target = e.target;
 
+        if (target.files.length) {
+            const image = e.target.files[0];
+
+            const imageFormData = new FormData();
+            imageFormData.append('image', image);
+
+            const response = await axios.post(`/api/profile/${user.id}/update-image`, imageFormData);
+
+            setImage(response.data);
+        }
+    }
     
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-
-
     const handleSubmit = async(e) =>{
         e.preventDefault();
+
+        for (const key in formData) {
+            if (!formData[key]) {
+                formData[key] = profileData[key] ?? profileData.user[key];
+            }
+        }
+
         try {
-            const response = await axios.post(`api/profile/${user.id}/update`, formData);
+            const response = await axios.post(`/api/profile/${user.id}/update`, formData);
+            console.log(response.data);
+            
             setIsEditing(false);
-            getProfileData();
+            setProfileData(response.data)
         } catch (error) {
             console.error('Error updating profile', error);
             
         }
     }
 
-
-
-
     if (!user || !profileData) {
         return <p>Loading...</p>;
     }
-
-
 
     return (
         <div className="profile-container">
             <div className="photo-section">
                 <div className="photo-upload">
                     <div className="photo-placeholder">
-                        <img src="" alt="Uploaded" />
+                        {image && <img className="profile-picture" src={'/' + image} alt='profile_picture' />}
                     </div>
-                    <button className="btn upload-btn">Upload Photo</button>
+                    <label className="image-submit" htmlFor="image">Update photo</label>
+                    <input
+                        type="file"
+                        name="image"
+                        id="image"
+                        className="btn"
+                        onChange={handleImageChange}
+                        hidden
+                    />
                 </div>
 
                 <div className="user-info">
                     {!isEditing ? (
                         <>
                             <h2>
-                                {user.firstname} {user.surname}
+                                {profileData.user.firstname}{" "}
+                                {profileData.user.surname}
                             </h2>
                             <p className="job_title">
                                 {profileData.job_title ||
@@ -120,14 +149,14 @@ export default function UserProfile() {
                                 <input
                                     type="text"
                                     name="firstname"
-                                    value={formData.firstname}
+                                    defaultValue={profileData.user.firstname}
                                     onChange={handleInputChange}
                                     placeholder="First Name"
                                 />
                                 <input
                                     type="text"
                                     name="surname"
-                                    value={formData.surname}
+                                    defaultValue={profileData.user.surname}
                                     onChange={handleInputChange}
                                     placeholder="Last Name"
                                 />
@@ -136,7 +165,7 @@ export default function UserProfile() {
                                 <input
                                     type="text"
                                     name="job_title"
-                                    value={formData.job_title}
+                                    defaultValue={profileData.job_title}
                                     onChange={handleInputChange}
                                     placeholder="Job Title"
                                 />
@@ -145,7 +174,7 @@ export default function UserProfile() {
                                 <input
                                     type="text"
                                     name="location"
-                                    value={formData.location}
+                                    defaultValue={profileData.location}
                                     onChange={handleInputChange}
                                     placeholder="Location"
                                 />
@@ -154,7 +183,7 @@ export default function UserProfile() {
                                 <input
                                     type="text"
                                     name="bio"
-                                    value={formData.bio}
+                                    defaultValue={profileData.bio}
                                     onChange={handleInputChange}
                                     placeholder="Write something about yourself"
                                 />

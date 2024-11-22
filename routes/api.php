@@ -20,4 +20,5 @@ Route::get('/search', [ServiceController::class, 'search']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/profile/{id}', [UserProfileController::class, 'show']);
 Route::post('/profile/{id}/update', [UserProfileController::class, 'update']);
+Route::post('/profile/{id}/update-image', [UserProfileController::class, 'updateImage']);
 
