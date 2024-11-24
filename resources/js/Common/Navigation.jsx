@@ -7,6 +7,7 @@ import UserContext from "../context/UserContext";
 
 function Navigation() {
     const { user } = useContext(UserContext);
+    
 
     useEffect(() => {
         console.log(user);
@@ -43,10 +44,14 @@ function Navigation() {
                     </>
                 ) : (
                     <>
-                        <Link to="/profile" className="nav-link">Profile</Link>
+                        <Link to="/profile" className="nav-link">
+                            Profile
+                        </Link>
+                        <Link to="/cart" className="nav-link">
+                            Shopping Cart
+                        </Link>
                         <Logout />
                     </>
-
                 )}
             </div>
         </nav>

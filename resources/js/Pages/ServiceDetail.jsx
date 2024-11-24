@@ -8,6 +8,7 @@ import DateTimePicker from "../components/DateTimePicker";
 
 export default function ServiceDetail() {
     const [selectedServiceDetail, setSelectedServiceDetail] = useState(null);
+    const [selectedDate, setSelectedDate] = useState(null);
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -26,14 +27,27 @@ export default function ServiceDetail() {
         loadServiceDetail();
     }, [id]);
 
+    const handleAddToCartClick = async () => {
+        try {
+            const response = await axios.post("/api/add-to-cart", {
+                service_id: selectedServiceDetail.id,
+            });
+            console.log(response.data);
+            alert("Service added to cart successfully!");
+        } catch (error) {
+            console.error("Error adding service to cart:", error);
+            alert("Failed to add service to cart.");
+        }
+    };
+
     if (!selectedServiceDetail) {
         return <div>No service details available</div>;
     }
-    const handleAddToCartClick = () => {
-        if (!user) {
-            navigate("/login");
-        }
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
     };
+
     return (
         <>
             <button className="return_button">
@@ -68,7 +82,7 @@ export default function ServiceDetail() {
 
                 <div className="calendar-time-section">
                     <p>Pick a date: </p>
-                    <DateTimePicker />
+                    <DateTimePicker onChange={handleDateChange} />
                     {/* date picker */}
                 </div>
 
