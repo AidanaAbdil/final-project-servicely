@@ -66,6 +66,7 @@ export default function ShoppingCart() {
                                         <h5>{item.title}</h5>
                                         <p>{item.description}</p>
                                         <p>${item.price}</p>
+                                        {/* how do we combine the time slots?? */}
                                     </div>
                                     <div className="shopping-cart-quantity">
                                         <input
