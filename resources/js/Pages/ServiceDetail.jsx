@@ -27,7 +27,7 @@ export default function ServiceDetail() {
         loadServiceDetail();
     }, [id]);
 
-    const handleAddToCartClick = async () => {
+    const handleAddToCartClick = async () => { //should we use the condition if (!user)??
         try {
             const response = await axios.post("/api/add-to-cart", {
                 service_id: selectedServiceDetail.id,
