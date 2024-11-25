@@ -3,9 +3,8 @@ import React from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
-import UserContext from "./context/UserContext";
 
-import React from "react";
+
 import Register from "./pages/Register";
 import Navigation from "./common/Navigation";
 import AddService from "./components/AddService";

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CardDetailController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserProfileController;
+
 
 
 Route::middleware('auth')->get('/user', function (Request $request) {
@@ -23,4 +25,4 @@ Route::post('/profile/{id}/update', [UserProfileController::class, 'update']);
 Route::post('/profile/{id}/update-image', [UserProfileController::class, 'updateImage']);
 Route::post('/add-to-cart', [ServiceController::class, 'addToCart']);
 Route::get('/get-cart', [ServiceController::class, 'getCart']);
-
+Route::post('/card-details', [CardDetailController::class, 'store']);
