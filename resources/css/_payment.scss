@@ -1,0 +1,56 @@
+.payment-method {
+    margin: 2rem;
+    margin-bottom: 5%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 50%;
+    height: 20%;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.payment-method h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.payment-option {
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
+    margin-bottom: 15px;
+}
+.payment-option input[type="radio"] {
+    margin-right: 10px;
+}
+.payment-details {
+    margin-top: 10px;
+    padding: 15px;
+    background: #f7f7f7;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.payment-details.active {
+    border: 2px solid #007bff;
+    background: #eef5ff;
+}
+.payment-details input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.payment-details label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+.input-radio-button {
+    width: auto ;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+}

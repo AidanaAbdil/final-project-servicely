@@ -12,6 +12,7 @@ use App\Models\Service;
 use App\Models\Role;
 use App\Models\Transaction;
 use App\Models\UserProfile;
+use App\Models\CardDetail;
 
 class User extends Authenticatable
 {
@@ -75,7 +76,12 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
-    public function userprofile(){
+    public function userprofile()
+    {
         return $this->hasOne(UserProfile::class);
+    }
+    public function card_payment()
+    {
+        return $this->hasMany(CardDetail::class);
     }
 }
