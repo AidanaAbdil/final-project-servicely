@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import React from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import axios from "axios";
 import UserContext from "./context/UserContext";
 
+import React from "react";
 import Register from "./pages/Register";
 import Navigation from "./common/Navigation";
 import AddService from "./components/AddService";
@@ -14,6 +14,7 @@ import About from "./pages/About";
 import Catalog from "./pages/Catalog";
 import Login from "./pages/Login";
 import Footer from "./common/Footer";
+import UserContext from "./context/UserContext";
 import UserProfile from "./pages/UserProfile";
 import ServiceDetail from "./pages/ServiceDetail";
 import ShoppingCart from "./pages/ShoppingCart";

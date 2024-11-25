@@ -1,0 +1,134 @@
+/* Shopping Cart Styles */
+.shopping-cart-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 60px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shopping-cart-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.shopping-cart-nav h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.shopping-cart-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.shopping-cart-content h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.shopping-cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.shopping-cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.shopping-cart-item h5 {
+    font-size: 18px;
+    color: #333;
+}
+
+.shopping-cart-item p {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+}
+
+.shopping-cart-quantity {
+    width: 120px;
+}
+
+.shopping-cart-quantity input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.shopping-cart-btn {
+    background-color: rgb(172, 121, 243);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px 10px;
+    transition: background-color 0.3s;
+}
+
+
+.shopping-cart-summary {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.shopping-cart-summary h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.shopping-cart-summary p {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(151, 88, 240);
+}
+
+/* Empty Cart */
+.shopping-cart-content p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .shopping-cart-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .shopping-cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .shopping-cart-quantity {
+        width: 100%;
+    }
+
+    .shopping-cart-btn {
+        width: 100%;
+    }
+}

@@ -3,7 +3,7 @@
     flex-direction: row;
     gap: 20px;
     justify-content: center;
-    margin-top: 2%;
+    margin:60px 20px;
 }
 
 .category_button {
@@ -42,12 +42,12 @@
 }
 
 .category_button:active {
-    background-color: #2a5eac;
+    background-color:#2a5eac;
     box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
     transition: none 0s;
 }
 .category-filter__category_selected {
-    background-color: #6a94d3;
+    background-color:#6a94d3;
 }
 
 .category_button:focus {
