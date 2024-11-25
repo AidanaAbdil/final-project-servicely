@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ReviewController;
 
 
 
@@ -26,3 +27,4 @@ Route::post('/profile/{id}/update-image', [UserProfileController::class, 'update
 Route::post('/add-to-cart', [ServiceController::class, 'addToCart']);
 Route::get('/get-cart', [ServiceController::class, 'getCart']);
 Route::post('/remove-from-cart', [ServiceController::class, 'removeFromCart']);
+Route::post('/post-review', [ReviewController::class, 'store']);

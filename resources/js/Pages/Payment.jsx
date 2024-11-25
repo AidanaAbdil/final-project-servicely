@@ -4,7 +4,7 @@ import axios from "axios";
 
 function Payment() {
     const [selectedPayment, setSelectedPayment] = useState("");
-    const [cartDetails, setCartDetails] = useState("");
+    const [cartDetails, setCartDetails] = useState([]);
 
     const handlePaymentChange = (event) => {
         setSelectedPayment(event.target.value);
@@ -13,6 +13,7 @@ function Payment() {
     const getCart = async () => {
         try {
             const response = await axios.get("/api/get-cart");
+
             setCartDetails(response.data);
         } catch (error) {
             console.log("Error finding cart", error);
@@ -93,8 +94,14 @@ function Payment() {
             </div>
 
             <div className="payment-summary">
-                {cartDetails.map((item) => (
-                    <p key={item.id}>{item.title}</p>
+                <h1>Summary</h1>
+                {cartDetails?.map((item) => (
+                    <>
+                        <h4 key={item.id}>{item.title}</h4>
+                        <p>
+                            {item.price} {item.currency}
+                        </p>
+                    </>
                 ))}
             </div>
         </div>
