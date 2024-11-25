@@ -111,4 +111,10 @@ class ServiceController extends Controller
         ]);
 
     }
+
+    public function getCart()
+    {
+        $cart = session()->get('cart', []);
+        return response()->json($cart);
+    }
 }

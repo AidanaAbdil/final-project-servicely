@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Assuming you're using React Router
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function ShoppingCart() {
     const [cart, setCart] = useState([]);
-    const navigate = useNavigate(); 
+    const [quantities, setQuantities] = useState({});
+    const navigate = useNavigate();
 
     const fetchCart = async () => {
         try {
-            const response = await axios.get("/api/cart");
+            const response = await axios.get("/api/get-cart");
             setCart(response.data);
+            const initialQuantities = {};
+            Object.keys(response.data).forEach((key) => {
+                initialQuantities[key] = 1; 
+            });
+            setQuantities(initialQuantities);
         } catch (error) {
             console.error("Error fetching cart:", error);
         }
@@ -19,20 +25,27 @@ export default function ShoppingCart() {
         fetchCart();
     }, []);
 
-   
+    const handleQuantityChange = (id, value) => {
+        setQuantities({
+            ...quantities,
+            [id]: value,
+        });
+    };
+
     const calculateTotal = () => {
-        return Object.keys(cart).reduce((total, id) => {
-            return total + cart[id].price;
+        return Object.keys(cart).reduce((total, key) => {
+            const item = cart[key];
+            const quantity = quantities[key] || 1; 
+            return total + item.price * quantity;
         }, 0);
     };
 
-   
     const handleNext = () => {
-        navigate("/payment-options"); //we need a path here
+        navigate("/payment");
     };
 
     const handleCancel = () => {
-        navigate("/service/:id"); 
+        navigate(`/catalog`);
     };
 
     return (
@@ -45,28 +58,49 @@ export default function ShoppingCart() {
                 <h3>Shopping Cart</h3>
                 {Object.keys(cart).length > 0 ? (
                     <div className="shopping-cart-items">
-                        {Object.keys(cart).map((id) => (
-                            <div className="shopping-cart-item" key={id}>
-                                <div className="shopping-cart-text">
-                                    <h5>{cart[id].title}</h5>
-                                    <p>{cart[id].description}</p>
-                                    <p>${cart[id].price}</p>
+                        {Object.keys(cart).map((id) => {
+                            const item = cart[id];
+                            return (
+                                <div className="shopping-cart-item" key={id}>
+                                    <div className="shopping-cart-text">
+                                        <h5>{item.title}</h5>
+                                        <p>{item.description}</p>
+                                        <p>${item.price}</p>
+                                    </div>
+                                    <div className="shopping-cart-quantity">
+                                        <input
+                                            type="number"
+                                            value={quantities[id] || 1}
+                                            min="1"
+                                            onChange={(e) =>
+                                                handleQuantityChange(
+                                                    id,
+                                                    parseInt(e.target.value) ||
+                                                        1
+                                                )
+                                            }
+                                        />
+                                    </div>
                                 </div>
-                                <input
-                                    type="number"
-                                    defaultValue="1"
-                                    min="1"
-                                />
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 ) : (
                     <p>Your cart is empty.</p>
                 )}
-
-                <div className="btn shopping-cart-btn">
-                    <button onClick={handleNext}>Next</button>
-                    <button onClick={handleCancel}>Cancel</button>
+                <div classname="shopping-cart-btn-box">
+                    <button
+                        className="btn shopping-cart-btn"
+                        onClick={handleNext}
+                    >
+                        Procced to Payment
+                    </button>
+                    <button
+                        className="btn shopping-cart-btn"
+                        onClick={handleCancel}
+                    >
+                        Cancel
+                    </button>
                 </div>
             </div>
 

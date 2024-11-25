@@ -5,7 +5,7 @@
     align-items: center;
     width: 100%;
     max-width: 700px; // Limit the width of the search bar
-    margin: 0 auto;
+    margin:60px auto;
     padding-top: 2%;
 }
 
@@ -30,13 +30,13 @@
 .reset_button {
     padding: 12px 20px; // Add padding for a larger button
     font-size: 16px; // Set a readable font size
-    background-color: #2a5eac; // Button background color
+    background-color: black; // Button background color
     color: white; // White text color
     border: none; // Remove default button border
     border-radius: 25px; // Rounded corners to match input
     cursor: pointer; // Pointer cursor to indicate interactability
     transition: background-color 0.3s ease, transform 0.2s ease; // Smooth transition
-
+    margin:auto 10px;
     // Button hover effect
     &:hover {
         background-color: #1c4789; // Darker shade on hover
