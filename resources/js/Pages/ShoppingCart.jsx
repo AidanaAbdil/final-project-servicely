@@ -11,9 +11,11 @@ export default function ShoppingCart() {
         try {
             const response = await axios.get("/api/get-cart");
             setCart(response.data);
+            console.log(response.data);
+            
             const initialQuantities = {};
-            Object.keys(response.data).forEach((key) => {
-                initialQuantities[key] = 1; 
+            response.data.forEach((item) => {
+                initialQuantities[item.id] = 1; 
             });
             setQuantities(initialQuantities);
         } catch (error) {
@@ -27,26 +29,44 @@ export default function ShoppingCart() {
 
     const handleQuantityChange = (id, value) => {
         setQuantities({
-            ...quantities,
+            ...quantities, // this creates a shallow copy of the items, spread operator
             [id]: value,
         });
     };
 
+
+    const handleRemovebutton = async (id)=> {
+
+        const newCart = cart.filter((item) => {            
+            return item.id !== id;
+        });
+        setCart(newCart);
+        try {
+            await axios.post("/api/remove-from-cart", { id }); 
+            console.log("Item removed from server-side cart.");
+        } catch (error) {
+            console.error("Failed to update server cart:", error);
+        }
+    };
+
+
     const calculateTotal = () => {
-        return Object.keys(cart).reduce((total, key) => {
-            const item = cart[key];
-            const quantity = quantities[key] || 1; 
+        return cart.reduce((total, item) => {
+            const quantity = quantities[item.id] || 1; 
             return total + item.price * quantity;
         }, 0);
     };
+
 
     const handleNext = () => {
         navigate("/payment");
     };
 
+
     const handleCancel = () => {
         navigate(`/catalog`);
     };
+    
 
     return (
         <section className="shopping-cart-container">
@@ -56,30 +76,41 @@ export default function ShoppingCart() {
             </div>
             <div className="shopping-cart-content">
                 <h3>Shopping Cart</h3>
-                {Object.keys(cart).length > 0 ? (
+                {cart.length > 0 ? (
+            
                     <div className="shopping-cart-items">
-                        {Object.keys(cart).map((id) => {
-                            const item = cart[id];
+                        {cart.map((item) => {
                             return (
-                                <div className="shopping-cart-item" key={id}>
+                                
+                                <div className="shopping-cart-item" key={item.id}>
                                     <div className="shopping-cart-text">
                                         <h5>{item.title}</h5>
-                                        <p>{item.description}</p>
-                                        <p>${item.price}</p>
+                                        <p>Duration: {item.duration}</p>
+                                        <p>
+                                            Price: {item.price}{" "} {item.currency}
+                                        </p>
+                                        {/* how do we combine the time slots?? */}
                                     </div>
                                     <div className="shopping-cart-quantity">
                                         <input
                                             type="number"
-                                            value={quantities[id] || 1}
+                                            value={quantities[item.id] || 1}
                                             min="1"
                                             onChange={(e) =>
                                                 handleQuantityChange(
-                                                    id,
+                                                    item.id,
                                                     parseInt(e.target.value) ||
                                                         1
                                                 )
                                             }
                                         />
+                                        <button
+                                            onClick={() =>
+                                                handleRemovebutton(item.id)
+                                            }
+                                        >
+                                            remove
+                                        </button>
                                     </div>
                                 </div>
                             );
@@ -88,7 +119,7 @@ export default function ShoppingCart() {
                 ) : (
                     <p>Your cart is empty.</p>
                 )}
-                <div classname="shopping-cart-btn-box">
+                <div className="shopping-cart-btn-box">
                     <button
                         className="btn shopping-cart-btn"
                         onClick={handleNext}
@@ -106,7 +137,9 @@ export default function ShoppingCart() {
 
             <div className="shopping-cart-summary">
                 <h3>Total</h3>
-                <p>${calculateTotal()}</p>
+                
+                <p>{calculateTotal()}</p>
+
             </div>
         </section>
     );
