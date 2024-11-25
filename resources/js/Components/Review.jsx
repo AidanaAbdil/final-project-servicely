@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import axios from "axios";
 
 export default function Review() {
+    const { user } = useContext(UserContext);
     const [review, setReview] = useState({
         user_id: "",
         rating: "",
@@ -19,15 +19,20 @@ export default function Review() {
             console.log("Error posting review", error);
         }
     };
-
-    return (
-        <div className="reviews-section">
-            <p>Reviews</p>
-            {/* here is the starts */}
-            {/* <p>map through reviews</p> */}
-            <p>Leave a Review here</p>
-            <input name="review" id="review" placeholder="Type here"></input>
-            <button onClick={postServiceReview}>Submit</button>
-        </div>
-    );
+    if (!user) {
+        return <div>Please login to leave a review</div>;
+    }
+    if (user) {
+        return (
+            <div className="reviews-section">
+                <p>Leave a Review here</p>
+                <input
+                    name="review"
+                    id="review"
+                    placeholder="Type here"
+                ></input>
+                <button onClick={postServiceReview}>Submit</button>
+            </div>
+        );
+    }
 }
