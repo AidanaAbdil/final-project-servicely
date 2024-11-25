@@ -44,9 +44,7 @@ export default function ServiceDetail() {
         return <div>No service details available</div>;
     }
 
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-    };
+
 
     return (
         <>
@@ -82,7 +80,7 @@ export default function ServiceDetail() {
 
                 <div className="calendar-time-section">
                     <p>Pick a date: </p>
-                    <DateTimePicker onChange={handleDateChange} />
+                    <DateTimePicker />
                     {/* date picker */}
                 </div>
 

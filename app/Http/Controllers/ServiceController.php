@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Service;
+use App\Models\Transaction;
 
 class ServiceController extends Controller
 {
@@ -96,10 +97,13 @@ class ServiceController extends Controller
 
         //Add service to cart
         $cart = session()->get('cart', []);
-        $cart[$serviceId] = [
+        $cart[] = [
+            'id' => $serviceId,
             'title' => $service->title,
             'description' => $service->description,
-            'price' => $service->price
+            'duration' => $service->duration,
+            'price' => $service->price,
+            'currency' => $service->currency
 
         ];
         session()->put('cart', $cart);
@@ -117,4 +121,21 @@ class ServiceController extends Controller
         $cart = session()->get('cart', []);
         return response()->json($cart);
     }
+
+    public function removeFromCart(Request $request)
+    {
+        $serviceId = $request->input('id');
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$serviceId])) {
+            unset($cart[$serviceId]);
+            session()->put('cart', $cart);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'cart' => $cart,
+        ]);
+    }
+
 }
