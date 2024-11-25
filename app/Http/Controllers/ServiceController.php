@@ -128,7 +128,7 @@ class ServiceController extends Controller
         $cart = session()->pull('cart', []);
 
         if (isset($cart[$serviceId])) {
-            unset($cart[$serviceId]); // Remove the item by its key
+            unset($cart[$serviceId]); 
             session()->put('cart', $cart);
         }
 

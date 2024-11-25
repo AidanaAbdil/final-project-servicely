@@ -138,7 +138,7 @@ export default function ShoppingCart() {
             <div className="shopping-cart-summary">
                 <h3>Total</h3>
                 
-                <p>{calculateTotal()}</p>
+                <p>{calculateTotal()} {""}CZK</p>
 
             </div>
         </section>
