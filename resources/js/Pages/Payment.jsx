@@ -4,35 +4,26 @@ import axios from "axios";
 
 function Payment() {
     const [selectedPayment, setSelectedPayment] = useState("");
-    const [values, setValues] = useState({
-        card_holder_name: "",
-        card_number: "",
-        CVV: "",
-        expiry_date: "",
-        user_id: "",
-    });
+    const [cartDetails, setCartDetails] = useState("");
 
     const handlePaymentChange = (event) => {
         setSelectedPayment(event.target.value);
     };
 
-    const addCardDetails = async () => {
+    const getCart = async () => {
         try {
-            const response = await axios.post("/api/card-details", values);
-            setValues({
-                card_holder_name: "",
-                card_number: "",
-                CVV: "",
-                expiry_date: "",
-                user_id: "",
-            });
+            const response = await axios.get("/api/get-cart");
+            setCartDetails(response.data);
         } catch (error) {
-            console.error("Error ", error);
+            console.log("Error finding cart", error);
         }
     };
+    useEffect(() => {
+        getCart();
+    }, []);
 
     return (
-        <>
+        <div className="payment-section">
             <div className="payment-method">
                 <h2>Payment Method</h2>
 
@@ -42,6 +33,7 @@ function Payment() {
                         id="cash-payment"
                         name="payment"
                         value="cash-payment"
+                        className="input-radio-button"
                         onChange={handlePaymentChange}
                     />
                     <label htmlFor="cash-payment">Cash Payment</label>
@@ -52,33 +44,41 @@ function Payment() {
                         id="credit-card"
                         name="payment"
                         value="credit-card"
+                        className="input-radio-button"
                         onChange={handlePaymentChange}
                     />
                     <label htmlFor="credit-card">Credit Card</label>
                 </div>
                 {selectedPayment === "credit-card" && (
                     <div className="payment-details">
-                        <p>Credit Card Details</p>
-                        <label htmlFor="card-number">Card Number</label>
-                        <input
-                            type="text"
-                            id="card-number"
-                            placeholder="0000 0000 0000 0000"
-                        />
-                        <label htmlFor="expiry-date">Expiry Date</label>
-                        <input
-                            type="text"
-                            id="expiry-date"
-                            placeholder="MM / YY"
-                        />
-                        <label htmlFor="cvv">CVV</label>
-                        <input type="text" id="cvv" placeholder="CVV" />
-                        <label htmlFor="card-holder">Card Holder Name</label>
-                        <input
-                            type="text"
-                            id="card-holder"
-                            placeholder="Card Holder Name"
-                        />
+                        <form>
+                            <p>Credit Card Details</p>
+                            <label htmlFor="card-number">Card Number</label>
+                            <input
+                                type="text"
+                                id="card-number"
+                                placeholder="0000 0000 0000 0000"
+                            />
+                            <label htmlFor="expiry-date">Expiry Date</label>
+                            <input
+                                type="text"
+                                id="expiry-date"
+                                placeholder="MM / YY"
+                            />
+                            <label htmlFor="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="CVV" />
+                            <label htmlFor="card-holder">
+                                Card Holder Name
+                            </label>
+                            <input
+                                type="text"
+                                id="card-holder"
+                                placeholder="Card Holder Name"
+                            />
+                            <button type="submit" className="btn-submit">
+                                Pay
+                            </button>
+                        </form>
                     </div>
                 )}
 
@@ -92,8 +92,12 @@ function Payment() {
                 )}
             </div>
 
-            <div className="payment-summary"></div>
-        </>
+            <div className="payment-summary">
+                {cartDetails.map((item) => (
+                    <p key={item.id}>{item.title}</p>
+                ))}
+            </div>
+        </div>
     );
 }
 export default Payment;

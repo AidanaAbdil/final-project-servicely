@@ -1,15 +1,5 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
 .payment-method {
-    margin-top: 30%;
+    margin: 2rem;
     margin-bottom: 5%;
     background: #fff;
     border: 1px solid #ddd;
@@ -44,7 +34,6 @@ body {
     background: #eef5ff;
 }
 .payment-details input {
-    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -54,4 +43,14 @@ body {
     font-size: 14px;
     margin-bottom: 5px;
     display: block;
+}
+.input-radio-button {
+    width: auto ;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
 }

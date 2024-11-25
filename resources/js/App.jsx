@@ -4,7 +4,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 
-
 import Register from "./pages/Register";
 import Navigation from "./common/Navigation";
 import AddService from "./components/AddService";
@@ -42,18 +41,23 @@ function App() {
         <UserContext.Provider value={{ user, setUser, getUser }}>
             <BrowserRouter>
                 <Navigation />
-                <Routes>
-                    <Route path="/" element={<Homepage />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/catalog" element={<Catalog />} />
-                    <Route path="/profile" element={<UserProfile />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/add-service" element={<AddService />} />
-                    <Route path="/service/:id" element={<ServiceDetail />} />
-                    <Route path="/cart" element={<ShoppingCart />} />
-                    <Route path="/payment" element={<Payment />} />
-                </Routes>
+                <div className="main">
+                    <Routes>
+                        <Route path="/" element={<Homepage />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/catalog" element={<Catalog />} />
+                        <Route path="/profile" element={<UserProfile />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/add-service" element={<AddService />} />
+                        <Route
+                            path="/service/:id"
+                            element={<ServiceDetail />}
+                        />
+                        <Route path="/cart" element={<ShoppingCart />} />
+                        <Route path="/payment" element={<Payment />} />
+                    </Routes>
+                </div>
                 <Footer />
             </BrowserRouter>
         </UserContext.Provider>
