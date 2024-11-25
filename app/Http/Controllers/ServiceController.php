@@ -124,11 +124,11 @@ class ServiceController extends Controller
 
     public function removeFromCart(Request $request)
     {
-        $serviceId = $request->input('id');
-        $cart = session()->get('cart', []);
+        $serviceId = $request->input('service_id');
+        $cart = session()->pull('cart', []);
 
         if (isset($cart[$serviceId])) {
-            unset($cart[$serviceId]);
+            unset($cart[$serviceId]); // Remove the item by its key
             session()->put('cart', $cart);
         }
 
@@ -137,5 +137,6 @@ class ServiceController extends Controller
             'cart' => $cart,
         ]);
     }
+
 
 }

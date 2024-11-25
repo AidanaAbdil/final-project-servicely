@@ -77,6 +77,7 @@ export default function ShoppingCart() {
             <div className="shopping-cart-content">
                 <h3>Shopping Cart</h3>
                 {cart.length > 0 ? (
+            
                     <div className="shopping-cart-items">
                         {cart.map((item) => {
                             return (
