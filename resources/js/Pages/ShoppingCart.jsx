@@ -34,15 +34,17 @@ export default function ShoppingCart() {
         });
     };
 
+    
 
     const handleRemovebutton = async (id)=> {
-
         const newCart = cart.filter((item) => {            
             return item.id !== id;
         });
+
         setCart(newCart);
+
         try {
-            await axios.post("/api/remove-from-cart", { id }); 
+            await axios.post("/api/remove-from-cart", { service_id: id }); 
             console.log("Item removed from server-side cart.");
         } catch (error) {
             console.error("Failed to update server cart:", error);
@@ -81,21 +83,25 @@ export default function ShoppingCart() {
                     <div className="shopping-cart-items">
                         {cart.map((item) => {
                             return (
-                                
-                                <div className="shopping-cart-item" key={item.id}>
+                                <div
+                                    className="shopping-cart-item"
+                                    key={item.id}
+                                >
                                     <div className="shopping-cart-text">
                                         <h5>{item.title}</h5>
                                         <p>Duration: {item.duration}</p>
                                         <p>
-                                            Price: {item.price}{" "} {item.currency}
+                                            Price: {item.price} {item.currency}
                                         </p>
                                         {/* how do we combine the time slots?? */}
                                     </div>
                                     <div className="shopping-cart-quantity">
                                         <input
+                                            className="shopping-cart-input"
                                             type="number"
-                                            value={quantities[item.id] || 1}
+                                            defaultValue={item.quantity}
                                             min="1"
+                                            readOnly
                                             onChange={(e) =>
                                                 handleQuantityChange(
                                                     item.id,
@@ -105,6 +111,7 @@ export default function ShoppingCart() {
                                             }
                                         />
                                         <button
+                                            className="btn remove-item-btn"
                                             onClick={() =>
                                                 handleRemovebutton(item.id)
                                             }
@@ -119,6 +126,7 @@ export default function ShoppingCart() {
                 ) : (
                     <p>Your cart is empty.</p>
                 )}
+                
                 <div className="shopping-cart-btn-box">
                     <button
                         className="btn shopping-cart-btn"
