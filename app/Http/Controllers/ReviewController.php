@@ -24,4 +24,14 @@ class ReviewController extends Controller
         $review->rating = $request->rating;
         $review->save();
     }
+
+    public function get_reviews(Request $request)
+    {
+        $service_reviews = Review::with('service')->where('service_id', $request->service_id)->get();
+
+        return response()->json([
+            'success' => true,
+            'reviews' => $service_reviews,
+        ]);
+    }
 }

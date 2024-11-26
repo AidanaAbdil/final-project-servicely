@@ -27,4 +27,5 @@ Route::post('/profile/{id}/update-image', [UserProfileController::class, 'update
 Route::post('/add-to-cart', [ServiceController::class, 'addToCart']);
 Route::get('/get-cart', [ServiceController::class, 'getCart']);
 Route::post('/remove-from-cart', [ServiceController::class, 'removeFromCart']);
-Route::post('/post-review', [ReviewController::class, 'store']);
+Route::post('/add-review', [ReviewController::class, 'store']);
+Route::get('/list-review', [ReviewController::class, 'get_reviews']);

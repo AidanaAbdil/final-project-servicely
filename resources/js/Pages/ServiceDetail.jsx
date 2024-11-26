@@ -97,7 +97,7 @@ export default function ServiceDetail() {
                     <p>Phone number: {selectedServiceDetail.user?.phone}</p>
                     <p>Email: {selectedServiceDetail.user?.email}</p>
                 </div>
-                <Review />
+                <Review service_id={selectedServiceDetail.id} />
             </div>
         </>
     );
