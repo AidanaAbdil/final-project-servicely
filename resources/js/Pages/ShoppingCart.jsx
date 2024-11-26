@@ -12,10 +12,10 @@ export default function ShoppingCart() {
             const response = await axios.get("/api/get-cart");
             setCart(response.data);
             console.log(response.data);
-            
+
             const initialQuantities = {};
             response.data.forEach((item) => {
-                initialQuantities[item.id] = 1; 
+                initialQuantities[item.id] = 1;
             });
             setQuantities(initialQuantities);
         } catch (error) {
@@ -34,41 +34,35 @@ export default function ShoppingCart() {
         });
     };
 
-    
-
-    const handleRemovebutton = async (id)=> {
-        const newCart = cart.filter((item) => {            
+    const handleRemovebutton = async (id) => {
+        const newCart = cart.filter((item) => {
             return item.id !== id;
         });
 
         setCart(newCart);
 
         try {
-            await axios.post("/api/remove-from-cart", { service_id: id }); 
+            await axios.post("/api/remove-from-cart", { service_id: id });
             console.log("Item removed from server-side cart.");
         } catch (error) {
             console.error("Failed to update server cart:", error);
         }
     };
 
-
     const calculateTotal = () => {
         return cart.reduce((total, item) => {
-            const quantity = quantities[item.id] || 1; 
+            const quantity = quantities[item.id] || 1;
             return total + item.price * quantity;
         }, 0);
     };
-
 
     const handleNext = () => {
         navigate("/payment");
     };
 
-
     const handleCancel = () => {
         navigate(`/catalog`);
     };
-    
 
     return (
         <section className="shopping-cart-container">
@@ -79,7 +73,6 @@ export default function ShoppingCart() {
             <div className="shopping-cart-content">
                 <h3>Shopping Cart</h3>
                 {cart.length > 0 ? (
-            
                     <div className="shopping-cart-items">
                         {cart.map((item) => {
                             return (
@@ -93,7 +86,8 @@ export default function ShoppingCart() {
                                         <p>
                                             Price: {item.price} {item.currency}
                                         </p>
-                                        {/* how do we combine the time slots?? */}
+                                        <p>Time: {item.time}</p>
+                                        <p>Date: {item.date} </p>
                                     </div>
                                     <div className="shopping-cart-quantity">
                                         <input
@@ -126,7 +120,7 @@ export default function ShoppingCart() {
                 ) : (
                     <p>Your cart is empty.</p>
                 )}
-                
+
                 <div className="shopping-cart-btn-box">
                     <button
                         className="btn shopping-cart-btn"
@@ -145,9 +139,10 @@ export default function ShoppingCart() {
 
             <div className="shopping-cart-summary">
                 <h3>Total</h3>
-                
-                <p>{calculateTotal()} {""}CZK</p>
 
+                <p>
+                    {calculateTotal()} {""}CZK
+                </p>
             </div>
         </section>
     );

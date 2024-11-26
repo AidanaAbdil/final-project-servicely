@@ -86,6 +86,8 @@ class ServiceController extends Controller
     public function addToCart(Request $request)
     {
         $serviceId = $request->input('service_id');
+        $date = $request->input('date');
+        $time = $request->input('time');
         $service = Service::find($serviceId);
 
         if (!$service) {
@@ -106,8 +108,8 @@ class ServiceController extends Controller
                 break;
             }
         }
-       
-        if(!$exists){
+
+        if (!$exists) {
             $new_element = [
                 'id' => $serviceId,
                 'title' => $service->title,
@@ -116,9 +118,10 @@ class ServiceController extends Controller
                 'price' => $service->price,
                 'currency' => $service->currency,
                 'quantity' => 1,
-
+                'date' => $date,
+                'time' => $time,
             ];
-            
+
             array_push($cart, $new_element);
         }
 
@@ -129,7 +132,6 @@ class ServiceController extends Controller
             'message' => 'Service added to cart successfully!',
             'cart' => $cart
         ]);
-
     }
 
     public function getCart()
@@ -146,7 +148,7 @@ class ServiceController extends Controller
 
         $newCart = [];
 
-        foreach($cart as $item) {
+        foreach ($cart as $item) {
             if ($item['id'] !== $serviceId) {
                 array_push($newCart, $item);
             }
@@ -159,6 +161,4 @@ class ServiceController extends Controller
             'cart' => $newCart,
         ]);
     }
-
-
 }
