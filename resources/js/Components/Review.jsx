@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function Review({ service_id }) {
     const { user } = useContext(UserContext);
+    const [listReviews, setListReviews] = useState([]);
     const [review, setReview] = useState({
         comment: "",
         service_id: service_id,
@@ -20,46 +21,56 @@ export default function Review({ service_id }) {
 
     const getServiceReview = async (service_id) => {
         try {
-            const response = await axios.get("/api/list-review", {
-                service_id: service_id,
-            });
-            setReview(response.data);
+            const response = await axios.get(
+                `/api/list-review?service_id=${service_id}`
+            );
+            setListReviews(response.data.reviews);
         } catch (error) {
             console.log("Error getting review", error);
         }
     };
-    useEffect(() => {
-        getServiceReview();
-    }, []);
 
-    if (!user) {
-        return (
-            <div className="review-list">
+    useEffect(() => {
+        getServiceReview(service_id);
+    }, [service_id]);
+
+    return (
+        <div>
+            <div className="not-seeing-reviews-section">
                 <p>Please login to leave a review</p>
             </div>
-        );
-    }
-    if (user) {
-        return (
             <div className="reviews-section">
                 <div className="list-of-reviews-section">
-                    {review.map((item) => {
-                        <p>{item.comment}</p>;
-                    })}
+                    <h4>Reviews:</h4>
+                    {listReviews.map((item) => (
+                        <div key={item.id}>
+                            <h5>
+                                {" "}
+                                {item.user?.firstname} {item.user?.surname}
+                            </h5>
+                            <p>{item.comment}</p>
+                        </div>
+                    ))}
                 </div>
-                <div className="add-reviews-section">
-                    <p>Leave a Review here</p>
-                    <input
-                        name="comment"
-                        id="comment"
-                        placeholder="Type here"
-                        onChange={(e) => {
-                            setReview({ ...review, comment: e.target.value });
-                        }}
-                    ></input>
-                    <button onClick={postServiceReview}>Submit</button>
-                </div>
+                {user && (
+                    <div className="add-reviews-section">
+                        <p>Leave a Review here</p>
+                        <input
+                            name="comment"
+                            id="comment"
+                            placeholder="Type here"
+                            value={review.comment}
+                            onChange={(e) => {
+                                setReview({
+                                    ...review,
+                                    comment: e.target.value,
+                                });
+                            }}
+                        ></input>
+                        <button onClick={postServiceReview}>Submit</button>
+                    </div>
+                )}
             </div>
-        );
-    }
+        </div>
+    );
 }

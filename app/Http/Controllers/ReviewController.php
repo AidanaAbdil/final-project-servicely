@@ -26,8 +26,13 @@ class ReviewController extends Controller
     }
 
     public function get_reviews(Request $request)
+
     {
-        $service_reviews = Review::with('service')->where('service_id', $request->service_id)->get();
+        $request->validate([
+            'service_id' => 'required|integer|exists:services,id',
+        ]);
+
+        $service_reviews = Review::with('service', 'user')->where('service_id', $request->service_id)->get();
 
         return response()->json([
             'success' => true,
