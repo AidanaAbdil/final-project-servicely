@@ -101,7 +101,6 @@ export default function ServiceDetail() {
                     <div className="calender-date-picker">
                         <p>Pick a date: </p>
                         <DateTimePicker setDate={setDate} setTime={setTime} />
-                        {/* date picker */}
                     </div>
                     <button className="btn" onClick={handleAddToCartClick}>
                         Add to Cart
