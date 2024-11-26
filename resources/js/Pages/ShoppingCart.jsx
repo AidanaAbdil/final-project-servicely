@@ -35,14 +35,12 @@ export default function ShoppingCart() {
     };
 
     const handleRemovebutton = async (id) => {
-        const newCart = cart.filter((item) => {
-            return item.id !== id;
-        });
-
-        setCart(newCart);
-
         try {
-            await axios.post("/api/remove-from-cart", { service_id: id });
+            const response = await axios.post("/api/remove-from-cart", {
+                service_id: id,
+            });
+            console.log(response.data.cart);
+            setCart(response.data.cart);
             console.log("Item removed from server-side cart.");
         } catch (error) {
             console.error("Failed to update server cart:", error);
@@ -93,7 +91,7 @@ export default function ShoppingCart() {
                                         <input
                                             className="shopping-cart-input"
                                             type="number"
-                                            defaultValue={item.quantity}
+                                            value={item.quantity}
                                             min="1"
                                             readOnly
                                             onChange={(e) =>

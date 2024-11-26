@@ -149,7 +149,12 @@ class ServiceController extends Controller
         $newCart = [];
 
         foreach ($cart as $item) {
-            if ($item['id'] !== $serviceId) {
+            if ($item['id'] === $serviceId) {
+                if ($item['quantity'] > 1) {
+                    $item['quantity'] -= 1;
+                    array_push($newCart, $item);
+                }
+            } else {
                 array_push($newCart, $item);
             }
         }
