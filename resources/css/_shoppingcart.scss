@@ -59,12 +59,15 @@
 }
 
 .shopping-cart-quantity {
-    width: 120px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.shopping-cart-quantity input {
-    width: 100%;
-    padding: 8px;
+
+.shopping-cart-input {
+    width:60%;
+    text-align: center;
+    padding: 10px;
     font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -105,14 +108,15 @@
     color: rgb(151, 88, 240);
 }
 
-/* Empty Cart */
+
 .shopping-cart-content p {
     font-size: 16px;
     font-weight: bold;
     color: #888;
 }
 
-/* Responsive */
+
+
 @media (max-width: 768px) {
     .shopping-cart-nav {
         flex-direction: column;
