@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 
+
+
 import axios from "axios";
 import DateTimePicker from "../components/DateTimePicker";
 import Review from "../components/Review";
@@ -48,40 +50,63 @@ export default function ServiceDetail() {
 
     return (
         <>
-            <button className="return_button">
-                <Link to="/catalog" className="return_link">
-                    Go back to catalog
-                </Link>
-            </button>
-
             <div className="service-detail-container">
+                <button className="return_button">
+                    <Link to="/catalog" className="return_link">
+                        Go back to catalog
+                    </Link>
+                </button>
+
                 <h3>Details of selected service</h3>
 
                 <div className="service-detail-info">
-                    <h3 key={selectedServiceDetail.id}>
+                    <h4 key={selectedServiceDetail.id}>
                         {selectedServiceDetail.title}
-                    </h3>
+                    </h4>
                     <div className="service-description">
-                        <p>Description: {selectedServiceDetail.description}</p>
                         <p>
-                            Price:{selectedServiceDetail.price}
+                            <strong>Description:</strong>{" "}
+                            {selectedServiceDetail.description}
+                        </p>
+                        <p>
+                            <strong>Price:</strong>
+                            {selectedServiceDetail.price}
                             {selectedServiceDetail.currency}
                         </p>
                     </div>
 
                     <div className="service-detail-map">
-                        <p>Address: {selectedServiceDetail.address}</p>
-                        {/* here is a map */}
-                        <button className="btn" onClick={handleAddToCartClick}>
-                            Add to Cart
-                        </button>
+                        <p>
+                            <strong>Address:</strong>{" "}
+                            {selectedServiceDetail.address}
+                        </p>
+                        <div>
+                            <iframe
+                                width="60%"
+                                height="300"
+                                frameBorder="0"
+                                scrolling="no"
+                                marginHeight="0"
+                                marginWidth="0"
+                                src={`https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${encodeURI(
+                                    selectedServiceDetail.address
+                                )}&z=14&output=embed`}
+                            >
+                                <a href="https://www.gps.ie/">gps devices</a>
+                            </iframe>
+                        </div>
                     </div>
                 </div>
 
                 <div className="calendar-time-section">
-                    <p>Pick a date: </p>
-                    <DateTimePicker />
-                    {/* date picker */}
+                    <div className="calender-date-picker">
+                        <p>Pick a date: </p>
+                        <DateTimePicker />
+                        {/* date picker */}
+                    </div>
+                    <button className="btn" onClick={handleAddToCartClick}>
+                        Add to Cart
+                    </button>
                 </div>
 
                 <div className="service_provider_information">
