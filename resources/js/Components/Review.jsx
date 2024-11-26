@@ -35,10 +35,12 @@ export default function Review({ service_id }) {
     }, [service_id]);
 
     return (
-        <div>
-            <div className="not-seeing-reviews-section">
-                <p>Please login to leave a review</p>
-            </div>
+        <div className="review-box">
+            {!user && (
+                <div className="not-seeing-reviews-section">
+                    <p>Please login to leave a review</p>
+                </div>
+            )}
             <div className="reviews-section">
                 <div className="list-of-reviews-section">
                     <h4>Reviews:</h4>
