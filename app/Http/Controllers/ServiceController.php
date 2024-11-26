@@ -97,15 +97,31 @@ class ServiceController extends Controller
 
         //Add service to cart
         $cart = session()->get('cart', []);
-        $cart[] = [
-            'id' => $serviceId,
-            'title' => $service->title,
-            'description' => $service->description,
-            'duration' => $service->duration,
-            'price' => $service->price,
-            'currency' => $service->currency
 
-        ];
+        $exists = false;
+        foreach ($cart as &$item) {
+            if ($item['id'] === $serviceId) {
+                $item['quantity'] += 1;
+                $exists = true;
+                break;
+            }
+        }
+       
+        if(!$exists){
+            $new_element = [
+                'id' => $serviceId,
+                'title' => $service->title,
+                'description' => $service->description,
+                'duration' => $service->duration,
+                'price' => $service->price,
+                'currency' => $service->currency,
+                'quantity' => 1,
+
+            ];
+            
+            array_push($cart, $new_element);
+        }
+
         session()->put('cart', $cart);
 
         return response()->json([
@@ -122,19 +138,25 @@ class ServiceController extends Controller
         return response()->json($cart);
     }
 
+
     public function removeFromCart(Request $request)
     {
         $serviceId = $request->input('service_id');
         $cart = session()->pull('cart', []);
 
-        if (isset($cart[$serviceId])) {
-            unset($cart[$serviceId]); // Remove the item by its key
-            session()->put('cart', $cart);
+        $newCart = [];
+
+        foreach($cart as $item) {
+            if ($item['id'] !== $serviceId) {
+                array_push($newCart, $item);
+            }
         }
+
+        session()->put('cart', $newCart);
 
         return response()->json([
             'status' => 'success',
-            'cart' => $cart,
+            'cart' => $newCart,
         ]);
     }
 

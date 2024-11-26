@@ -31,17 +31,6 @@
     background-color: #333;
 }
 
-@media (max-width: 768px) {
-    .add-service-section {
-        padding: 10px;
-    }
-
-    .add-service {
-        max-width: 90%;
-        padding: 25px;
-    }
-}
-
 .featured-services-grid,
 .service-grid {
     display: flex;
@@ -80,4 +69,16 @@
     font-size: 14px;
     margin: 5px 0;
     color: #555;
+}
+
+
+@media (max-width: 768px) {
+    .add-service-section {
+        padding: 10px;
+    }
+
+    .add-service {
+        max-width: 90%;
+        padding: 25px;
+    }
 }
