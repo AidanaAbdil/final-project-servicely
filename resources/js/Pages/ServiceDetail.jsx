@@ -55,23 +55,23 @@ export default function ServiceDetail() {
             </button>
 
             <div className="service-detail-container">
-                <h3>Details of selected service</h3>
-
                 <div className="service-detail-info">
                     <h3 key={selectedServiceDetail.id}>
                         {selectedServiceDetail.title}
                     </h3>
                     <div className="service-description">
-                        <p>Description: {selectedServiceDetail.description}</p>
-                        <p>
-                            Price:{selectedServiceDetail.price}
-                            {selectedServiceDetail.currency}
-                        </p>
+                        <p>Description: </p>
+                        {selectedServiceDetail.description}
+                        <p>Price:</p>
+                        {selectedServiceDetail.price}
+                        {selectedServiceDetail.currency}
                     </div>
 
                     <div className="service-detail-map">
-                        <p>Address: {selectedServiceDetail.address}</p>
+                        <p>Address: </p>
+                        {selectedServiceDetail.address}
                         {/* here is a map */}
+                        <br />
                         <button className="btn" onClick={handleAddToCartClick}>
                             Add to Cart
                         </button>

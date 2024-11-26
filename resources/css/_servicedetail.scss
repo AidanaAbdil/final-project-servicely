@@ -1,9 +1,3 @@
-.service-detail-container {
-    // margin: 1%;
-    display: flex;
-    justify-content: center;
-}
-
 .return_button,
 .return_link {
     // margin-top: 2%;
@@ -23,11 +17,9 @@
 }
 
 .service-detail-container {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Shadow around the edges */
-    border: 2px solid #ddd; /* Border around the box */
-    width: 60%;
+    margin: 2rem;
+    width: 1000px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    // align-items: center;
+    align-self: center;
 }
