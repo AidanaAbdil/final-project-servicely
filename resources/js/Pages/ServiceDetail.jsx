@@ -3,17 +3,15 @@ import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 
-
-
 import axios from "axios";
 import DateTimePicker from "../components/DateTimePicker";
 import Review from "../components/Review";
 
 export default function ServiceDetail() {
     const [selectedServiceDetail, setSelectedServiceDetail] = useState(null);
-    const [selectedDate, setSelectedDate] = useState(null);
-    const { user } = useContext(UserContext);
-    const navigate = useNavigate();
+    // const { user } = useContext(UserContext);
+    const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
 
     const { id } = useParams();
 
@@ -31,10 +29,11 @@ export default function ServiceDetail() {
     }, [id]);
 
     const handleAddToCartClick = async () => {
-        //should we use the condition if (!user)??
         try {
             const response = await axios.post("/api/add-to-cart", {
                 service_id: selectedServiceDetail.id,
+                date: date,
+                time: time,
             });
             console.log(response.data);
             alert("Service added to cart successfully!");
@@ -51,7 +50,6 @@ export default function ServiceDetail() {
     return (
         <>
             <div className="service-detail-container">
-
                 <button className="return_button">
                     <Link to="/catalog" className="return_link">
                         Go back to catalog
@@ -60,13 +58,11 @@ export default function ServiceDetail() {
 
                 <h3>Details of selected service</h3>
 
-
                 <div className="service-detail-info">
                     <h4 key={selectedServiceDetail.id}>
                         {selectedServiceDetail.title}
                     </h4>
                     <div className="service-description">
-
                         <p>
                             <strong>Description:</strong>{" "}
                             {selectedServiceDetail.description}
@@ -98,14 +94,13 @@ export default function ServiceDetail() {
                                 <a href="https://www.gps.ie/">gps devices</a>
                             </iframe>
                         </div>
-
                     </div>
                 </div>
 
                 <div className="calendar-time-section">
                     <div className="calender-date-picker">
                         <p>Pick a date: </p>
-                        <DateTimePicker />
+                        <DateTimePicker setDate={setDate} setTime={setTime} />
                         {/* date picker */}
                     </div>
                     <button className="btn" onClick={handleAddToCartClick}>

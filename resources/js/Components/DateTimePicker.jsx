@@ -1,10 +1,18 @@
-function DateTimePicker() {
-
-    
+function DateTimePicker({ setDate, setTime }) {
     return (
         <div>
-            <input type="date" />
-            <input type="time" />
+            <input
+                onChange={(e) => {
+                    setDate(e.target.value);
+                }}
+                type="date"
+            />
+            <input
+                onChange={(e) => {
+                    setTime(e.target.value);
+                }}
+                type="time"
+            />
         </div>
     );
 }
