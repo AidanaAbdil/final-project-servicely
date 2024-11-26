@@ -5,6 +5,7 @@ import UserContext from "../context/UserContext";
 
 import axios from "axios";
 import DateTimePicker from "../components/DateTimePicker";
+import Review from "../components/Review";
 
 export default function ServiceDetail() {
     const [selectedServiceDetail, setSelectedServiceDetail] = useState(null);
@@ -27,7 +28,8 @@ export default function ServiceDetail() {
         loadServiceDetail();
     }, [id]);
 
-    const handleAddToCartClick = async () => { //should we use the condition if (!user)??
+    const handleAddToCartClick = async () => {
+        //should we use the condition if (!user)??
         try {
             const response = await axios.post("/api/add-to-cart", {
                 service_id: selectedServiceDetail.id,
@@ -43,8 +45,6 @@ export default function ServiceDetail() {
     if (!selectedServiceDetail) {
         return <div>No service details available</div>;
     }
-
-
 
     return (
         <>
@@ -97,18 +97,7 @@ export default function ServiceDetail() {
                     <p>Phone number: {selectedServiceDetail.user?.phone}</p>
                     <p>Email: {selectedServiceDetail.user?.email}</p>
                 </div>
-
-                <div className="reviews-section">
-                    <p>Reviews</p>
-                    {/* here is the starts */}
-                    {/* <p>map through reviews</p> */}
-                    <p>Leave a Review here</p>
-                    <input
-                        name="review"
-                        id="review"
-                        placeholder="Type here"
-                    ></input>
-                </div>
+                <Review service_id={selectedServiceDetail.id} />
             </div>
         </>
     );
