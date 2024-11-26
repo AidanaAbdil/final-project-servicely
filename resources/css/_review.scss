@@ -1,9 +1,10 @@
-.reviews-section {
+.list-of-reviews-section {
     margin-top: 20px;
     padding: 15px;
     background-color: #f8f9fa;
     border-radius: 5px;
     border: 1px solid #ddd;
+    margin-bottom: 2rem;
 }
 
 .reviews-section p {
@@ -12,13 +13,20 @@
 
 .reviews-section input {
     width: 100%;
+    height: 80px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    margin-bottom: 2rem;
 }
 
-.reviews-section input:focus {
-    border-color: #007bff;
-    outline: none;
+.add-reviews-section h3{
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
+}
+
+.review-submit-btn{
+    position: relative;
+    left:20rem;
 }

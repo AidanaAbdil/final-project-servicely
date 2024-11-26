@@ -56,7 +56,7 @@ export default function Review({ service_id }) {
                 </div>
                 {user && (
                     <div className="add-reviews-section">
-                        <p>Leave a Review here</p>
+                        <h3>Leave a Review here</h3>
                         <input
                             name="comment"
                             id="comment"
@@ -69,7 +69,7 @@ export default function Review({ service_id }) {
                                 });
                             }}
                         ></input>
-                        <button onClick={postServiceReview}>Submit</button>
+                        <button className="btn review-submit-btn" onClick={postServiceReview}>Submit</button>
                     </div>
                 )}
             </div>
