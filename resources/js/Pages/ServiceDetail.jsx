@@ -5,6 +5,7 @@ import UserContext from "../context/UserContext";
 
 
 
+
 import axios from "axios";
 import DateTimePicker from "../components/DateTimePicker";
 import Review from "../components/Review";
@@ -106,7 +107,6 @@ export default function ServiceDetail() {
                     <div className="calender-date-picker">
                         <p>Pick a date: </p>
                         <DateTimePicker />
-                        {/* date picker */}
                     </div>
                     <button className="btn" onClick={handleAddToCartClick}>
                         Add to Cart

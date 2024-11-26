@@ -116,7 +116,6 @@ class ServiceController extends Controller
                 'price' => $service->price,
                 'currency' => $service->currency,
                 'quantity' => 1,
-
             ];
             
             array_push($cart, $new_element);
@@ -146,8 +145,13 @@ class ServiceController extends Controller
 
         $newCart = [];
 
-        foreach($cart as $item) {
-            if ($item['id'] !== $serviceId) {
+        foreach ($cart as $item) {
+            if ($item['id'] === $serviceId) {
+                if ($item['quantity'] > 1) {
+                    $item['quantity'] -= 1;
+                    array_push($newCart, $item);
+                }
+            } else {
                 array_push($newCart, $item);
             }
         }

@@ -37,14 +37,16 @@ export default function ShoppingCart() {
     
 
     const handleRemovebutton = async (id)=> {
-        const newCart = cart.filter((item) => {            
-            return item.id !== id;
-        });
-
-        setCart(newCart);
-
         try {
-            await axios.post("/api/remove-from-cart", { service_id: id }); 
+            const response = await axios.post("/api/remove-from-cart", {
+                service_id: id,
+            });
+
+            console.log(response.data.cart);
+            
+
+            setCart(response.data.cart);
+
             console.log("Item removed from server-side cart.");
         } catch (error) {
             console.error("Failed to update server cart:", error);
@@ -89,17 +91,17 @@ export default function ShoppingCart() {
                                 >
                                     <div className="shopping-cart-text">
                                         <h5>{item.title}</h5>
-                                        <p>Duration: {item.duration}</p>
+                                        <p><strong>Duration:</strong> {item.duration}</p>
                                         <p>
-                                            Price: {item.price} {item.currency}
+                                            <strong>Price:</strong> {item.price} {item.currency}
                                         </p>
-                                        {/* how do we combine the time slots?? */}
+                                        <p><strong>Date:</strong> </p>
                                     </div>
                                     <div className="shopping-cart-quantity">
                                         <input
                                             className="shopping-cart-input"
                                             type="number"
-                                            defaultValue={item.quantity}
+                                            value={item.quantity}
                                             min="1"
                                             readOnly
                                             onChange={(e) =>

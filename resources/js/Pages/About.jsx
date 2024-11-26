@@ -14,14 +14,25 @@ function About() {
                 <div className="about-content">
                     <h4>About Us</h4>
                     <p>
-                        We started with a mission to 'Placeholder'.  Lorem, ipsum dolor sit amet consectetur
-                        adipisicing elit. Quis dolorem ratione minima inventore
-                        quia, quos temporibus fugiat vel eum sequi maxime,
-                        quaerat soluta quisquam, reiciendis aspernatur explicabo
-                        illum neque impedit.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic temporibus minus, saepe quis dignissimos, repudiandae repellendus adipisci natus atque numquam, ducimus possimus cum quae? Ut, repellendus eum. Reiciendis, facere culpa!
-                    </p> <br />
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam alias obcaecati cum, nobis at debitis nam id, sit repellat inventore ex temporibus maxime eveniet accusantium commodi veritatis impedit perferendis?</p>
+                        At <strong>Yourservicely</strong>, our mission is to
+                        connect individuals and businesses through seamless
+                        service exchanges. We started with a simple idea: to
+                        empower communities by fostering collaboration and
+                        creating opportunities.
+                    </p>
+                    <p>
+                        From creative freelancers to professional services, our
+                        platform is designed to make finding the right fit
+                        effortless. Whether you’re here to share your expertise
+                        or solve your next challenge, Yourservicely is your
+                        trusted partner.
+                    </p>
+                    <p>
+                        Join a growing community of problem-solvers and
+                        collaborators. Together, we’re redefining the way
+                        services are shared and valued. Yourservicely —
+                        connecting needs with skills, every step of the way.
+                    </p>
                 </div>
             </section>
 
