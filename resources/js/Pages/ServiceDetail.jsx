@@ -51,6 +51,7 @@ export default function ServiceDetail() {
     return (
         <>
             <div className="service-detail-container">
+
                 <button className="return_button">
                     <Link to="/catalog" className="return_link">
                         Go back to catalog
@@ -59,11 +60,13 @@ export default function ServiceDetail() {
 
                 <h3>Details of selected service</h3>
 
+
                 <div className="service-detail-info">
                     <h4 key={selectedServiceDetail.id}>
                         {selectedServiceDetail.title}
                     </h4>
                     <div className="service-description">
+
                         <p>
                             <strong>Description:</strong>{" "}
                             {selectedServiceDetail.description}
@@ -95,6 +98,7 @@ export default function ServiceDetail() {
                                 <a href="https://www.gps.ie/">gps devices</a>
                             </iframe>
                         </div>
+
                     </div>
                 </div>
 
