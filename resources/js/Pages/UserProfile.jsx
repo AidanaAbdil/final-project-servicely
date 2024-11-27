@@ -137,7 +137,7 @@ export default function UserProfile() {
                             </p>
                             <p>
                                 {profileData.bio && (
-                                    <span>Bio: {profileData.bio}</span>
+                                    <span><strong>Bio: </strong>{profileData.bio}</span>
                                 )}
                             </p>
 
