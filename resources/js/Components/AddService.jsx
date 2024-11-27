@@ -102,7 +102,17 @@ function AddService () {
                     placeholder="City, State"
                     required
                 />
-                {/* here we need address */}
+                <label htmlFor="address">Address</label>
+                <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    placeholder="Street, posttal code"
+                    required
+                />
+
                 <label htmlFor="description">Service Description</label>
                 <textarea
                     id="description"
