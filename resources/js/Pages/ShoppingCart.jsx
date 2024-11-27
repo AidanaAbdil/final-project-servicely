@@ -43,7 +43,6 @@ export default function ShoppingCart() {
             console.log(response.data.cart);
 
             setCart(response.data.cart);
-
             console.log("Item removed from server-side cart.");
         } catch (error) {
             console.error("Failed to update server cart:", error);
