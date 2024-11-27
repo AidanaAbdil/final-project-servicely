@@ -89,9 +89,17 @@ export default function UserProfile() {
             <div className="photo-section">
                 <div className="photo-upload">
                     <div className="photo-placeholder">
-                        {image && <img className="profile-picture" src={'/' + image} alt='profile_picture' />}
+                        {image && (
+                            <img
+                                className="profile-picture"
+                                src={"/" + image}
+                                alt="profile_picture"
+                            />
+                        )}
                     </div>
-                    <label className="image-submit" htmlFor="image">Update photo</label>
+                    <label className="image-submit" htmlFor="image">
+                        Update photo
+                    </label>
                     <input
                         type="file"
                         name="image"
@@ -146,7 +154,9 @@ export default function UserProfile() {
                             className="edit-profile-form"
                         >
                             <h2>
+                                <label htmlFor="firstname"> Update Name:</label>
                                 <input
+                                    className="edit-profile-input"
                                     type="text"
                                     name="firstname"
                                     defaultValue={profileData.user.firstname}
@@ -154,6 +164,7 @@ export default function UserProfile() {
                                     placeholder="First Name"
                                 />
                                 <input
+                                    className="edit-profile-input"
                                     type="text"
                                     name="surname"
                                     defaultValue={profileData.user.surname}
@@ -161,44 +172,51 @@ export default function UserProfile() {
                                     placeholder="Last Name"
                                 />
                             </h2>
-                            <p>
-                                <input
-                                    type="text"
-                                    name="job_title"
-                                    defaultValue={profileData.job_title}
-                                    onChange={handleInputChange}
-                                    placeholder="Job Title"
-                                />
-                            </p>
-                            <p>
-                                <input
-                                    type="text"
-                                    name="location"
-                                    defaultValue={profileData.location}
-                                    onChange={handleInputChange}
-                                    placeholder="Location"
-                                />
-                            </p>
-                            <p>
-                                <input
-                                    type="text"
-                                    name="bio"
-                                    defaultValue={profileData.bio}
-                                    onChange={handleInputChange}
-                                    placeholder="Write something about yourself"
-                                />
-                            </p>
 
-                            <button type="submit" className="btn save-btn">
-                                Save Changes
-                            </button>
-                            <button
-                                type="button"
-                                className="btn"
-                                onClick={() => setIsEditing(false)}
-                            >
-                                Cancel
-                            </button>
+                            <label htmlFor="job_title">Job title: </label>
+                            <input
+                                className="edit-profile-input"
+                                type="text"
+                                name="job_title"
+                                defaultValue={profileData.job_title}
+                                onChange={handleInputChange}
+                                placeholder="Job Title"
+                            />
+
+                            <label htmlFor="location">Location: </label>
+                            <input
+                                className="edit-profile-input"
+                                type="text"
+                                name="location"
+                                defaultValue={profileData.location}
+                                onChange={handleInputChange}
+                                placeholder="Location"
+                            />
+
+                            <label htmlFor="bio">Bio: </label>
+                            <input
+                                className="edit-profile-input"
+                                type="text"
+                                name="bio"
+                                defaultValue={profileData.bio}
+                                onChange={handleInputChange}
+                                placeholder="Write something about yourself"
+                            />
+                            <br />
+                            <br />
+
+                           
+                                <button type="submit" className="btn save-btn">
+                                    Save Changes
+                                </button>
+                                <button
+                                    type="button"
+                                    className="btn"
+                                    onClick={() => setIsEditing(false)}
+                                >
+                                    Cancel
+                                </button>
+                            
                         </form>
                     )}
                 </div>
