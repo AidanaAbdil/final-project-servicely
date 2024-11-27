@@ -9,7 +9,9 @@ import Review from "../components/Review";
 
 export default function ServiceDetail() {
     const [selectedServiceDetail, setSelectedServiceDetail] = useState(null);
-    // const { user } = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
+
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
 
@@ -29,18 +31,23 @@ export default function ServiceDetail() {
     }, [id]);
 
     const handleAddToCartClick = async () => {
-        try {
-            const response = await axios.post("/api/add-to-cart", {
-                service_id: selectedServiceDetail.id,
-                date: date,
-                time: time,
-            });
-            console.log(response.data);
-            alert("Service added to cart successfully!");
-        } catch (error) {
-            console.error("Error adding service to cart:", error);
-            alert("Failed to add service to cart.");
+        if(!user){
+            navigate('/login')
+        } else{
+            try {
+                const response = await axios.post("/api/add-to-cart", {
+                    service_id: selectedServiceDetail.id,
+                    date: date,
+                    time: time,
+                });
+                console.log(response.data);
+                alert("Service added to cart successfully!");
+            } catch (error) {
+                console.error("Error adding service to cart:", error);
+                alert("Failed to add service to cart.");
+            }
         }
+        
     };
 
     if (!selectedServiceDetail) {
