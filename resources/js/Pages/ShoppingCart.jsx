@@ -68,8 +68,7 @@ export default function ShoppingCart() {
     return (
         <section className="shopping-cart-container">
             <div className="shopping-cart-nav">
-                <h4>1. Shopping Cart</h4>
-                <h4>2. Payment Options</h4>
+                <h4>Shopping Cart</h4>
             </div>
             <div className="shopping-cart-content">
                 <h3>Shopping Cart</h3>

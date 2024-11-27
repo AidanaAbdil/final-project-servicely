@@ -102,7 +102,7 @@ function AddService () {
                     placeholder="City, State"
                     required
                 />
-
+                {/* here we need address */}
                 <label htmlFor="description">Service Description</label>
                 <textarea
                     id="description"
@@ -149,7 +149,7 @@ function AddService () {
                     placeholder="currency"
                     required
                 />
-
+                {/* redirect to homepage */}
                 <button type="submit" className="btn-submit">
                     Submit Listing
                 </button>
