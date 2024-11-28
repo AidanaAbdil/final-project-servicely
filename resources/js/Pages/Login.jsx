@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../context/UserContext";
+import { Link } from "react-router-dom";
 
 export default function Login() {
     const { getUser } = useContext(UserContext);
@@ -67,6 +68,12 @@ export default function Login() {
                 />
                 <button className="btn-submit">Login</button>
             </form>
+            <div className="no-account">
+                <p>
+                    Don't have an account yet?{" "}
+                    <Link to="/register">Register here</Link>
+                </p>
+            </div>
         </div>
     );
 }

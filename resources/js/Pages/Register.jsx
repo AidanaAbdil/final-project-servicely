@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
+import { Link } from "react-router-dom";
 
 function Register(props) {
     const navigate = useNavigate();
@@ -127,6 +128,12 @@ function Register(props) {
                 </div>
                 <button className="btn-submit">Register</button>
             </form>
+            <div className="no-account">
+                <p>
+                    Already have an account?{" "}
+                    <Link to="/login">Login here</Link>
+                </p>
+            </div>
         </div>
     );
 }
