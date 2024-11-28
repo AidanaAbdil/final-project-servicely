@@ -59,7 +59,7 @@ function Homepage() {
                                 key={service.id}
                             >
                                 <h4>
-                                    <Link to={"/service/" + service.id}>
+                                    <Link className="service-title" to={"/service/" + service.id}>
                                         {service.title}
                                     </Link>
                                 </h4>
