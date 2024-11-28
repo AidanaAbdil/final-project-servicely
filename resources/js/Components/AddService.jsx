@@ -56,7 +56,7 @@ function AddService () {
                 price: "",
                 currency: "",
             }); // i am resetting the form after it is submitted
-
+            
             navigate("/");
         } catch (error) {
             console.error("Error creating service:", error);
