@@ -44,3 +44,59 @@
     font-size: 16px;
     transition: background-color 0.3s;
 }
+
+
+
+@media (max-width: 768px) {
+    .navigation-control {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 1rem 0;
+    }
+
+    .navigation-control.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 22px;
+        cursor: pointer;
+    }
+
+    .burger-menu span {
+        display: block;
+        height: 4px;
+        background-color: #000;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .burger-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
