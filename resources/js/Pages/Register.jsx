@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register(props) {
+    const navigate = useNavigate();
+
     const [values, setValues] = useState({
         email: "",
         firstname: "",
@@ -20,6 +23,7 @@ function Register(props) {
             const response = await axios.post("/register", values);
 
             const response_data = response.data;
+            navigate("/");
         } catch (error) {
             switch (error.response.status) {
                 case 422:

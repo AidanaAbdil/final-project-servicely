@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Payment() {
     const [selectedPayment, setSelectedPayment] = useState("");
     const [cartDetails, setCartDetails] = useState([]);
+    const navigate = useNavigate();
 
     const handlePaymentChange = (event) => {
         setSelectedPayment(event.target.value);
@@ -23,6 +26,28 @@ function Payment() {
         getCart();
     }, []);
 
+    const clearCart = async () => {
+        try {
+            const response = await axios.post("/api/clear-cart");
+            if (response.data.success) {
+                setCartDetails([]);
+            }
+        } catch (error) {
+            console.log("Error clearing cart:", error);
+        }
+    };
+
+    const handlePaymentSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            console.log("Processing payment...");
+            await clearCart();
+            navigate("/catalog");
+            console.log("Payment successful. Cart cleared.");
+        } catch (error) {
+            console.log("Payment error:", error);
+        }
+    };
     return (
         <div className="payment-section">
             <div className="payment-method">
@@ -76,10 +101,7 @@ function Payment() {
                                 id="card-holder"
                                 placeholder="Card Holder Name"
                             />
-                            <br />
-                            <button type="submit" className="btn-submit">
-                                Pay
-                            </button>
+
                         </form>
                     </div>
                 )}
@@ -92,6 +114,13 @@ function Payment() {
                         </p>
                     </div>
                 )}
+                <button
+                    onClick={handlePaymentSubmit}
+                    type="submit"
+                    className="btn-submit"
+                >
+                    Pay
+                </button>
             </div>
 
             <div className="payment-summary">
