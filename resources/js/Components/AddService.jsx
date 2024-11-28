@@ -56,7 +56,7 @@ function AddService () {
                 price: "",
                 currency: "",
             }); // i am resetting the form after it is submitted
-            
+            alert('You have successfully added a listing!');
             navigate("/");
         } catch (error) {
             console.error("Error creating service:", error);
