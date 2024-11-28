@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect,useState } from "react";
 
 import Logout from "../components/Logout";
 import Register from "../pages/Register";
@@ -7,7 +7,11 @@ import UserContext from "../context/UserContext";
 
 function Navigation() {
     const { user } = useContext(UserContext);
-    
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     useEffect(() => {
         console.log(user);
@@ -22,7 +26,19 @@ function Navigation() {
                     className="navbar-logo"
                 />
             </Link>
-            <div className="navigation-control">
+            {/* Burger Menu for smaller screens */}
+            <div
+                className={`burger-menu ${isMenuOpen ? "active" : ""}`}
+                onClick={toggleMenu}
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div className={`navigation-control ${
+                    isMenuOpen ? "active" : ""
+                }`}>
                 <Link to="/" className="nav-link">
                     Home
                 </Link>
