@@ -57,9 +57,10 @@ class ServiceController extends Controller
             'title' => 'required|string|max:255',
             'category_id' => 'required|integer',
             'location' => 'required|string',
+            'address' => 'required|string',
             'description' => 'required|string',
             'duration' => 'required|numeric',
-            'price' => 'required|numeric', //also in the form
+            'price' => 'required|numeric', 
             'currency' => 'required|string'
         ]);
 
@@ -69,6 +70,7 @@ class ServiceController extends Controller
         $service->title = $request->title;
         $service->category_id = $request->category_id;
         $service->location =  $request->location;
+        $service->address = $request->address;
         $service->description = $request->description;
         $service->price = $request->price;
         $service->user_id = Auth::id();
@@ -79,8 +81,7 @@ class ServiceController extends Controller
         $service->save();
 
         return response()->json(['message' => 'Service successfully added!', 'data' => $service], 201);
-        // return redirect()->route('/')->with('success','');
-        //we might need a user profile controller?
+        
     }
 
     public function addToCart(Request $request)

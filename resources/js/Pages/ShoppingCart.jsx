@@ -39,7 +39,9 @@ export default function ShoppingCart() {
             const response = await axios.post("/api/remove-from-cart", {
                 service_id: id,
             });
+
             console.log(response.data.cart);
+
             setCart(response.data.cart);
             console.log("Item removed from server-side cart.");
         } catch (error) {
@@ -65,8 +67,7 @@ export default function ShoppingCart() {
     return (
         <section className="shopping-cart-container">
             <div className="shopping-cart-nav">
-                <h4>1. Shopping Cart</h4>
-                <h4>2. Payment Options</h4>
+                <h4>Shopping Cart</h4>
             </div>
             <div className="shopping-cart-content">
                 <h3>Shopping Cart</h3>
@@ -80,9 +81,13 @@ export default function ShoppingCart() {
                                 >
                                     <div className="shopping-cart-text">
                                         <h5>{item.title}</h5>
-                                        <p>Duration: {item.duration}</p>
                                         <p>
-                                            Price: {item.price} {item.currency}
+                                            <strong>Duration:</strong>{" "}
+                                            {item.duration}
+                                        </p>
+                                        <p>
+                                            <strong>Price:</strong> {item.price}{" "}
+                                            {item.currency}
                                         </p>
                                         <p>Time: {item.time}</p>
                                         <p>Date: {item.date} </p>

@@ -101,6 +101,7 @@ function Payment() {
                                 id="card-holder"
                                 placeholder="Card Holder Name"
                             />
+
                         </form>
                     </div>
                 )}
@@ -123,14 +124,14 @@ function Payment() {
             </div>
 
             <div className="payment-summary">
-                <h1>Summary</h1>
+                <h2>Summary</h2>
                 {cartDetails?.map((item) => (
-                    <>
-                        <h4 key={item.id}>{item.title}</h4>
+                    <div key={item.id}>
+                        <h4>{item.title}</h4>
                         <p>
                             {item.price} {item.currency}
                         </p>
-                    </>
+                    </div>
                 ))}
             </div>
         </div>

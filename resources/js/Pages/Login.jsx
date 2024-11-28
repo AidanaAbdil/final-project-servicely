@@ -65,7 +65,7 @@ export default function Login() {
                     value={values.password}
                     onChange={handleChange}
                 />
-                <button className="btn">Login</button>
+                <button className="btn-submit">Login</button>
             </form>
         </div>
     );
