@@ -1,50 +1,48 @@
-// Styling for the search section
 .search_section {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 700px; // Limit the width of the search bar
-    // margin:60px auto;
-    padding-top: 2%;
+    padding-top: 20px;
+    margin: auto;
 }
 
 .search_input {
-    width: 90%; // Input takes most of the space
-    padding: 12px 20px; // Add padding for a larger click area
-    font-size: 16px; // Set a readable font size
-    border: 1px solid #ccc; // Light border
-    border-radius: 25px; // Rounded corners
-    outline: none; // Remove default focus outline
-    box-sizing: border-box; // Include padding and border in element's width/height
-    transition: all 0.3s ease; // Smooth transition on focus
+    width: 50%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 
-    // Input focus state styling
+   
     &:focus {
-        border-color: #2a5eac; // Change border color on focus
-        box-shadow: 0 0 5px rgba(42, 94, 172, 0.4); // Subtle glow effect on focus
+        border-color: #2a5eac; 
+        box-shadow: 0 0 5px rgba(42, 94, 172, 0.4); 
     }
 }
 
 .search_button,
 .reset_button {
-    padding: 12px 20px; // Add padding for a larger button
-    font-size: 16px; // Set a readable font size
-    background-color: black; // Button background color
-    color: white; // White text color
-    border: none; // Remove default button border
-    border-radius: 25px; // Rounded corners to match input
-    cursor: pointer; // Pointer cursor to indicate interactability
-    transition: background-color 0.3s ease, transform 0.2s ease; // Smooth transition
-    margin:auto 10px;
-    // Button hover effect
+    padding: 12px 20px; 
+    font-size: 16px; 
+    background-color: black;
+    color: white; 
+    border: none; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+    margin: auto 10px;
+   
     &:hover {
-        background-color: #1c4789; // Darker shade on hover
+        background-color: #1c4789; 
     }
 
-    // Button active effect
+  
     &:active {
-        transform: scale(0.98); // Slightly shrink button on click
-        background-color: #1c4789; // Keep the same dark background on active
+        transform: scale(0.98); 
+        background-color: #1c4789; 
     }
 }

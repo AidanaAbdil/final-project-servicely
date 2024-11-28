@@ -53,8 +53,8 @@ function Catalog() {
                             listCategoryService.map((service) => (
                                 <div className="service-card" key={service.id}>
                                     <h4>
-                                        <Link to={"/service/" + service.id}>
-                                            {service.title}
+                                        <Link className="service-card-link" to={"/service/" + service.id}>
+                                            {service.title} 
                                         </Link>
                                     </h4>
                                     <p>{service.description}</p>
