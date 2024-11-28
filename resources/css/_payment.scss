@@ -54,3 +54,20 @@
     color: #000;
     font-size: 16px;
 }
+
+.payment-section{
+    display: flex;
+    justify-content: space-around;
+    align-items:start;
+}
+
+.payment-summary{
+    margin: 2rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 30%;
+    height: 20%;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

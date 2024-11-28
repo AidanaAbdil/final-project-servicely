@@ -30,7 +30,7 @@ class UserProfileController extends Controller
             'bio'=> 'nullable|string',
         ]);
 
-        $profile = UserProfile::where('user_id', $user_id)->firstOrFail();
+        $profile = UserProfile::where('user_id', $user_id)->with(['user.services', 'user.transactions'])->firstOrFail();
 
     
         $profile->user->update([

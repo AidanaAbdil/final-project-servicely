@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AddService () {
     const [formData, setFormData] = useState({
         title: "",
         category_id: "",
         location: "",
+        address:"",
         description: "",
         duration: "",
         price: "",
@@ -14,6 +16,7 @@ function AddService () {
 
     // Fetch categories
     const [categories, setCategories] = useState([]);
+     const navigate = useNavigate();
 
     const fetchCategories = async () => {
         try {
@@ -47,15 +50,21 @@ function AddService () {
                 title: "",
                 category_id: "",
                 location: "",
+                address: "",
                 description: "",
                 duration: "",
                 price: "",
                 currency: "",
             }); // i am resetting the form after it is submitted
+            
+            navigate("/");
         } catch (error) {
             console.error("Error creating service:", error);
         }
     };
+
+
+
 
     return (
         <div className="form">
@@ -102,7 +111,17 @@ function AddService () {
                     placeholder="City, State"
                     required
                 />
-                {/* here we need address */}
+                <label htmlFor="address">Address</label>
+                <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    placeholder="Street, posttal code"
+                    required
+                />
+
                 <label htmlFor="description">Service Description</label>
                 <textarea
                     id="description"
