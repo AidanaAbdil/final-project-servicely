@@ -71,11 +71,11 @@ export default function ServiceDetail() {
                     </h4>
                     <div className="service-description">
                         <p>
-                            <strong>Description:</strong>{" "}
+                            <strong>Description: </strong>{" "}
                             {selectedServiceDetail.description}
                         </p>
                         <p>
-                            <strong>Price:</strong>
+                            <strong>Price: </strong>
                             {selectedServiceDetail.price}
                             {selectedServiceDetail.currency}
                         </p>
@@ -124,8 +124,8 @@ export default function ServiceDetail() {
                         {selectedServiceDetail.user?.firstname}{" "}
                         {selectedServiceDetail.user?.surname}
                     </p>{" "}
-                    <p>Phone number: {selectedServiceDetail.user?.phone}</p>
-                    <p>Email: {selectedServiceDetail.user?.email}</p>
+                    <p><strong>Phone number:</strong> {selectedServiceDetail.user?.phone}</p>
+                    <p><strong>Email:</strong> {selectedServiceDetail.user?.email}</p>
                 </div>
                 <Review service_id={selectedServiceDetail.id} />
             </div>
