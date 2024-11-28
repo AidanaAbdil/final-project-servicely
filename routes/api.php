@@ -10,9 +10,9 @@ use App\Http\Controllers\ReviewController;
 
 
 
-Route::middleware('auth')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 //services route for CRUD:
 Route::get('/services', [ServiceController::class, 'index']);
