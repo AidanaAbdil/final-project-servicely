@@ -140,6 +140,16 @@ class ServiceController extends Controller
         return response()->json($cart);
     }
 
+    public function clearCart()
+    {
+
+        session()->forget('cart'); //this clears the cart 
+        return response()->json([
+            'success' => true,
+            'message' => 'Cart has been cleared successfully.'
+        ]);
+    }
+
 
     public function removeFromCart(Request $request)
     {

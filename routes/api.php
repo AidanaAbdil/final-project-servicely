@@ -29,3 +29,4 @@ Route::get('/get-cart', [ServiceController::class, 'getCart']);
 Route::post('/remove-from-cart', [ServiceController::class, 'removeFromCart']);
 Route::post('/add-review', [ReviewController::class, 'store']);
 Route::get('/list-review', [ReviewController::class, 'get_reviews']);
+Route::post('/clear-cart', [ServiceController::class, 'clearCart']);
