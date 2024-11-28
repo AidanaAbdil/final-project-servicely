@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../context/UserContext";
 
 function Register(props) {
     const navigate = useNavigate();
+    const { getUser } = useContext(UserContext);
 
     const [values, setValues] = useState({
         email: "",
@@ -23,6 +25,7 @@ function Register(props) {
             const response = await axios.post("/register", values);
 
             const response_data = response.data;
+            getUser();
             navigate("/");
         } catch (error) {
             switch (error.response.status) {
