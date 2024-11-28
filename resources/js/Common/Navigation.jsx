@@ -36,34 +36,40 @@ function Navigation() {
                 <span></span>
             </div>
 
-            <div className={`navigation-control ${
-                    isMenuOpen ? "active" : ""
-                }`}>
-                <Link to="/" className="nav-link">
+            <div className={`navigation-control ${isMenuOpen ? "active" : ""}`}>
+                <Link to="/" className="nav-link" onClick={toggleMenu}>
                     Home
                 </Link>
-                <Link to="/about" className="nav-link">
+                <Link to="/about" className="nav-link" onClick={toggleMenu}>
                     About Us
                 </Link>
-                <Link to="/catalog" className="nav-link">
+                <Link to="/catalog" className="nav-link" onClick={toggleMenu}>
                     Catalog
                 </Link>
 
                 {!user ? (
                     <>
-                        <Link to="/register">
+                        <Link to="/register" onClick={toggleMenu}>
                             <button className="btn">Register</button>
                         </Link>
-                        <Link to="/login">
+                        <Link to="/login" onClick={toggleMenu}>
                             <button className="btn">Login</button>
                         </Link>
                     </>
                 ) : (
                     <>
-                        <Link to="/profile" className="nav-link">
+                        <Link
+                            to="/profile"
+                            className="nav-link"
+                            onClick={toggleMenu}
+                        >
                             Profile
                         </Link>
-                        <Link to="/cart" className="nav-link">
+                        <Link
+                            to="/cart"
+                            className="nav-link"
+                            onClick={toggleMenu}
+                        >
                             Shopping Cart
                         </Link>
                         <Logout />
