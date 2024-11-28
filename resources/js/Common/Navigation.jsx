@@ -50,10 +50,10 @@ function Navigation() {
                 {!user ? (
                     <>
                         <Link to="/register" onClick={toggleMenu}>
-                            <button className="btn">Register</button>
+                            <button className="btn-register">Register</button>
                         </Link>
                         <Link to="/login" onClick={toggleMenu}>
-                            <button className="btn">Login</button>
+                            <button className="btn-login">Login</button>
                         </Link>
                     </>
                 ) : (
