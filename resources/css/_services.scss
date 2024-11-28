@@ -49,7 +49,10 @@
     transition: box-shadow 0.3s;
     width: 30rem;
     text-align: center;
-   
+}
+.service-card-link {
+    text-decoration: none;
+    color: #333;
 }
 
 .featured-services-container h2 {
@@ -69,7 +72,6 @@
     margin: 5px 0;
     color: #555;
 }
-
 
 @media (max-width: 768px) {
     .add-service-section {

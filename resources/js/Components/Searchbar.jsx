@@ -42,7 +42,7 @@ function Searchbar({ query, setQuery, setSearching }) {
                     }}
                     className="reset_button"
                 >
-                    X
+                    Clear
                 </button>
             </div>
             <div>
