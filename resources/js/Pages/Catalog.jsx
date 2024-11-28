@@ -8,16 +8,18 @@ import Searchbar from "../components/Searchbar";
 
 function Catalog() {
     const [query, setQuery] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState(null);
     const [listCategoryService, setListCategoryService] = useState(null);
     const [searching, setSearching] = useState(false);
 
     const catalogList = async () => {
         try {
             const response = await axios.get(
-                `/api/services?category_id=${encodeURIComponent(
-                    selectedCategory
-                )}`
+                `/api/services?category_id=${
+                    selectedCategory !== null
+                        ? encodeURIComponent(selectedCategory) // Fetch for a specific category
+                        : "" // No category filters, fetch all services
+                }`
             );
             setListCategoryService(response.data);
             console.log(response.data);
@@ -53,8 +55,11 @@ function Catalog() {
                             listCategoryService.map((service) => (
                                 <div className="service-card" key={service.id}>
                                     <h4>
-                                        <Link className="service-card-link" to={"/service/" + service.id}>
-                                            {service.title} 
+                                        <Link
+                                            className="service-card-link"
+                                            to={"/service/" + service.id}
+                                        >
+                                            {service.title}
                                         </Link>
                                     </h4>
                                     <p>{service.description}</p>
@@ -62,6 +67,11 @@ function Catalog() {
                                         Price: {service.price}
                                         {service.currency}
                                     </p>
+                                    <Link to={"/service/" + service.id}>
+                                        <button className="btn-see-details">
+                                            See details
+                                        </button>
+                                    </Link>
                                 </div>
                             ))
                         ) : (

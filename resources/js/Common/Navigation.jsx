@@ -58,13 +58,26 @@ function Navigation() {
                     </>
                 ) : (
                     <>
-                        <Link
-                            to="/profile"
-                            className="nav-link"
-                            onClick={toggleMenu}
-                        >
-                            Profile
-                        </Link>
+                        <div className="nav-profile">
+                            <Link
+                                to="/profile"
+                                className="nav-link"
+                                onClick={toggleMenu}
+                            >
+                                {/* Display Profile Picture and Name */}
+                                <img
+                                    src={
+                                        user.image_url ||
+                                        "/images/profile_photos/watermelon-8368_11.png"
+                                    } // Use a default avatar if no profile image
+                                    alt="Profile"
+                                    className="profile-picture"
+                                />
+                                <span className="user-name">
+                                    {user.firstname} {user.surname}
+                                </span>
+                            </Link>
+                        </div>
                         <Link
                             to="/cart"
                             className="nav-link"

@@ -143,7 +143,7 @@ export default function UserProfile() {
 
                             <button
                                 onClick={() => setIsEditing(true)}
-                                className="btn"
+                                className="btn-edit-profile"
                             >
                                 Edit Profile
                             </button>
@@ -206,7 +206,7 @@ export default function UserProfile() {
                             <br />
 
                            
-                                <button type="submit" className="btn save-btn">
+                                <button type="submit" className="save-btn">
                                     Save Changes
                                 </button>
                                 <button

@@ -1,3 +1,4 @@
+/* Navbar container */
 .navbar {
     position: sticky;
     top: 0;
@@ -12,32 +13,47 @@
     border-bottom: 1px solid #e0e0e0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 100px;
+    flex-wrap: wrap;
+    /* Allow wrapping if there is not enough space */
 }
 
+/* Logo styling */
 .navbar-logo {
     height: 60px;
     width: 150px;
 }
 
+/* Navigation control (links) */
 .navigation-control {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
 }
 
 .nav-link {
     text-decoration: none;
     color: #333;
     font-size: 1rem;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    white-space: nowrap;
+    /* Prevent text from wrapping */
 }
 
-.btn {
+.nav-link:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+/* Button styling */
+.btn-logout {
     background-color: #000;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -45,32 +61,35 @@
     transition: background-color 0.3s;
 }
 
+.btn:hover {
+    background-color: #444;
+}
 
+/* Profile Picture and User Info */
+.nav-profile .nav-link{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
 
+.navbar .profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar .user-name {
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Mobile Responsive Styling */
 @media (max-width: 768px) {
-    .navigation-control {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        padding: 1rem 0;
-    }
 
-    .navigation-control.active {
-        display: flex;
-    }
-
-    .nav-link {
-        padding: 1rem;
-        text-align: center;
-        border-bottom: 1px solid #e0e0e0;
-    }
-
+    /* Burger menu */
     .burger-menu {
         display: flex;
         flex-direction: column;
@@ -98,5 +117,46 @@
 
     .burger-menu.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Navigation control (for mobile) */
+    .navigation-control {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 1rem 0;
+        gap: 1rem;
+        /* Add gap between items */
+    }
+
+    .navigation-control.active {
+        display: flex;
+    }
+
+    /* Links for mobile */
+    .nav-link {
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 1px solid #e0e0e0;
+        width: 100%;
+        /* Make links take full width */
+    }
+
+    /* Links hover effect for mobile */
+    .nav-link:hover {
+        background-color: #f0f0f0;
+        color: #000;
+    }
+
+    /* Profile and user info on small screens */
+    .navbar .user-info {
+        display: none;
+        /* Hide user info on small screens */
     }
 }

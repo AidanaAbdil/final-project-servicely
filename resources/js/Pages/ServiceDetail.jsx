@@ -14,6 +14,8 @@ export default function ServiceDetail() {
 
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
 
     const { id } = useParams();
 
@@ -31,20 +33,27 @@ export default function ServiceDetail() {
     }, [id]);
 
     const handleAddToCartClick = async () => {
-        if(!user){
-            navigate('/login')
-        } else{
+        if (!date || !time) {
+            setErrorMessage("Please select both a date and a time."); // Set error message
+            return;
+        } else {
+            setErrorMessage(""); // Clear error if date and time are selected
+        }
+        if (!user) {
+            navigate("/login");
+        } else {
             try {
                 const response = await axios.post("/api/add-to-cart", {
                     service_id: selectedServiceDetail.id,
                     date: date,
                     time: time,
                 });
-                console.log(response.data);
-                alert("Service added to cart successfully!");
+                setSuccessMessage("Service added to cart successfully!"); // Set success message
+                setErrorMessage(""); // Clear any error message
             } catch (error) {
                 console.error("Error adding service to cart:", error);
-                alert("Failed to add service to cart.");
+                setSuccessMessage(""); // Clear success message if error occurs
+                setErrorMessage("Failed to add service to cart.");
             }
         }
         
@@ -105,14 +114,23 @@ export default function ServiceDetail() {
                 </div>
 
                 <div className="calendar-time-section">
-                    <div className="calender-date-picker">
-                        <p>Pick a date: </p>
-                        <DateTimePicker setDate={setDate} setTime={setTime} />
-                    </div>
-                    <button className="btn" onClick={handleAddToCartClick}>
+                      <div className="date-picker-container">  <DateTimePicker setDate={setDate} setTime={setTime} /></div>
+                
+                    <button className="btn-add-cart" onClick={handleAddToCartClick}>
                         Add to Cart
                     </button>
                 </div>
+                {errorMessage && (
+                    <p style={{ color: "red", margin: "10px auto" }}>
+                        {errorMessage}
+                    </p>
+                )}
+
+                {successMessage && (
+                    <p style={{ color: "green", margin: "10px auto" }}>
+                        {successMessage}
+                    </p>
+                )}
 
                 <div className="service_provider_information">
                     <p>
@@ -124,8 +142,14 @@ export default function ServiceDetail() {
                         {selectedServiceDetail.user?.firstname}{" "}
                         {selectedServiceDetail.user?.surname}
                     </p>{" "}
-                    <p><strong>Phone number:</strong> {selectedServiceDetail.user?.phone}</p>
-                    <p><strong>Email:</strong> {selectedServiceDetail.user?.email}</p>
+                    <p>
+                        <strong>Phone number:</strong>{" "}
+                        {selectedServiceDetail.user?.phone}
+                    </p>
+                    <p>
+                        <strong>Email:</strong>{" "}
+                        {selectedServiceDetail.user?.email}
+                    </p>
                 </div>
                 <Review service_id={selectedServiceDetail.id} />
             </div>
