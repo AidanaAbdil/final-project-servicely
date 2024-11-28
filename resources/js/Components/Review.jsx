@@ -13,7 +13,12 @@ export default function Review({ service_id }) {
     const postServiceReview = async () => {
         try {
             const response = await axios.post("/api/add-review", review);
-            setReview(response.data);
+
+            // clears the input review input field
+            setReview({ ...review, comment: "" });
+
+            // Re-fetch the updated list of reviews
+            getServiceReview(service_id);
         } catch (error) {
             console.log("Error posting review", error);
         }
@@ -69,7 +74,12 @@ export default function Review({ service_id }) {
                                 });
                             }}
                         ></input>
-                        <button className="btn review-submit-btn" onClick={postServiceReview}>Submit</button>
+                        <button
+                            className="btn review-submit-btn"
+                            onClick={postServiceReview}
+                        >
+                            Submit
+                        </button>
                     </div>
                 )}
             </div>
