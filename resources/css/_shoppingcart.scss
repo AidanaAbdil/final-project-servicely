@@ -76,7 +76,7 @@
 
 
 .shopping-cart-btn {
-    background-color: rgb(172, 121, 243);
+    background-color: black;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -105,7 +105,7 @@
 .shopping-cart-summary p {
     font-size: 18px;
     font-weight: bold;
-    color: rgb(151, 88, 240);
+    color: rgb(181, 29, 189);
 }
 
 
@@ -130,6 +130,10 @@
 
     .shopping-cart-quantity {
         width: 100%;
+    }
+
+    .shopping-cart-btn-box{
+        padding:20px;
     }
 
     .shopping-cart-btn {

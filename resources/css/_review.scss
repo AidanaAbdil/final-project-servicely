@@ -13,7 +13,7 @@
 
 .reviews-section input {
     width: 100%;
-    height: 80px;
+    height: 90px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -29,4 +29,18 @@
 .review-submit-btn{
     position: relative;
     left:20rem;
+}
+
+
+@media (max-width: 768px) {
+    .list-of-reviews-section {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .reviews-section input {
+        height: 90px;
+        font-size: 14px;
+    }
+
 }
