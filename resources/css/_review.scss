@@ -26,7 +26,17 @@
     color: rgb(0, 0, 0);
 }
 
-
+.review-submit-btn{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px 10px;
+    transition: background-color 0.3s;
+}
 
 
 @media (max-width: 768px) {

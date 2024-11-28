@@ -108,7 +108,7 @@ export default function ShoppingCart() {
                                             }
                                         />
                                         <button
-                                            className="btn remove-item-btn"
+                                            className="remove-item-btn"
                                             onClick={() =>
                                                 handleRemovebutton(item.id)
                                             }
@@ -125,17 +125,19 @@ export default function ShoppingCart() {
                 )}
 
                 <div className="shopping-cart-btn-box">
-                    <button
-                        className="btn shopping-cart-btn"
-                        onClick={handleNext}
-                    >
-                        Procced to Payment
-                    </button>
+                    {cart.length > 0 && (
+                        <button
+                            className="btn shopping-cart-btn"
+                            onClick={handleNext}
+                        >
+                            Proceed to Payment
+                        </button>
+                    )}
                     <button
                         className="btn shopping-cart-btn"
                         onClick={handleCancel}
                     >
-                        Cancel
+                        Close
                     </button>
                 </div>
             </div>

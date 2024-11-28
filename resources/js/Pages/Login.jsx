@@ -13,6 +13,8 @@ export default function Login() {
         password: "",
     });
 
+    const [errorMessage, setErrorMessage] = useState(""); // Initialize errorMessage state
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -21,20 +23,30 @@ export default function Login() {
             const response_data = response.data;
 
             console.log(response_data);
-
-            getUser();
-            navigate("/");
+            getUser(); 
+            navigate("/"); 
         } catch (error) {
-            switch (error.response.status) {
-                case 422:
-                    console.log(
-                        "VALIDATION FAILED:",
-                        error.response.data.errors
+            if (error.response) {
+                
+                console.log("Error response:", error.response);
+
+                if (error.response.status === 401) {
+                    setErrorMessage(
+                        "These credentials do not match our records."
                     );
-                    break;
-                case 500:
-                    console.log("UNKNOWN ERROR", error.response.data);
-                    break;
+                } else if (error.response.status === 422) {
+                    setErrorMessage(
+                        "Validation failed. Please check your input."
+                    );
+                } else if (error.response.status === 500) {
+                    setErrorMessage("Server error. Please try again later.");
+                } else {
+                    setErrorMessage(
+                        "An unknown error occurred. Please try again."
+                    );
+                }
+            } else {
+                setErrorMessage("Network error. Please check your connection.");
             }
         }
     };
@@ -49,31 +61,40 @@ export default function Login() {
     };
 
     return (
-        <div className="form">
-            <h2>Login to your profile</h2>
-            <form action="/login" method="post" onSubmit={handleSubmit}>
-                Email:{" "}
-                <input
-                    type="email"
-                    name="email"
-                    value={values.email}
-                    onChange={handleChange}
-                />
-                Password:{" "}
-                <input
-                    type="password"
-                    name="password"
-                    value={values.password}
-                    onChange={handleChange}
-                />
-                <button className="btn-submit">Login</button>
-            </form>
-            <div className="no-account">
-                <p>
-                    Don't have an account yet?{" "}
-                    <Link to="/register">Register here</Link>
-                </p>
+            <div className="form">
+                <h2>Login to your profile</h2>
+                <form onSubmit={handleSubmit}>
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
+                    />
+                    <label>Password:</label>
+                    <input
+                        type="password"
+                        name="password"
+                        value={values.password}
+                        onChange={handleChange}
+                    />
+                    <button className="btn-submit">Login</button>
+                </form>
+
+                {/* Display error message if it exists */}
+                {errorMessage && (
+                    <p style={{ color: "red", marginTop: "10px" }}>
+                        {errorMessage}
+                    </p>
+                )}
+
+                <div className="no-account">
+                    <p>
+                        Don't have an account yet?{" "}
+                        <Link to="/register">Register here</Link>
+                    </p>
+                </div>
             </div>
-        </div>
+
     );
 }

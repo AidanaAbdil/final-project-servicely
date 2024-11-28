@@ -50,12 +50,16 @@ export default function ServiceDetail() {
                 });
                 setSuccessMessage("Service added to cart successfully!"); // Set success message
                 setErrorMessage(""); // Clear any error message
+                setTimeout(() => {
+                    navigate("/catalog");
+                }, 2000); 
             } catch (error) {
                 console.error("Error adding service to cart:", error);
                 setSuccessMessage(""); // Clear success message if error occurs
                 setErrorMessage("Failed to add service to cart.");
             }
         }
+        
         
     };
 

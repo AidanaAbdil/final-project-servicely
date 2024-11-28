@@ -19,8 +19,32 @@ function Register(props) {
         role_id: "",
     });
 
+
+    const [errorMessages, setErrorMessages] = useState({
+        phone: "",
+        password: "",
+    });
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        setErrorMessages({ phone: "", password: "" });
+
+        if (!/^\d+$/.test(values.phone)) {
+            setErrorMessages((prevState) => ({
+                ...prevState,
+                phone: "Please enter a valid phone number (numbers only).",
+            }));
+            return;
+        }
+
+        if (values.password !== values.password_confirmation) {
+            setErrorMessages((prevState) => ({
+                ...prevState,
+                password: "Passwords do not match.",
+            }));
+            return;
+        }
 
         try {
             const response = await axios.post("/register", values);
@@ -28,6 +52,7 @@ function Register(props) {
             const response_data = response.data;
             getUser();
             navigate("/");
+            
         } catch (error) {
             switch (error.response.status) {
                 case 422:
@@ -79,6 +104,9 @@ function Register(props) {
                     defaultValue={values.phone}
                     onChange={handleChange}
                 />
+                {errorMessages.phone && (
+                    <p style={{ color: "red" }}>{errorMessages.phone}</p>
+                )}
                 <br />
                 Email:{" "}
                 <input
@@ -103,6 +131,9 @@ function Register(props) {
                     defaultValue={values.password_confirmation}
                     onChange={handleChange}
                 />
+                {errorMessages.password && (
+                    <p style={{ color: "red" }}>{errorMessages.password}</p>
+                )}
                 <br />
                 <div className="radio-btn">
                     <label htmlFor="customer">Register as customer</label>
@@ -125,13 +156,13 @@ function Register(props) {
                         value="2"
                         onChange={handleChange}
                     />
+                    
                 </div>
                 <button className="btn-submit">Register</button>
             </form>
             <div className="no-account">
                 <p>
-                    Already have an account?{" "}
-                    <Link to="/login">Login here</Link>
+                    Already have an account? <Link to="/login">Login here</Link>
                 </p>
             </div>
         </div>

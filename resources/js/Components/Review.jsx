@@ -75,7 +75,7 @@ export default function Review({ service_id }) {
                             }}
                         ></input>
                         <button
-                            className="btn review-submit-btn"
+                            className="review-submit-btn"
                             onClick={postServiceReview}
                         >
                             Submit
