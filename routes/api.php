@@ -9,6 +9,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ReviewController;
 
 
+use App\Http\Controllers\PaymentController;
 
 // Route::middleware('auth')->get('/user', function (Request $request) {
 //     return $request->user();
@@ -30,3 +31,4 @@ Route::post('/remove-from-cart', [ServiceController::class, 'removeFromCart']);
 Route::post('/add-review', [ReviewController::class, 'store']);
 Route::get('/list-review', [ReviewController::class, 'get_reviews']);
 Route::post('/clear-cart', [ServiceController::class, 'clearCart']);
+Route::post('/create-payment-intent', [PaymentController::class, 'createPaymentIntent']);

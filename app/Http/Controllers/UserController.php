@@ -11,6 +11,8 @@ class UserController extends Controller
 {
    public function getUser()
    {
-      return Auth::user() ?? null;
+      $user_id = Auth::id() ?? null;
+
+      return User::where('id', $user_id)->with('userProfile')->first();
    }
 }

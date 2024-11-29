@@ -1,140 +1,95 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "./CheckoutForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Payment() {
-    const [selectedPayment, setSelectedPayment] = useState("");
+
+const stripePromise = loadStripe("your-public-stripe-key"); 
+
+const Payment = () => {
     const [cartDetails, setCartDetails] = useState([]);
+    const [totalAmount, setTotalAmount] = useState(0);
+    const [paymentSuccess, setPaymentSuccess] = useState(false); 
+    const [errorMessage, setErrorMessage] = useState(""); 
     const navigate = useNavigate();
 
-    const handlePaymentChange = (event) => {
-        setSelectedPayment(event.target.value);
-    };
-
-    const getCart = async () => {
-        try {
-            const response = await axios.get("/api/get-cart");
-
-            setCartDetails(response.data);
-        } catch (error) {
-            console.log("Error finding cart", error);
-        }
-    };
     useEffect(() => {
-        getCart();
+        const fetchCartDetails = async () => {
+            try {
+                const response = await axios.get("/api/get-cart");
+                setCartDetails(response.data);
+                let total = 0;
+                response.data.forEach((item) => {
+                    total += item.price * 100; 
+                });
+                setTotalAmount(total);
+            } catch (error) {
+                console.error("Error fetching cart details:", error);
+            }
+        };
+        fetchCartDetails();
     }, []);
 
-    const clearCart = async () => {
-        try {
-            const response = await axios.post("/api/clear-cart");
-            if (response.data.success) {
-                setCartDetails([]);
-            }
-        } catch (error) {
-            console.log("Error clearing cart:", error);
-        }
-    };
-
-    const handlePaymentSubmit = async (event) => {
-        event.preventDefault();
+    const handlePaymentSubmit = async () => {
         try {
             console.log("Processing payment...");
-            await clearCart();
-            navigate("/catalog");
-            console.log("Payment successful. Cart cleared.");
+            setPaymentSuccess(true); 
+            setTimeout(() => {
+                navigate("/thank-you"); 
+            }, 2000); 
         } catch (error) {
-            console.log("Payment error:", error);
+            console.error("Payment error:", error);
+            setErrorMessage("Payment failed. Please try again.");
         }
     };
+
     return (
-        <div className="payment-section">
-            <div className="payment-method">
-                <h2>Payment Method</h2>
-
-                <div className="payment-option">
-                    <input
-                        type="radio"
-                        id="cash-payment"
-                        name="payment"
-                        value="cash-payment"
-                        className="input-radio-button"
-                        onChange={handlePaymentChange}
-                    />
-                    <label htmlFor="cash-payment">Cash Payment</label>
+        <div className="payment-page-container">
+            <h1 className="page-title">Payment Page</h1>
+            <div className="payment-page">
+                <div className="cart-summary">
+                    <h2>Cart Summary</h2>
+                    <ul className="cart-items-list">
+                        {cartDetails.map((item) => (
+                            <li key={item.id} className="cart-item">
+                                <span className="cart-item-title">
+                                    {item.title}
+                                </span>{" "}
+                                -
+                                <span className="cart-item-price">
+                                    {item.price} {item.currency}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="total-amount">
+                        <h3>Total: ${totalAmount / 100}</h3>
+                    </div>
                 </div>
-                <div className="payment-option">
-                    <input
-                        type="radio"
-                        id="credit-card"
-                        name="payment"
-                        value="credit-card"
-                        className="input-radio-button"
-                        onChange={handlePaymentChange}
-                    />
-                    <label htmlFor="credit-card">Credit Card</label>
+
+                <div className="checkout-form-container">
+                    <h3>Enter Payment Details</h3>
+                    {paymentSuccess ? (
+                        <div className="thank-you-message">
+                            <h3>Thank you for your purchase!</h3>
+                            <p>Your payment has been successfully processed.</p>
+                        </div>
+                    ) : (
+                        <Elements stripe={stripePromise}>
+                            <CheckoutForm onSubmit={handlePaymentSubmit} />
+                        </Elements>
+                    )}
+                    {errorMessage && (
+                        <p className="error-message">{errorMessage}</p>
+                    )}
                 </div>
-                {selectedPayment === "credit-card" && (
-                    <div className="payment-details">
-                        <form>
-                            <p>Credit Card Details</p>
-                            <label htmlFor="card-number">Card Number</label>
-                            <input
-                                type="text"
-                                id="card-number"
-                                placeholder="0000 0000 0000 0000"
-                            />
-                            <label htmlFor="expiry-date">Expiry Date</label>
-                            <input
-                                type="text"
-                                id="expiry-date"
-                                placeholder="MM / YY"
-                            />
-                            <label htmlFor="cvv">CVV</label>
-                            <input type="text" id="cvv" placeholder="CVV" />
-                            <label htmlFor="card-holder">
-                                Card Holder Name
-                            </label>
-                            <input
-                                type="text"
-                                id="card-holder"
-                                placeholder="Card Holder Name"
-                            />
-
-                        </form>
-                    </div>
-                )}
-
-                {selectedPayment === "cash-payment" && (
-                    <div className="payment-details">
-                        <p>
-                            Cash Payment Selected: No additional details
-                            required.
-                        </p>
-                    </div>
-                )}
-                <button
-                    onClick={handlePaymentSubmit}
-                    type="submit"
-                    className="btn-submit"
-                >
-                    Pay
-                </button>
-            </div>
-
-            <div className="payment-summary">
-                <h2>Summary</h2>
-                {cartDetails?.map((item) => (
-                    <div key={item.id}>
-                        <h4>{item.title}</h4>
-                        <p>
-                            {item.price} {item.currency}
-                        </p>
-                    </div>
-                ))}
             </div>
         </div>
     );
-}
+};
+
 export default Payment;
+
+
