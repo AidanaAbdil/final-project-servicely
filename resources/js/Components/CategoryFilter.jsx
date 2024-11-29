@@ -38,6 +38,14 @@ function CategoryFilter({ selectedCategory, setSelectedCategory }) {
                     </button>
                 );
             })}
+            <button
+                className="category_button"
+                onClick={() => {
+                    setSelectedCategory("");
+                }}
+            >
+                All
+            </button>
         </div>
     );
 }
