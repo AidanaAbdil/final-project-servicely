@@ -95,10 +95,9 @@ export default function UserProfile() {
                 <div className="photo-upload">
                     <div className="photo-placeholder">
                         {image && (
-                            <img className="profile-picture"
-                                src={
-                                    "/" + image
-                                }
+                            <img
+                                className="profile-picture"
+                                src={"/" + image}
                                 alt="profile_picture"
                             />
                         )}
@@ -219,7 +218,7 @@ export default function UserProfile() {
                             </button>
                             <button
                                 type="button"
-                                className="btn"
+                                className="save-btn"
                                 onClick={() => setIsEditing(false)}
                             >
                                 Cancel
