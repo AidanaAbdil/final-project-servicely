@@ -67,7 +67,7 @@ function Navigation() {
                                 {/* Display Profile Picture and Name */}
                                 <img
                                     src={
-                                        user.image_url ||
+                                        user.user_profile?.image_url ||
                                         "/images/profile_photos/watermelon-8368_11.png"
                                     } // Use a default avatar if no profile image
                                     alt="Profile"
