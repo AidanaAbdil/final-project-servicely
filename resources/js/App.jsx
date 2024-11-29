@@ -17,6 +17,8 @@ import UserProfile from "./pages/UserProfile";
 import ServiceDetail from "./pages/ServiceDetail";
 import ShoppingCart from "./pages/ShoppingCart";
 import Payment from "./pages/Payment";
+import ThankYouPage from "./components/ThankYouPage";
+
 
 function App() {
     const [user, setUser] = useState(false);
@@ -56,6 +58,7 @@ function App() {
                         />
                         <Route path="/cart" element={<ShoppingCart />} />
                         <Route path="/payment" element={<Payment />} />
+                        <Route path="/thank-you" element={<ThankYouPage />} />
                     </Routes>
                 </div>
                 <Footer />

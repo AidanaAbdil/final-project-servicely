@@ -87,7 +87,17 @@
     transition: background-color 0.3s;
 }
 
-
+.remove-item-btn{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px 10px;
+    transition: background-color 0.3s;
+}
 .shopping-cart-summary {
     background-color: #fff;
     padding: 20px;

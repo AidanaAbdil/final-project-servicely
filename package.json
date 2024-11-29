@@ -16,6 +16,8 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@stripe/react-stripe-js": "^3.0.0",
+        "@stripe/stripe-js": "^5.2.0",
         "@vis.gl/react-google-maps": "^1.4.1",
         "@vitejs/plugin-react": "^4.3.3",
         "react": "^18.3.1",

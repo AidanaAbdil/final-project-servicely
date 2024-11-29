@@ -4,7 +4,6 @@
     background-position: center;
     min-height: 70vh;
     margin-top: 5rem;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,6 +111,68 @@
     font-weight: bold;
     margin: 20px;
 }
+
+
+@media (min-width: 1200px) {
+    .about-us-section {
+        min-height: 60vh;
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-us-section p {
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    .about-us-btn {
+        font-size: 16px;
+        padding: 8px 18px;
+        margin-top: 1.5rem;
+    }
+
+    .about-us-title {
+        height: 20vh;
+        padding-top: 4rem;
+        text-align: center;
+    }
+
+    .hero-section {
+        height: 40vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-overlay {
+        text-align: center;
+    }
+
+    .cta-section {
+        padding: 40px;
+        text-align: center;
+    }
+
+    .cta-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .about-content h4 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .about-content p {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
 
 @media (max-width: 768px) {
     .cta-section {

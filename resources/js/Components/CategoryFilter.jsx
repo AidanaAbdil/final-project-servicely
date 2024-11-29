@@ -18,8 +18,22 @@ function CategoryFilter({ selectedCategory, setSelectedCategory }) {
     useEffect(() => {
         loadCategories();
     }, []);
+
+
     return (
         <div className="category-buttons-container">
+            <button
+                className={
+                    "category_button" +
+                    (selectedCategory === null
+                        ? " category-filter__category_selected"
+                        : "")
+                }
+                onClick={() => setSelectedCategory(null)} // Reset category to show all
+            >
+                Show All
+            </button>
+            
             {categories.map((category) => {
                 return (
                     <button
