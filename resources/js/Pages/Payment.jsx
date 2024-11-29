@@ -57,7 +57,6 @@ const Payment = () => {
                                 <span className="cart-item-title">
                                     {item.title}
                                 </span>{" "}
-                                -
                                 <span className="cart-item-price">
                                     {item.price} {item.currency}
                                 </span>
@@ -65,28 +64,29 @@ const Payment = () => {
                         ))}
                     </ul>
                     <div className="total-amount">
-                        <h3>Total: ${totalAmount / 100}</h3>
+                        <h3>Total: CZK {totalAmount / 100}</h3>
                     </div>
                 </div>
 
-                <div className="checkout-form-container">
-                    <h3>Enter Payment Details</h3>
-                    {paymentSuccess ? (
-                        <div className="thank-you-message">
-                            <h3>Thank you for your purchase!</h3>
-                            <p>Your payment has been successfully processed.</p>
-                        </div>
-                    ) : (
-                        <Elements stripe={stripePromise}>
-                            <CheckoutForm onSubmit={handlePaymentSubmit} />
-                        </Elements>
-                    )}
-                    {errorMessage && (
-                        <p className="error-message">{errorMessage}</p>
-                    )}
+    
+                    <div className="checkout-form-container">
+                        <h3>Enter Payment Details</h3>
+                        {paymentSuccess ? (
+                            <div className="thank-you-message">
+                                <h3>Thank you for your purchase!</h3>
+                                <p>Your payment has been successfully processed.</p>
+                            </div>
+                        ) : (
+                            <Elements stripe={stripePromise}>
+                                <CheckoutForm onSubmit={handlePaymentSubmit} />
+                            </Elements>
+                        )}
+                        {errorMessage && (
+                            <p className="error-message">{errorMessage}</p>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
     );
 };
 

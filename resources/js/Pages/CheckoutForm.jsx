@@ -17,24 +17,26 @@ const CheckoutForm = ({ onSubmit }) => {
     };
 
     return (
-        <form className="checkout-form" onSubmit={handleSubmit}>
-            <h3>Enter Payment Details</h3>
-            <label htmlFor="cardholder-name">Cardholder Name</label>
-            <input
-                type="text"
-                id="cardholder-name"
-                placeholder="John Doe"
-                required
-            />
+  
 
-            <label htmlFor="card-number">Card Number</label>
-            <CardElement id="card-number" />
+            <form className="checkout-form" onSubmit={handleSubmit}>
+                
+                <label htmlFor="cardholder-name">Cardholder Name</label>
+                <input
+                    type="text"
+                    id="cardholder-name"
+                    placeholder="John Doe"
+                    required
+                />
 
+                <label htmlFor="card-number">Card Number</label>
+                <CardElement id="card-number" />
 
-            <button type="submit" disabled={!stripe}>
-                Pay
-            </button>
-        </form>
+                <button type="submit" disabled={!stripe}>
+                    Pay
+                </button>
+            </form>
+
     );
 };
 

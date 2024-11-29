@@ -1,5 +1,3 @@
-
-/* Payment Page Container */
 .payment-page-container {
     max-width: 1200px;
     min-width: 70%;
@@ -8,7 +6,7 @@
     min-height:80vh;
 }
 
-/* Page Title */
+
 .page-title {
     text-align: center;
     font-size: 2.5rem;
@@ -16,7 +14,7 @@
     color: #333;
 }
 
-/* Payment Page Flex Container */
+
 .payment-page {
     display: flex;
     gap: 40px;
@@ -24,7 +22,6 @@
     flex-wrap: wrap;
 }
 
-/* Cart Summary Section */
 .cart-summary {
     background-color: #fff;
     padding: 20px;
@@ -33,6 +30,7 @@
     width: 45%;
     min-width: 300px;
 }
+
 
 .cart-summary h2 {
     font-size: 1.5rem;
@@ -80,6 +78,7 @@
 .checkout-form-container h3 {
     font-size: 1.5rem;
     margin-bottom: 20px;
+    text-align: center;
     color: #333;
 }
 

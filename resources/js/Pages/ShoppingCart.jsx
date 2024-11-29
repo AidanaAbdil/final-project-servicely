@@ -60,9 +60,7 @@ export default function ShoppingCart() {
         navigate("/payment");
     };
 
-    const handleCancel = () => {
-        navigate(`/catalog`);
-    };
+
 
     return (
         <section className="shopping-cart-container">
@@ -133,12 +131,7 @@ export default function ShoppingCart() {
                             Proceed to Payment
                         </button>
                     )}
-                    <button
-                        className="btn shopping-cart-btn"
-                        onClick={handleCancel}
-                    >
-                        Close
-                    </button>
+                    
                 </div>
             </div>
 
