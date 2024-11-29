@@ -45,20 +45,23 @@ function Searchbar({ query, setQuery, setSearching }) {
                     Clear
                 </button>
             </div>
-            <div>
+            <div className="service-grid">
                 {query && results.length > 0 ? (
                     <ul>
                         {results.map((result) => (
                             <div className="service-card">
-                                <h4 key={result.id}>
-                                    <Link to={"/service/" + result.id}>
-                                        {result.title}
-                                    </Link>
-                                </h4>
+                                <h4 key={result.id}>{result.title}</h4>
                                 <p>{result.description}</p>
                                 <p>
                                     {result.price} {result.currency}
                                 </p>
+                                <Link
+                                    className="service-card-link"
+                                    to={"/service/" + result.id}>
+                                    <button className="btn-see-details">
+                                        See details
+                                    </button>
+                                </Link>
                             </div>
                         ))}
                     </ul>

@@ -24,7 +24,12 @@ export default function UserProfile() {
                 `/api/profile/${user.id}`
             );
             setProfileData(profileDataResponse.data);
-            setImage(profileDataResponse.data.image_url)
+            console.log(profileDataResponse.data);
+            
+            setImage(
+                profileDataResponse.data.image_url ??
+                    "images/profile_photos/watermelon-8368_11.png"
+            );
             
         } catch (error) {
             console.error("Error fetching profile:", error);
@@ -90,9 +95,10 @@ export default function UserProfile() {
                 <div className="photo-upload">
                     <div className="photo-placeholder">
                         {image && (
-                            <img
-                                className="profile-picture"
-                                src={"/" + image}
+                            <img className="profile-picture"
+                                src={
+                                    "/" + image
+                                }
                                 alt="profile_picture"
                             />
                         )}
@@ -137,13 +143,16 @@ export default function UserProfile() {
                             </p>
                             <p>
                                 {profileData.bio && (
-                                    <span><strong>Bio: </strong>{profileData.bio}</span>
+                                    <span>
+                                        <strong>Bio: </strong>
+                                        {profileData.bio}
+                                    </span>
                                 )}
                             </p>
 
                             <button
                                 onClick={() => setIsEditing(true)}
-                                className="btn"
+                                className="btn-edit-profile"
                             >
                                 Edit Profile
                             </button>
@@ -205,18 +214,16 @@ export default function UserProfile() {
                             <br />
                             <br />
 
-                           
-                                <button type="submit" className="btn save-btn">
-                                    Save Changes
-                                </button>
-                                <button
-                                    type="button"
-                                    className="btn"
-                                    onClick={() => setIsEditing(false)}
-                                >
-                                    Cancel
-                                </button>
-                            
+                            <button type="submit" className="save-btn">
+                                Save Changes
+                            </button>
+                            <button
+                                type="button"
+                                className="btn"
+                                onClick={() => setIsEditing(false)}
+                            >
+                                Cancel
+                            </button>
                         </form>
                     )}
                 </div>

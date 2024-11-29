@@ -4,7 +4,9 @@
     padding: 20px 40px;
     display: flex;
     align-items: start;
+
     justify-content: space-between;
+
     border-top: 2px solid #505050;
 }
 
@@ -37,9 +39,11 @@
 
 .footer-right-section {
     display: flex;
+
     flex-wrap: wrap;
     gap: 10rem;
     margin-right: 30px;
+
 }
 
 .footer-menu,
@@ -48,7 +52,6 @@
     max-width: 250px;
     min-width: 150px;
     text-align: center;
-    /* Center text inside these sections */
 }
 
 .footer-menu h4,

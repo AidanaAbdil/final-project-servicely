@@ -39,13 +39,14 @@ function Homepage() {
             <div className="add-service-section">
                 <div className="add-service">
                     <h3>We Are At YourServicely</h3>
-
-                    <button
-                        className="add-service-button"
-                        onClick={handleAddServiceClick}
-                    >
-                        Add Your Services Here
-                    </button>
+                    {user?.role_id === 2 && (
+                        <button
+                            className="add-service-button"
+                            onClick={handleAddServiceClick}
+                        >
+                            Add Your Services Here
+                        </button>
+                    )}
                 </div>
             </div>
 
@@ -58,15 +59,19 @@ function Homepage() {
                                 className="featured-service-card"
                                 key={service.id}
                             >
-                                <h4>
-                                    <Link className="service-title" to={"/service/" + service.id}>
-                                        {service.title}
-                                    </Link>
+                                <h4 className="service-title">
+                                    {service.title}
                                 </h4>
                                 <p>{service.description}</p>
                                 <p>
-                                    Price: {service.price} {service.currency}
+                                    <strong>Price:</strong> {service.price}{" "}
+                                    {service.currency}
                                 </p>
+                                <Link to={"/service/" + service.id}>
+                                    <button className="btn-see-details">
+                                        See details
+                                    </button>
+                                </Link>
                             </div>
                         ))
                     ) : (
